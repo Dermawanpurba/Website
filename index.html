@@ -49,7 +49,6 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F8FAFC;
-            /* Light mode default matching the uploaded image */
             color: #0F172A;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s;
@@ -91,6 +90,218 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
+        /* ===== LMS STYLES ===== */
+        #viewport-lms {
+            animation: lmsFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes lmsFadeIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .lms-course-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lms-course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.18);
+        }
+        .lms-progress-bar {
+            height: 6px;
+            border-radius: 999px;
+            background: #E2E8F0;
+            overflow: hidden;
+        }
+        .dark .lms-progress-bar {
+            background: #1F2937;
+        }
+        .lms-progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #4F46E5, #8B5CF6);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lms-chapter-item {
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .lms-chapter-item:hover {
+            background: rgba(79,70,229,0.05);
+        }
+        .lms-chapter-item.active {
+            border-left-color: #4F46E5;
+            background: rgba(79,70,229,0.07);
+        }
+        .lms-chapter-item.completed .lms-chapter-check {
+            background: #10B981;
+            border-color: #10B981;
+            color: white;
+        }
+        .lms-chapter-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #CBD5E1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            font-size: 10px;
+        }
+        .dark .lms-chapter-check {
+            border-color: #374151;
+        }
+        .lms-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .lms-video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .lms-video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            gap: 16px;
+        }
+        .lms-play-btn {
+            width: 72px;
+            height: 72px;
+            background: #FF0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 32px rgba(255,0,0,0.4);
+        }
+        .lms-play-btn:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 40px rgba(255,0,0,0.6);
+        }
+        .lms-badge-video {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #FEE2E2;
+            color: #DC2626;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.03em;
+        }
+        .dark .lms-badge-video {
+            background: rgba(220,38,38,0.15);
+            color: #F87171;
+        }
+        .lms-badge-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #EDE9FE;
+            color: #7C3AED;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+        .dark .lms-badge-pdf {
+            background: rgba(124,58,237,0.15);
+            color: #A78BFA;
+        }
+        .lms-selesai-btn {
+            background: white;
+            border: 2px solid #4F46E5;
+            color: #4F46E5;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+        .dark .lms-selesai-btn {
+            background: #111827;
+            border-color: #4F46E5;
+            color: #818CF8;
+        }
+        .lms-selesai-btn:hover {
+            background: #4F46E5;
+            color: white;
+            transform: translateY(-1px);
+        }
+        .lms-selesai-btn.done {
+            background: #10B981;
+            border-color: #10B981;
+            color: white;
+        }
+        .lms-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lms-nav-prev {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+        }
+        .dark .lms-nav-prev {
+            background: #1F2937;
+            border-color: #374151;
+            color: #9CA3AF;
+        }
+        .lms-nav-prev:hover { background: #E2E8F0; }
+        .dark .lms-nav-prev:hover { background: #374151; }
+        .lms-nav-next {
+            background: linear-gradient(135deg, #4F46E5, #8B5CF6);
+            color: white;
+            border: none;
+        }
+        .lms-nav-next:hover { opacity: 0.88; transform: translateX(2px); }
+        .lms-group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0F172A;
+            border-bottom: 1px solid #F1F5F9;
+            user-select: none;
+        }
+        .dark .lms-group-header {
+            color: #F1F5F9;
+            border-bottom-color: #1F2937;
+        }
+        .lms-group-header:hover { background: rgba(79,70,229,0.04); }
     </style>
 </head>
 
@@ -109,8 +320,7 @@
                         <i data-lucide="layers" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h1 class="text-lg font-bold tracking-tight text-premium-textDark dark:text-white">Digital<span
-                                class="text-gradient">Vault</span></h1>
+                        <h1 class="text-lg font-bold tracking-tight text-premium-textDark dark:text-white" id="web-header-name">DigitalVault</h1>
                         <span
                             class="text-[9px] text-gray-400 dark:text-gray-500 font-semibold tracking-wider uppercase block leading-none">PREMIUM
                             HUB</span>
@@ -131,6 +341,12 @@
                         class="hover:text-premium-indigo transition-all">FAQ</button>
                     <button onclick="scrollToSection('section-about')"
                         class="hover:text-premium-indigo transition-all">Tentang Kami</button>
+                    <!-- LMS Standalone Nav -->
+                    <button onclick="openLMS()"
+                        class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 hover:bg-red-100 transition-all font-bold text-xs">
+                        <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+                        Pembelajaran
+                    </button>
                 </nav>
 
                 <!-- Navigation Actions Right -->
@@ -158,6 +374,135 @@
             </div>
         </header>
 
+        <!-- LMS VIEWPORT (Learning Management System) -->
+        <div id="viewport-lms" class="hidden flex-grow">
+
+            <!-- LMS: COURSE LIST VIEW -->
+            <div id="lms-view-courses" class="min-h-screen">
+                <!-- LMS Banner -->
+                <div class="bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-700 text-white py-12 px-4">
+                    <div class="max-w-7xl mx-auto">
+                        <button onclick="closeLMS()" id="lms-back-btn" class="flex items-center gap-2 text-indigo-200 hover:text-white text-xs font-bold mb-6 transition-all">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> <span id="lms-back-label">Kembali ke Beranda</span>
+                        </button>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-white/20 backdrop-blur-sm p-2.5 rounded-xl">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">LMS E-Course</span>
+                                <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Kelas Pembelajaran</h1>
+                            </div>
+                        </div>
+                        <p class="text-indigo-200 text-sm max-w-2xl">Pelajari cara penggunaan tools dan template digital langsung dari video tutorial eksklusif. Tandai setiap materi sebagai selesai untuk melacak progres belajar Anda.</p>
+                        <div class="flex flex-wrap gap-6 mt-6">
+                            <div class="flex items-center gap-2 text-xs">
+                                <i data-lucide="play-circle" class="w-4 h-4 text-indigo-300"></i>
+                                <span id="lms-total-videos" class="font-bold">0 Video Tutorial</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-300"></i>
+                                <span id="lms-total-completed" class="font-bold">0 Selesai</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Cards Grid -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div id="lms-course-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                        <!-- Dynamically rendered -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- LMS: PLAYER VIEW -->
+            <div id="lms-view-player" class="hidden min-h-screen bg-slate-50 dark:bg-premium-dark">
+                <!-- Top Bar -->
+                <div class="bg-white dark:bg-premium-card border-b border-slate-200 dark:border-premium-border px-4 py-3">
+                    <div class="max-w-[1400px] mx-auto flex items-center justify-between">
+                        <button onclick="lmsBackToCourses()" class="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-premium-indigo text-xs font-bold transition-all">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Daftar Kelas
+                        </button>
+                        <div class="text-center hidden md:block">
+                            <p id="lms-player-course-title" class="text-sm font-extrabold text-slate-900 dark:text-white"></p>
+                            <span class="text-[10px] text-premium-indigo font-bold font-mono tracking-wider uppercase">LMS E-Course</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div id="lms-overall-progress-wrap" class="hidden md:flex items-center gap-2">
+                                <span class="text-xs text-slate-400 font-mono">Progres:</span>
+                                <div class="lms-progress-bar w-28">
+                                    <div id="lms-overall-progress-bar" class="lms-progress-fill" style="width:0%"></div>
+                                </div>
+                                <span id="lms-overall-progress-pct" class="text-xs font-bold text-premium-indigo font-mono">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Player Layout -->
+                <div class="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-0 h-[calc(100vh-60px)]">
+
+                    <!-- Left: Video + Info -->
+                    <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-5">
+                        <!-- Video Player -->
+                        <div class="lms-video-wrapper" id="lms-video-container">
+                            <!-- Filled dynamically -->
+                        </div>
+
+                        <!-- Type Badge + Title -->
+                        <div class="space-y-2">
+                            <div id="lms-material-badge"></div>
+                            <h2 id="lms-material-title" class="text-xl font-extrabold text-slate-900 dark:text-white"></h2>
+                            <p class="text-xs text-premium-indigo font-bold">Kelas: <span id="lms-material-course-name" class="hover:underline cursor-pointer" onclick="lmsBackToCourses()"></span></p>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="bg-white dark:bg-premium-card border border-slate-200 dark:border-premium-border rounded-2xl p-5 space-y-2">
+                            <h3 class="text-sm font-bold text-slate-900 dark:text-white">Deskripsi Materi</h3>
+                            <p id="lms-material-desc" class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed"></p>
+                        </div>
+
+                        <!-- Mobile nav -->
+                        <div class="flex gap-2 lg:hidden">
+                            <button id="lms-prev-btn-mobile" onclick="lmsNavigate(-1)" class="lms-nav-btn lms-nav-prev flex-1">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i> Prev
+                            </button>
+                            <button id="lms-next-btn-mobile" onclick="lmsNavigate(1)" class="lms-nav-btn lms-nav-next flex-1">
+                                Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar: Completion + Chapter List -->
+                    <div class="w-full lg:w-[380px] bg-white dark:bg-premium-card border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-premium-border flex flex-col overflow-hidden">
+
+                        <!-- Selesaikan Materi Panel -->
+                        <div class="p-5 border-b border-slate-100 dark:border-premium-border/50 space-y-3">
+                            <p class="text-sm font-bold text-center text-slate-900 dark:text-white">Selesaikan Materi Ini</p>
+                            <button id="lms-selesai-btn" onclick="lmsMarkDone()" class="lms-selesai-btn">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                                Tandai Selesai &amp; Lanjut
+                            </button>
+                            <div class="flex gap-2">
+                                <button onclick="lmsNavigate(-1)" class="lms-nav-btn lms-nav-prev flex-1">
+                                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Prev
+                                </button>
+                                <button onclick="lmsNavigate(1)" class="lms-nav-btn lms-nav-next flex-1">
+                                    Next <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chapter Sidebar -->
+                        <div class="flex-1 overflow-y-auto" id="lms-chapter-sidebar">
+                            <!-- Dynamically rendered -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 1. GENERAL STOREFRONT VIEWPORT -->
         <main id="viewport-storefront" class="flex-grow space-y-20 pb-20">
 
@@ -173,12 +518,12 @@
                         </span>
 
                         <h1
-                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight" id="web-hero-title">
                             Solusi Digital untuk <span class="text-gradient">Produktivitas</span> dan Operasional Modern
                         </h1>
 
                         <p
-                            class="text-slate-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-normal">
+                            class="text-slate-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-normal" id="web-hero-desc">
                             Template Excel, Dashboard Looker Studio, Source Code, AI Automation, dan Tools Siap Pakai
                             untuk mempercepat pekerjaan Anda.
                         </p>
@@ -389,7 +734,7 @@
                     </button>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                     <!-- Cat 1 -->
                     <div onclick="filterKatalog('SOURCE CODE', this)"
                         class="cat-card cursor-pointer bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border p-5 rounded-2xl text-center space-y-3 card-lift">
@@ -449,6 +794,22 @@
                         </div>
                         <h4 class="font-bold text-[11px] text-slate-800 dark:text-white uppercase tracking-wider">E-Book
                         </h4>
+                    </div>
+                </div>
+
+                <!-- LMS Banner Teaser -->
+                <div onclick="openLMS()" class="cursor-pointer mt-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-4 flex items-center justify-between text-white shadow-lg hover:shadow-red-500/25 hover:scale-[1.01] transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-extrabold text-sm">🎓 Kelas Pembelajaran</p>
+                            <p class="text-[11px] text-red-100">Tutorial video eksklusif cara penggunaan tools &amp; template</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+                        Mulai Belajar <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                     </div>
                 </div>
             </section>
@@ -705,7 +1066,7 @@
         </main>
 
         <!-- 2. SECURE ADMIN LOGIN GATEWAY VIEWPORT -->
-        <main id="viewport-login-gate" class="flex-grow flex items-center justify-center p-4 py-20 hidden">
+        <main id="viewport-login-gate" class="flex-grow flex flex-col items-center justify-center p-4 py-20 min-h-[70vh] hidden">
             <div
                 class="w-full max-w-md bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border rounded-3xl shadow-2xl overflow-hidden">
                 <!-- Branding Header -->
@@ -741,13 +1102,6 @@
                     <button type="submit"
                         class="w-full py-3 bg-gradient-premium hover:opacity-95 text-white font-bold rounded-xl text-xs uppercase tracking-widest transition-all">
                         Otorisasi Akses
-                    </button>
-
-                    <div
-                        class="text-center text-[10px] text-slate-400 pt-2 border-t border-slate-100 dark:border-premium-border/40">
-                        Demo Account Username: <span class="font-bold text-premium-indigo">admin</span> | Pass: <span
-                            class="font-bold text-premium-indigo">Demo2026!</span>
-                    </div>
                 </form>
             </div>
         </main>
@@ -762,11 +1116,22 @@
                     <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Mengelola listing produk dan melacak
                         performa konversi checkout Lynk.id.</p>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex gap-2 flex-wrap">
                     <button onclick="openProductModal()"
                         class="px-5 py-2.5 rounded-xl bg-gradient-premium font-bold text-xs text-white flex items-center gap-2 shadow-lg shadow-indigo-500/10 hover:scale-105 transition-all">
                         <i data-lucide="plus" class="w-4 h-4"></i>
                         <span>Tambah Produk</span>
+                    </button>
+                    <button onclick="openLMSAdminModal()"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 font-bold text-xs text-white flex items-center gap-2 shadow-lg shadow-red-500/10 hover:scale-105 transition-all">
+                        <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                        <span>Tambah Kelas LMS</span>
+                    </button>
+                    <!-- Akses LMS dari Admin Panel -->
+                    <button onclick="openLMS(true)"
+                        class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 font-bold text-xs text-white flex items-center gap-2 shadow-lg shadow-teal-500/10 hover:scale-105 transition-all">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                        <span>Lihat Kelas LMS</span>
                     </button>
                     <button onclick="logoutAdmin()"
                         class="px-5 py-2.5 rounded-xl border border-red-200 dark:border-red-950 hover:bg-red-500 hover:text-white text-red-500 font-bold text-xs transition-all uppercase">
@@ -809,6 +1174,72 @@
                             Sync
                         </button>
                     </div>
+                </div>
+                
+                <!-- Input Pengaturan Informasi Web -->
+                <div class="border-t border-slate-100 dark:border-premium-border/40 pt-4 mt-4 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="settings" class="w-5 h-5 text-premium-indigo"></i>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Pengaturan Identitas Web</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA WEBSITE:</label>
+                            <input type="text" id="settings-web-name" placeholder="DigitalVault"
+                                class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">INFORMASI / SLOGAN WEBSITE:</label>
+                            <input type="text" id="settings-web-info" placeholder="Solusi Digital untuk Produktivitas dan Operasional Modern"
+                                class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button onclick="saveWebSettings()"
+                            class="py-2.5 px-6 bg-premium-indigo hover:bg-premium-indigoLight text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all">
+                            Simpan Identitas Web
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LMS COURSES MANAGEMENT TABLE -->
+            <div class="bg-white dark:bg-premium-card border border-red-200 dark:border-red-900/40 rounded-3xl overflow-hidden shadow-sm">
+                <div class="p-6 border-b border-red-100 dark:border-red-900/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-red-50/50 dark:bg-red-950/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">Manajemen Kelas LMS</h4>
+                            <p class="text-[11px] text-slate-500 dark:text-gray-400">Database khusus kelas pembelajaran — terpisah dari produk marketplace.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="runSetupLMSDatabase()"
+                            class="py-2 px-4 bg-orange-500 text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-orange-600 transition-all">
+                            Setup DB LMS
+                        </button>
+                        <button onclick="syncLMSData()"
+                            class="py-2 px-4 bg-emerald-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-700 transition-all">
+                            Sync LMS
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs font-mono">
+                        <thead>
+                            <tr class="border-b border-slate-100 dark:border-premium-border/40 bg-slate-50 dark:bg-[#0d121f] text-slate-500">
+                                <th class="p-4">Thumbnail</th>
+                                <th class="p-4">Nama Kelas</th>
+                                <th class="p-4">Jumlah Materi</th>
+                                <th class="p-4">Chapter</th>
+                                <th class="p-4 text-right">Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-lms-courses-body" class="divide-y divide-slate-100 dark:divide-premium-border/20 text-slate-600 dark:text-gray-300">
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -1064,6 +1495,7 @@
                         <option value="AI AUTOMATION">🤖 AI AUTOMATION</option>
                         <option value="MAINTENANCE">⚙️ MAINTENANCE TOOLS</option>
                         <option value="E-BOOK">📚 E-BOOK</option>
+                        <option value="PEMBELAJARAN">🎥 PEMBELAJARAN (TUTORIAL)</option>
                     </select>
                 </div>
 
@@ -1149,6 +1581,24 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- MODAL DRAWER: LMS CONTENT MANAGEMENT (ADMIN ONLY) -->
+    <div id="lms-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transition-all text-slate-900 dark:text-white">
+            <div class="p-6 border-b border-slate-100 dark:border-premium-border/40 flex justify-between items-center bg-slate-50 dark:bg-[#0d121f]">
+                <div>
+                    <h3 class="text-sm font-bold">Manajemen Kurikulum LMS</h3>
+                    <p class="text-[10px] text-slate-400">Kelola bab dan materi pembelajaran produk.</p>
+                </div>
+                <button onclick="document.getElementById('lms-modal').classList.add('hidden')" class="p-2 hover:bg-slate-200 dark:hover:bg-gray-800 rounded-xl text-slate-400">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="lms-content" class="p-6 max-h-[60vh] overflow-y-auto space-y-4">
+                <!-- Dynamic content -->
+            </div>
         </div>
     </div>
 
@@ -1243,13 +1693,87 @@
             }
         ];
 
+        // ====== DEDICATED LMS COURSES DATABASE (Terpisah dari Produk) ======
+        const INTEGRATED_DEFAULT_LMS_COURSES = [
+            {
+                id: "LMS-001",
+                name: "Panduan Penggunaan Template Excel & Dashboard OEE",
+                desc: "Video panduan langkah demi langkah cara mengoperasikan template excel planner dan sinkronisasi ke Looker Studio.",
+                image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400",
+                badge_new: true,
+                badge_trending: false,
+                chapters: [
+                    {
+                        group: "Pendahuluan",
+                        items: [
+                            { id: "ch-1", title: "Tutorial Cara Pakai Template Excel OEE", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Panduan awal mengenal antarmuka dan kolom-kolom penting dalam template Excel OEE." },
+                            { id: "ch-2", title: "Cara Mengisi Data Produksi Harian", type: "pdf", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Dokumen panduan pengisian data produksi harian di template." }
+                        ]
+                    },
+                    {
+                        group: "Sinkronisasi ke Looker Studio",
+                        items: [
+                            { id: "ch-3", title: "Menghubungkan Google Sheet ke Looker Studio", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Langkah-langkah menyambungkan data dari Google Sheets ke Dashboard Looker Studio secara otomatis." },
+                            { id: "ch-4", title: "Kustomisasi Grafik dan KPI", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Cara menyesuaikan tampilan grafik OEE dan kartu KPI di dashboard." }
+                        ]
+                    },
+                    {
+                        group: "Tips & Trik Lanjutan",
+                        items: [
+                            { id: "ch-5", title: "Automasi Laporan Mingguan", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Menggunakan Google Apps Script untuk otomasi pengiriman laporan mingguan via email." },
+                            { id: "ch-6", title: "Troubleshooting Umum & FAQ", type: "pdf", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Kumpulan pertanyaan dan solusi masalah yang paling sering ditemui pengguna." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "LMS-002",
+                name: "Panduan Source Code GAS WebApp Builder",
+                desc: "Kelas lengkap cara membangun aplikasi web profesional menggunakan Google Apps Script tanpa coding dari nol.",
+                image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400",
+                badge_new: false,
+                badge_trending: true,
+                chapters: [
+                    {
+                        group: "Pengenalan GAS WebApp",
+                        items: [
+                            { id: "dv7-ch-1", title: "Apa itu Google Apps Script WebApp?", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Pengenalan dasar ekosistem GAS dan bagaimana GAS bisa dijadikan backend aplikasi web profesional." },
+                            { id: "dv7-ch-2", title: "Setup Project & Struktur Folder", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Cara membuat project baru di Google Apps Script, menyiapkan file HTML, CSS, dan JS di dalamnya." },
+                            { id: "dv7-ch-3", title: "Panduan Struktur Kode (PDF Referensi)", type: "pdf", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Dokumen referensi struktur folder dan naming convention yang digunakan dalam GAS WebApp Builder." }
+                        ]
+                    },
+                    {
+                        group: "Membangun UI & Backend",
+                        items: [
+                            { id: "dv7-ch-4", title: "Membuat Tampilan Login & Navigasi", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Tutorial membangun halaman login yang aman dan sistem navigasi multi-viewport di dalam satu file HTML." },
+                            { id: "dv7-ch-5", title: "Integrasi Google Sheets sebagai Database", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Cara menghubungkan tampilan frontend ke Google Sheets untuk operasi CRUD data secara real-time." },
+                            { id: "dv7-ch-6", title: "Membuat Form & Validasi Data", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Teknik membuat form input dinamis dengan validasi sisi klien dan sisi server menggunakan GAS." }
+                        ]
+                    },
+                    {
+                        group: "Deploy & Publikasi",
+                        items: [
+                            { id: "dv7-ch-7", title: "Deploy sebagai Web App Publik", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Langkah-langkah men-deploy aplikasi GAS sebagai web app yang dapat diakses publik dengan URL permanen." },
+                            { id: "dv7-ch-8", title: "Custom Domain & Optimasi Performa", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Cara menggunakan custom domain dan teknik optimasi agar aplikasi terasa cepat dan responsif." },
+                            { id: "dv7-ch-9", title: "Checklist Final & Best Practices (PDF)", type: "pdf", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Dokumen checklist lengkap sebelum publikasi dan kumpulan best practices pengembangan GAS WebApp." }
+                        ]
+                    }
+                ]
+            }
+        ];
+        // ====== END LMS DATABASE ======
+
         // Global State
         let platformState = {
             products: JSON.parse(localStorage.getItem('dv_secure_products')) || INTEGRATED_DEFAULT_PRODUCTS,
+            lmsCoursesData: JSON.parse(localStorage.getItem('lms_courses_data')) || INTEGRATED_DEFAULT_LMS_COURSES,
             activeFilter: 'ALL',
             lynkClicks: parseInt(localStorage.getItem('dv_secure_clicks')) || 247,
             totalVisitors: 1284,
-            isAdminAuthenticated: JSON.parse(sessionStorage.getItem('admin_logged_in')) || false
+            isAdminAuthenticated: JSON.parse(sessionStorage.getItem('admin_logged_in')) || false,
+            isUserAuthenticated: JSON.parse(sessionStorage.getItem('user_logged_in')) || false,
+            userRole: sessionStorage.getItem('user_role') || null,
+            userData: JSON.parse(sessionStorage.getItem('user_data')) || null
         };
 
         // Initialize Page Flow on DOM Loaded
@@ -1428,10 +1952,30 @@
                     renderAdminTable();
                     updateAdminKPIs();
                 }
+                
+                // Update Identitas Web dari Settings Google Sheets
+                if (res.data.settings) {
+                    const settings = res.data.settings;
+                    if (settings.web_name) {
+                        document.getElementById('web-header-name').innerText = settings.web_name;
+                        const inputName = document.getElementById('settings-web-name');
+                        if (inputName) inputName.value = settings.web_name;
+                        document.title = settings.web_name + " - Premium Digital Products Marketplace";
+                    }
+                    if (settings.web_info) {
+                        const titleEl = document.getElementById('web-hero-title');
+                        const descEl = document.getElementById('web-hero-desc');
+                        if (titleEl) titleEl.innerText = settings.web_info;
+                        
+                        const inputInfo = document.getElementById('settings-web-info');
+                        if (inputInfo) inputInfo.value = settings.web_info;
+                    }
+                }
+
                 if (!isSilent) {
                     Swal.fire({
                         title: 'Sinkronisasi Berhasil',
-                        text: 'Semua data produk telah diperbarui dari Google Sheets.',
+                        text: 'Semua data produk & pengaturan telah diperbarui dari Google Sheets.',
                         icon: 'success',
                         confirmButtonColor: '#4F46E5',
                         background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
@@ -1500,39 +2044,51 @@
         }
 
         // Navigate page views smoothly
+        // ===== MASTER VIEWPORT SWITCHER =====
+        // Sembunyikan semua viewport — gunakan sebelum menampilkan salah satu
+        function hideAllViewports() {
+            ['viewport-storefront', 'viewport-login-gate', 'viewport-admin-panel', 'viewport-lms']
+                .forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.classList.add('hidden');
+                        el.classList.remove('flex', 'flex-col');
+                    }
+                });
+        }
+
         function routeToAdminGate() {
-            // Check authentication state
             if (platformState.isAdminAuthenticated) {
                 showAdminPanel();
+            } else if (platformState.isUserAuthenticated) {
+                openLMS(false);
             } else {
                 showLoginGate();
             }
         }
 
         function showLoginGate() {
-            document.getElementById('viewport-storefront').classList.add('hidden');
-            document.getElementById('viewport-admin-panel').classList.add('hidden');
+            hideAllViewports();
             document.getElementById('viewport-login-gate').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showAdminPanel() {
-            document.getElementById('viewport-storefront').classList.add('hidden');
-            document.getElementById('viewport-login-gate').classList.add('hidden');
+            hideAllViewports();
             document.getElementById('viewport-admin-panel').classList.remove('hidden');
             renderAdminTable();
+            renderAdminLMSTable();
             updateAdminKPIs();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function routeToStorefront() {
-            document.getElementById('viewport-admin-panel').classList.add('hidden');
-            document.getElementById('viewport-login-gate').classList.add('hidden');
+            hideAllViewports();
             document.getElementById('viewport-storefront').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Authenticate login with admin/Demo2026! credentials
+        // Authenticate login with multi-role credentials (Admin & User)
         async function handleSecureLogin(e) {
             e.preventDefault();
             const userIn = document.getElementById('login-username').value.trim();
@@ -1554,13 +2110,26 @@
                 Swal.close();
 
                 if (res && res.success) {
-                    platformState.isAdminAuthenticated = true;
-                    sessionStorage.setItem('admin_logged_in', 'true');
-                    updatePortalButton();
-                    showAdminPanel();
+                    const userRole = res.user.role || 'User';
+                    platformState.userRole = userRole;
+                    sessionStorage.setItem('user_role', userRole);
+                    sessionStorage.setItem('user_data', JSON.stringify(res.user));
+                    
+                    if (userRole === 'Admin') {
+                        platformState.isAdminAuthenticated = true;
+                        sessionStorage.setItem('admin_logged_in', 'true');
+                        updatePortalButton();
+                        showAdminPanel();
+                    } else {
+                        platformState.isUserAuthenticated = true;
+                        sessionStorage.setItem('user_logged_in', 'true');
+                        updatePortalButton();
+                        openLMS(false);
+                    }
+                    
                     Swal.fire({
                         title: 'Otorisasi Berhasil',
-                        text: `Selamat datang kembali, ${res.user.nama || userIn}.`,
+                        text: `Selamat datang kembali, ${res.user.nama || userIn} (${userRole}).`,
                         icon: 'success',
                         confirmButtonColor: '#4F46E5',
                         background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
@@ -1577,15 +2146,32 @@
                     });
                 }
             } else {
-                // Fallback to local admin
+                // Fallback to local accounts
                 if (userIn === 'admin' && passIn === 'Demo2026!') {
                     platformState.isAdminAuthenticated = true;
+                    platformState.userRole = 'Admin';
                     sessionStorage.setItem('admin_logged_in', 'true');
+                    sessionStorage.setItem('user_role', 'Admin');
                     updatePortalButton();
                     showAdminPanel();
                     Swal.fire({
                         title: 'Otorisasi Berhasil',
-                        text: 'Selamat datang kembali, Erwin Dermawan.',
+                        text: 'Selamat datang kembali, Erwin Dermawan (Admin).',
+                        icon: 'success',
+                        confirmButtonColor: '#4F46E5',
+                        background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                        color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A'
+                    });
+                } else if (userIn === 'user' && passIn === 'User2026!') {
+                    platformState.isUserAuthenticated = true;
+                    platformState.userRole = 'User';
+                    sessionStorage.setItem('user_logged_in', 'true');
+                    sessionStorage.setItem('user_role', 'User');
+                    updatePortalButton();
+                    openLMS(false);
+                    Swal.fire({
+                        title: 'Otorisasi Berhasil',
+                        text: 'Selamat datang kembali, Pelanggan (User).',
                         icon: 'success',
                         confirmButtonColor: '#4F46E5',
                         background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
@@ -1604,10 +2190,15 @@
             }
         }
 
-        // Logout admin
+        // Logout user/admin
         function logoutAdmin() {
             platformState.isAdminAuthenticated = false;
+            platformState.isUserAuthenticated = false;
+            platformState.userRole = null;
             sessionStorage.removeItem('admin_logged_in');
+            sessionStorage.removeItem('user_logged_in');
+            sessionStorage.removeItem('user_role');
+            sessionStorage.removeItem('user_data');
             updatePortalButton();
             routeToStorefront();
             Swal.fire({
@@ -1629,6 +2220,12 @@
                     <span>SaaS Admin</span>
                 `;
                 btn.onclick = () => showAdminPanel();
+            } else if (platformState.isUserAuthenticated) {
+                btn.innerHTML = `
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    <span>LMS User</span>
+                `;
+                btn.onclick = () => openLMS(false);
             } else {
                 btn.innerHTML = `
                     <i data-lucide="lock" class="w-3.5 h-3.5 text-indigo-500"></i>
@@ -1655,6 +2252,653 @@
                 }
             }, 100);
         }
+
+        // ===================== LMS STATE =====================
+        const lmsState = {
+            courses: [],              // loaded from platformState.lmsCoursesData
+            activeCourseIdx: 0,       // which course the user opened
+            activeMaterialFlat: 0,    // flat index in all chapters.items
+            completedIds: JSON.parse(localStorage.getItem('lms_completed') || '[]'),
+            groupCollapsed: {},       // track collapsed groups in sidebar
+            previousViewport: 'storefront', // 'storefront' or 'admin'
+        };
+
+        // Open the LMS viewport
+        function openLMS(fromAdmin) {
+            // BATASI AKSES: Hanya Admin atau User terverifikasi yang boleh masuk ke LMS
+            if (!platformState.isAdminAuthenticated && !platformState.isUserAuthenticated) {
+                Swal.fire({
+                    title: 'Akses Terbatas 🎓',
+                    text: 'Silakan login terlebih dahulu menggunakan akun Admin atau User untuk melihat materi pembelajaran.',
+                    icon: 'warning',
+                    confirmButtonColor: '#4F46E5',
+                    background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                    color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A'
+                }).then(() => {
+                    showLoginGate();
+                });
+                return;
+            }
+
+            // Track where we came from so closeLMS can return correctly
+            lmsState.previousViewport = fromAdmin ? 'admin' : 'storefront';
+
+            // Read from DEDICATED LMS data store (NOT from products)
+            lmsState.courses = platformState.lmsCoursesData || [];
+
+            // Hide ALL viewports cleanly
+            hideAllViewports();
+
+            const lmsVP = document.getElementById('viewport-lms');
+            lmsVP.classList.remove('hidden');
+            lmsVP.classList.add('flex', 'flex-col');
+
+            // Update dynamic back button label
+            const backLabel = document.getElementById('lms-back-label');
+            if (backLabel) {
+                backLabel.textContent = fromAdmin ? 'Kembali ke Admin Panel' : 'Kembali ke Beranda';
+            }
+
+            // Show course list view
+            document.getElementById('lms-view-courses').classList.remove('hidden');
+            document.getElementById('lms-view-player').classList.add('hidden');
+
+            renderLMSCourseList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // Close LMS — return to whichever viewport opened it
+        function closeLMS() {
+            hideAllViewports();
+            if (lmsState.previousViewport === 'admin') {
+                // Kembali ke admin panel
+                document.getElementById('viewport-admin-panel').classList.remove('hidden');
+            } else {
+                // Kembali ke storefront
+                document.getElementById('viewport-storefront').classList.remove('hidden');
+                platformState.activeFilter = 'ALL';
+                renderStorefront();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render course cards in LMS list view
+        function renderLMSCourseList() {
+            const container = document.getElementById('lms-course-list');
+            const courses = lmsState.courses;
+
+            let totalVideos = 0;
+            let totalCompleted = 0;
+
+            if (courses.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center text-slate-400 py-20 font-mono text-sm">Belum ada kelas pembelajaran tersedia.</div>`;
+                return;
+            }
+
+            container.innerHTML = courses.map((course, idx) => {
+                const chapters = course.chapters || [];
+                const allItems = chapters.flatMap(g => g.items || []);
+                const videoCount = allItems.filter(i => i.type === 'video').length || 1;
+                const completedCount = allItems.filter(i => lmsState.completedIds.includes(i.id)).length;
+                totalVideos += videoCount;
+                totalCompleted += completedCount;
+                const pct = allItems.length ? Math.round(completedCount / allItems.length * 100) : 0;
+                const img = course.image || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400';
+
+                return `
+                    <div class="lms-course-card bg-white dark:bg-premium-card border border-slate-200 dark:border-premium-border rounded-2xl overflow-hidden flex flex-col">
+                        <!-- Thumbnail -->
+                        <div class="relative h-44 overflow-hidden bg-slate-100 dark:bg-premium-dark">
+                            <img src="${img}" alt="${course.name}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 flex gap-2">
+                                <span class="bg-white/90 dark:bg-black/70 backdrop-blur-sm text-premium-indigo text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">${course.chapters ? (course.chapters.flatMap(g=>g.items||[]).length) : 1} Materi</span>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                ${course.badge_new ? '<span class="bg-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Baru</span>' : ''}
+                                ${course.badge_trending ? '<span class="bg-orange-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Trending</span>' : ''}
+                            </div>
+                        </div>
+                        <!-- Body -->
+                        <div class="p-5 flex flex-col flex-1 gap-3">
+                            <div class="flex-1 space-y-1.5">
+                                <h3 class="font-extrabold text-sm text-slate-900 dark:text-white leading-snug">${course.name}</h3>
+                                <p class="text-xs text-slate-500 dark:text-gray-400 line-clamp-2">${course.desc}</p>
+                            </div>
+                            <!-- Progress -->
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-[10px] font-bold text-slate-500 dark:text-gray-400">
+                                    <span>Progres Belajar</span>
+                                    <span class="text-premium-indigo">${pct}%</span>
+                                </div>
+                                <div class="lms-progress-bar">
+                                    <div class="lms-progress-fill" style="width:${pct}%"></div>
+                                </div>
+                            </div>
+                            <!-- CTA Button -->
+                            <button onclick="openLMSPlayer(${idx})" class="w-full mt-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-premium-indigo font-bold text-sm hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-all">
+                                <i data-lucide="play-circle" class="w-4 h-4"></i>
+                                ${pct === 0 ? 'Mulai Belajar' : (pct === 100 ? 'Tonton Ulang' : 'Lanjutkan Belajar')}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('lms-total-videos').textContent = totalVideos + ' Video Tutorial';
+            document.getElementById('lms-total-completed').textContent = totalCompleted + ' Selesai';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // Open the LMS Player for a specific course
+        function openLMSPlayer(courseIdx) {
+            lmsState.activeCourseIdx = courseIdx;
+            // Find first uncompleted material, or 0
+            const course = lmsState.courses[courseIdx];
+            const flatItems = lmsFlatItems(course);
+            let startIdx = flatItems.findIndex(i => !lmsState.completedIds.includes(i.id));
+            if (startIdx < 0) startIdx = 0;
+            lmsState.activeMaterialFlat = startIdx;
+
+            document.getElementById('lms-view-courses').classList.add('hidden');
+            document.getElementById('lms-view-player').classList.remove('hidden');
+
+            renderLMSPlayer();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Go back to course list from player
+        function lmsBackToCourses() {
+            document.getElementById('lms-view-player').classList.add('hidden');
+            document.getElementById('lms-view-courses').classList.remove('hidden');
+            renderLMSCourseList();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Get flat list of all items in a course
+        function lmsFlatItems(course) {
+            if (!course) return [];
+            const chapters = course.chapters || [];
+            if (chapters.length === 0) {
+                // Fallback: single item from course data
+                return [{ id: course.id + '-m1', title: course.name, type: 'video', url: course.link_akses || course.previewUrl || course.lynkUrl || '', desc: course.desc }];
+            }
+            return chapters.flatMap(g => g.items || []);
+        }
+
+        // Extract YouTube video ID from URL
+        function lmsGetYouTubeId(url) {
+            if (!url) return null;
+            const match = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/[^\/\n\s]+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            return match ? match[1] : null;
+        }
+
+        // Render the LMS Player view
+        function renderLMSPlayer() {
+            const course = lmsState.courses[lmsState.activeCourseIdx];
+            if (!course) return;
+            const flatItems = lmsFlatItems(course);
+            const currentItem = flatItems[lmsState.activeMaterialFlat];
+            if (!currentItem) return;
+
+            // Update top bar title
+            document.getElementById('lms-player-course-title').textContent = course.name;
+
+            // -- Video Area --
+            const videoContainer = document.getElementById('lms-video-container');
+            const ytId = lmsGetYouTubeId(currentItem.url);
+            if (ytId) {
+                videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytId}?rel=0&autoplay=0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
+            } else {
+                videoContainer.innerHTML = `
+                    <div class="lms-video-placeholder">
+                        <div class="lms-play-btn" onclick="if('${currentItem.url}') window.open('${currentItem.url}','_blank')">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                        <p class="text-white/70 text-xs font-bold mt-2">Klik untuk membuka di YouTube</p>
+                        <a href="${currentItem.url}" target="_blank" class="text-red-400 text-xs hover:underline font-bold mt-1">${currentItem.url}</a>
+                    </div>`;
+            }
+
+            // -- Badge --
+            const badge = document.getElementById('lms-material-badge');
+            if (currentItem.type === 'pdf') {
+                badge.innerHTML = `<span class="lms-badge-pdf"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> PDF</span>`;
+            } else {
+                badge.innerHTML = `<span class="lms-badge-video"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg> Video</span>`;
+            }
+            document.getElementById('lms-material-title').textContent = currentItem.title;
+            document.getElementById('lms-material-course-name').textContent = course.name;
+            document.getElementById('lms-material-desc').textContent = currentItem.desc || course.desc;
+
+            // -- Selesai button state --
+            const isDone = lmsState.completedIds.includes(currentItem.id);
+            const selesaiBtn = document.getElementById('lms-selesai-btn');
+            if (isDone) {
+                selesaiBtn.classList.add('done');
+                selesaiBtn.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> Sudah Selesai ✓`;
+            } else {
+                selesaiBtn.classList.remove('done');
+                selesaiBtn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Tandai Selesai &amp; Lanjut`;
+            }
+
+            // -- Overall progress --
+            const total = flatItems.length;
+            const done = flatItems.filter(i => lmsState.completedIds.includes(i.id)).length;
+            const pct = total ? Math.round(done / total * 100) : 0;
+            document.getElementById('lms-overall-progress-bar').style.width = pct + '%';
+            document.getElementById('lms-overall-progress-pct').textContent = pct + '%';
+            document.getElementById('lms-overall-progress-wrap').classList.remove('hidden');
+
+            // -- Chapter Sidebar --
+            renderLMSSidebar(course, flatItems);
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // Render the right-side chapter sidebar
+        function renderLMSSidebar(course, flatItems) {
+            const sidebar = document.getElementById('lms-chapter-sidebar');
+            const chapters = course.chapters || [];
+            let flatIdx = 0;
+
+            if (chapters.length === 0) {
+                sidebar.innerHTML = '<p class="p-4 text-xs text-slate-400">Tidak ada daftar materi.</p>';
+                return;
+            }
+
+            sidebar.innerHTML = chapters.map((group, gi) => {
+                const isCollapsed = lmsState.groupCollapsed[gi] === true;
+                const itemsHTML = (group.items || []).map((item, ii) => {
+                    const currentFlatIdx = flatIdx++;
+                    const isActive = currentFlatIdx === lmsState.activeMaterialFlat;
+                    const isCompleted = lmsState.completedIds.includes(item.id);
+                    const typeIcon = item.type === 'pdf'
+                        ? `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`
+                        : `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="white"/></svg>`;
+                    return `
+                        <div class="lms-chapter-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} px-4 py-3 flex items-start gap-3"
+                             onclick="lmsGoToMaterial(${currentFlatIdx})">
+                            <div class="lms-chapter-check mt-0.5">
+                                ${isCompleted ? '✓' : ''}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-snug truncate ${isActive ? 'text-premium-indigo' : ''}">${item.title}</p>
+                                <span class="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">${typeIcon} ${item.type === 'pdf' ? 'PDF' : 'Video'}</span>
+                            </div>
+                        </div>`;
+                }).join('');
+
+                return `
+                    <div class="border-b border-slate-100 dark:border-premium-border/40">
+                        <div class="lms-group-header" onclick="lmsToggleGroup(${gi})">
+                            <div>
+                                <span class="text-[9px] text-slate-400 font-mono uppercase tracking-wider block">${String(gi+1).padStart(2,'0')}</span>
+                                <span>${group.group}</span>
+                                <span class="text-[10px] text-slate-400 font-normal ml-1">${(group.items||[]).length} Materi</span>
+                            </div>
+                            <span class="text-slate-400 text-lg font-light transition-transform ${isCollapsed ? '' : 'rotate-0'}" id="lms-grp-icon-${gi}">${isCollapsed ? '+' : '−'}</span>
+                        </div>
+                        <div id="lms-grp-body-${gi}" class="${isCollapsed ? 'hidden' : ''}">${itemsHTML}</div>
+                    </div>`;
+            }).join('');
+        }
+
+        // Navigate to a specific flat material index
+        function lmsGoToMaterial(idx) {
+            lmsState.activeMaterialFlat = idx;
+            renderLMSPlayer();
+        }
+
+        // Navigate Prev/Next
+        function lmsNavigate(direction) {
+            const course = lmsState.courses[lmsState.activeCourseIdx];
+            const flatItems = lmsFlatItems(course);
+            const newIdx = lmsState.activeMaterialFlat + direction;
+            if (newIdx >= 0 && newIdx < flatItems.length) {
+                lmsState.activeMaterialFlat = newIdx;
+                renderLMSPlayer();
+                document.getElementById('lms-view-player').scrollTop = 0;
+            } else if (newIdx >= flatItems.length) {
+                // Finished all materials
+                Swal.fire({
+                    title: '🎉 Selamat!',
+                    html: `Anda telah menyelesaikan semua materi pada kelas <strong>${course.name}</strong>!`,
+                    icon: 'success',
+                    confirmButtonColor: '#4F46E5',
+                    background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                    color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A'
+                }).then(() => lmsBackToCourses());
+            }
+        }
+
+        // Toggle group collapse in sidebar
+        function lmsToggleGroup(gi) {
+            lmsState.groupCollapsed[gi] = !lmsState.groupCollapsed[gi];
+            const body = document.getElementById(`lms-grp-body-${gi}`);
+            const icon = document.getElementById(`lms-grp-icon-${gi}`);
+            if (lmsState.groupCollapsed[gi]) {
+                body.classList.add('hidden');
+                icon.textContent = '+';
+            } else {
+                body.classList.remove('hidden');
+                icon.textContent = '−';
+            }
+        }
+
+        // Mark current material as done and advance
+        function lmsMarkDone() {
+            const course = lmsState.courses[lmsState.activeCourseIdx];
+            const flatItems = lmsFlatItems(course);
+            const currentItem = flatItems[lmsState.activeMaterialFlat];
+            if (!currentItem) return;
+
+            if (!lmsState.completedIds.includes(currentItem.id)) {
+                lmsState.completedIds.push(currentItem.id);
+                localStorage.setItem('lms_completed', JSON.stringify(lmsState.completedIds));
+            }
+
+            // Advance to next
+            lmsNavigate(1);
+        }
+        // ===================== END LMS =====================
+
+        // ===== LMS ADMIN MANAGEMENT FUNCTIONS =====
+
+        // Render the LMS courses table in admin panel
+        function renderAdminLMSTable() {
+            const tbody = document.getElementById('table-lms-courses-body');
+            if (!tbody) return;
+            const courses = platformState.lmsCoursesData || [];
+            if (courses.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-slate-400 font-mono text-xs">Belum ada kelas LMS. Klik "Tambah Kelas LMS" untuk menambahkan.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = courses.map((c, idx) => {
+                const allItems = (c.chapters || []).flatMap(g => g.items || []);
+                const groupNames = (c.chapters || []).map(g => g.group).join(', ');
+                return `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-gray-800/30 transition-all">
+                        <td class="p-4">
+                            <img src="${c.image || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=100'}" class="w-12 h-9 object-cover rounded-lg" alt="">
+                        </td>
+                        <td class="p-4">
+                            <p class="font-bold text-slate-900 dark:text-white text-xs">${c.name}</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5 line-clamp-1">${c.desc}</p>
+                            <div class="flex gap-1 mt-1">
+                                ${c.badge_new ? '<span class="bg-emerald-100 text-emerald-700 text-[8px] font-bold px-1.5 py-0.5 rounded">BARU</span>' : ''}
+                                ${c.badge_trending ? '<span class="bg-orange-100 text-orange-700 text-[8px] font-bold px-1.5 py-0.5 rounded">TRENDING</span>' : ''}
+                            </div>
+                        </td>
+                        <td class="p-4 text-slate-600 dark:text-gray-300">${allItems.length} Materi</td>
+                        <td class="p-4 text-slate-500 text-[10px] max-w-[160px] truncate">${groupNames}</td>
+                        <td class="p-4 text-right">
+                            <button onclick="deleteLMSCourse('${c.id}')"
+                                class="text-red-400 hover:text-red-600 font-bold text-[10px] border border-red-200 dark:border-red-900 px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-all">
+                                Hapus
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Open LMS Admin Modal with a course-add form
+        function openLMSAdminModal() {
+            const modal = document.getElementById('lms-modal');
+            const content = document.getElementById('lms-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-xs font-mono">
+                    <div class="p-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-xl text-red-700 dark:text-red-300 text-[10px]">
+                        ⚠️ Data kelas LMS tersimpan di database khusus <strong>lms_courses_data</strong> — terpisah dari produk marketplace.
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3">
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">NAMA KELAS:</label>
+                            <input id="lms-form-name" type="text" placeholder="Panduan Penggunaan Template Excel..." class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-red-400 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">DESKRIPSI SINGKAT:</label>
+                            <textarea id="lms-form-desc" rows="2" placeholder="Deskripsi singkat konten kelas..." class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-red-400 text-slate-900 dark:text-white font-bold"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">THUMBNAIL URL:</label>
+                            <input id="lms-form-image" type="text" placeholder="https://images.unsplash.com/..." class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-red-400 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="lms-form-new" class="w-4 h-4">
+                                <span class="text-slate-500 font-bold">Badge BARU</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="lms-form-trending" class="w-4 h-4">
+                                <span class="text-slate-500 font-bold">Badge TRENDING</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-100 dark:border-premium-border/40 pt-3">
+                        <label class="text-slate-500 font-bold block mb-2">CHAPTER 1 — NAMA GRUP & MATERI:</label>
+                        <div id="lms-chapters-container" class="space-y-3">
+                            <!-- rendered by JS -->
+                        </div>
+                        <button onclick="lmsAddChapterGroup()" type="button"
+                            class="mt-2 w-full py-2 border-2 border-dashed border-slate-300 dark:border-gray-700 text-slate-400 hover:border-premium-indigo hover:text-premium-indigo rounded-xl text-xs font-bold transition-all">
+                            + Tambah Chapter Group
+                        </button>
+                    </div>
+
+                    <button onclick="saveLMSCourse()"
+                        class="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white font-bold py-3 rounded-xl hover:opacity-95 transition-all text-xs uppercase tracking-wider mt-2">
+                        Simpan Kelas LMS
+                    </button>
+                </div>
+            `;
+            // Initialize with one chapter group
+            lmsFormGroups = [{ group: '', items: [{ title: '', type: 'video', url: '', desc: '' }] }];
+            renderLMSFormChapters();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // Dynamic chapter groups for LMS form
+        let lmsFormGroups = [];
+
+        function renderLMSFormChapters() {
+            const container = document.getElementById('lms-chapters-container');
+            if (!container) return;
+            container.innerHTML = lmsFormGroups.map((grp, gi) => `
+                <div class="bg-slate-50 dark:bg-premium-dark border border-slate-200 dark:border-premium-border rounded-xl p-3 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <input type="text" value="${grp.group}" onchange="lmsFormGroups[${gi}].group=this.value"
+                            placeholder="Nama Grup (cth: Pendahuluan)" class="flex-1 bg-white dark:bg-[#0d121f] border border-slate-200 dark:border-premium-border rounded-lg p-2 text-xs font-bold focus:outline-none focus:border-red-400 text-slate-900 dark:text-white">
+                        <button onclick="lmsRemoveGroup(${gi})" type="button" class="text-red-400 hover:text-red-600 text-lg">✕</button>
+                    </div>
+                    ${grp.items.map((item, ii) => `
+                        <div class="bg-white dark:bg-[#0d121f] border border-slate-100 dark:border-premium-border/50 rounded-lg p-2 space-y-1.5">
+                            <input type="text" value="${item.title}" onchange="lmsFormGroups[${gi}].items[${ii}].title=this.value"
+                                placeholder="Judul Materi" class="w-full bg-transparent border-b border-slate-200 dark:border-premium-border/50 py-1 text-xs font-bold focus:outline-none text-slate-900 dark:text-white">
+                            <div class="flex gap-2">
+                                <select onchange="lmsFormGroups[${gi}].items[${ii}].type=this.value" class="bg-slate-50 dark:bg-premium-dark border border-slate-200 dark:border-premium-border rounded-lg p-1.5 text-xs font-bold focus:outline-none text-slate-900 dark:text-white">
+                                    <option value="video" ${item.type==='video'?'selected':''}>📹 Video</option>
+                                    <option value="pdf" ${item.type==='pdf'?'selected':''}>📄 PDF</option>
+                                </select>
+                                <input type="text" value="${item.url}" onchange="lmsFormGroups[${gi}].items[${ii}].url=this.value"
+                                    placeholder="https://www.youtube.com/watch?v=..." class="flex-1 bg-slate-50 dark:bg-premium-dark border border-slate-200 dark:border-premium-border rounded-lg p-1.5 text-xs focus:outline-none text-slate-900 dark:text-white">
+                                <button onclick="lmsRemoveItem(${gi},${ii})" type="button" class="text-red-400 hover:text-red-600">✕</button>
+                            </div>
+                            <input type="text" value="${item.desc}" onchange="lmsFormGroups[${gi}].items[${ii}].desc=this.value"
+                                placeholder="Deskripsi materi..." class="w-full bg-transparent border-b border-slate-100 dark:border-premium-border/30 py-1 text-[10px] text-slate-500 focus:outline-none">
+                        </div>
+                    `).join('')}
+                    <button onclick="lmsAddItem(${gi})" type="button" class="w-full py-1.5 border border-dashed border-slate-300 text-slate-400 hover:border-red-400 hover:text-red-400 rounded-lg text-[10px] font-bold transition-all">
+                        + Tambah Materi
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function lmsAddChapterGroup() {
+            lmsFormGroups.push({ group: '', items: [{ title: '', type: 'video', url: '', desc: '' }] });
+            renderLMSFormChapters();
+        }
+        function lmsRemoveGroup(gi) {
+            lmsFormGroups.splice(gi, 1);
+            renderLMSFormChapters();
+        }
+        function lmsAddItem(gi) {
+            lmsFormGroups[gi].items.push({ title: '', type: 'video', url: '', desc: '' });
+            renderLMSFormChapters();
+        }
+        function lmsRemoveItem(gi, ii) {
+            lmsFormGroups[gi].items.splice(ii, 1);
+            renderLMSFormChapters();
+        }
+
+        function saveLMSCourse() {
+            const name = document.getElementById('lms-form-name')?.value?.trim();
+            const desc = document.getElementById('lms-form-desc')?.value?.trim();
+            const image = document.getElementById('lms-form-image')?.value?.trim();
+            const badge_new = document.getElementById('lms-form-new')?.checked || false;
+            const badge_trending = document.getElementById('lms-form-trending')?.checked || false;
+
+            if (!name) { alert('Nama kelas harus diisi!'); return; }
+
+            const newCourse = {
+                id: 'LMS-' + Date.now(),
+                name,
+                desc: desc || '',
+                image: image || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400',
+                badge_new,
+                badge_trending,
+                chapters: lmsFormGroups.filter(g => g.group || g.items.length > 0).map(g => ({
+                    group: g.group || 'Materi',
+                    items: g.items.filter(i => i.title || i.url).map((i, idx) => ({
+                        id: 'item-' + Date.now() + '-' + idx,
+                        title: i.title || 'Materi ' + (idx + 1),
+                        type: i.type || 'video',
+                        url: i.url || '',
+                        desc: i.desc || ''
+                    }))
+                }))
+            };
+
+            platformState.lmsCoursesData.push(newCourse);
+            localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
+
+            document.getElementById('lms-modal').classList.add('hidden');
+            document.getElementById('lms-modal').classList.remove('flex');
+            renderAdminLMSTable();
+
+            Swal.fire({ title: '✅ Kelas LMS Disimpan!', text: `Kelas "${name}" berhasil ditambahkan.`, icon: 'success', confirmButtonColor: '#EF4444', timer: 2000, showConfirmButton: false });
+        }
+
+        function deleteLMSCourse(id) {
+            Swal.fire({
+                title: 'Hapus Kelas LMS?',
+                text: 'Data kelas ini akan dihapus dari database lokal.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EF4444',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: 'Ya, Hapus'
+            }).then(result => {
+                if (result.isConfirmed) {
+                    platformState.lmsCoursesData = platformState.lmsCoursesData.filter(c => c.id !== id);
+                    localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
+                    renderAdminLMSTable();
+                    Swal.fire({ title: 'Dihapus!', icon: 'success', timer: 1500, showConfirmButton: false });
+                }
+            });
+        }
+
+        async function runSetupLMSDatabase() {
+            const apiUrl = localStorage.getItem('dv_api_url');
+            const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
+            if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
+            
+            Swal.fire({
+                title: 'Setup DB LMS...',
+                text: 'Membuat sheet LMS_COURSES di Google Sheets Anda...',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
+            
+            const res = await callAPI('setupLMSDatabase');
+            Swal.close();
+            
+            if (res && res.success) {
+                Swal.fire({ title: '✅ Setup LMS Berhasil!', text: res.message || 'Sheet LMS_COURSES berhasil dikonfigurasi.', icon: 'success', confirmButtonColor: '#4F46E5' });
+            } else {
+                Swal.fire({ title: '❌ Gagal Setup DB LMS', text: res ? res.message : 'Koneksi gagal.', icon: 'error', confirmButtonColor: '#EF4444' });
+            }
+        }
+
+        async function syncLMSData() {
+            const apiUrl = localStorage.getItem('dv_api_url');
+            const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
+            if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
+            
+            const courses = platformState.lmsCoursesData;
+            Swal.fire({
+                title: 'Sync LMS...',
+                text: 'Mengirim data kelas ke Google Sheets...',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
+            
+            const res = await callAPI('syncLMSCourses', courses);
+            Swal.close();
+            
+            if (res && res.success) {
+                Swal.fire({ title: '✅ Sync LMS Berhasil!', text: res.message || 'Semua kelas berhasil disinkronkan.', icon: 'success', confirmButtonColor: '#4F46E5' });
+            } else {
+                Swal.fire({ title: '❌ Gagal Sinkronisasi LMS', text: res ? res.message : 'Koneksi gagal.', icon: 'error', confirmButtonColor: '#EF4444' });
+            }
+        }
+
+        // Simpan Pengaturan Identitas Web
+        async function saveWebSettings() {
+            const nameVal = document.getElementById('settings-web-name').value.trim();
+            const infoVal = document.getElementById('settings-web-info').value.trim();
+            
+            if (!nameVal || !infoVal) {
+                Swal.fire({ title: 'Error', text: 'Nama dan Informasi web harus diisi!', icon: 'error' });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Menyimpan Identitas Web...',
+                text: 'Mengirim data ke Google Sheets...',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
+
+            const res = await callAPI('updateSettings', { web_name: nameVal, web_info: infoVal });
+            Swal.close();
+
+            if (res && res.success) {
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Identitas web berhasil diperbarui di Google Sheets. Silakan sinkronkan data.',
+                    icon: 'success',
+                    confirmButtonColor: '#4F46E5'
+                }).then(() => {
+                    syncDatabaseData();
+                });
+            } else {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: res ? res.message : 'Koneksi gagal.',
+                    icon: 'error',
+                    confirmButtonColor: '#EF4444'
+                });
+            }
+        }
+        // ===== END LMS ADMIN FUNCTIONS =====
 
         // Filter Storefront catalog dynamically
         function filterKatalog(category, element) {
@@ -1725,12 +2969,22 @@
 
                             <!-- Price Row -->
                             <div class="border-t border-b border-slate-100 dark:border-premium-border/40 py-2 flex justify-between items-center text-[10px] font-mono">
+                                ${p.category === 'PEMBELAJARAN' ? `
+                                <span class="text-slate-400">TIPE:</span>
+                                <span class="font-bold text-xs text-red-500 dark:text-red-400 flex items-center gap-1"><i data-lucide="video" class="w-3.5 h-3.5"></i> TUTORIAL GRATIS</span>
+                                ` : `
                                 <span class="text-slate-400">INVESTASI:</span>
                                 <span class="font-bold text-xs text-green-600 dark:text-green-400">Rp ${parseInt(p.price).toLocaleString('id-ID')}</span>
+                                `}
                             </div>
 
                             <!-- Buttons Actions -->
-                            <div class="grid ${p.link_akses ? 'grid-cols-3' : 'grid-cols-2'} gap-1.5">
+                            <div class="grid ${p.category === 'PEMBELAJARAN' ? 'grid-cols-1' : (p.link_akses ? 'grid-cols-3' : 'grid-cols-2')} gap-1.5">
+                                ${p.category === 'PEMBELAJARAN' ? `
+                                <a href="${p.link_akses || p.previewUrl || p.lynkUrl || '#'}" target="_blank" class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-[10px] uppercase transition-all flex items-center justify-center gap-1.5 shadow-md shadow-red-500/10" title="Tonton Tutorial">
+                                    <i data-lucide="youtube" class="w-3.5 h-3.5"></i> Tonton Tutorial
+                                </a>
+                                ` : `
                                 <button onclick="triggerPreview('${p.name}', '${defaultImg}')" class="px-2 py-2 bg-slate-100 dark:bg-gray-800 text-slate-700 dark:text-gray-300 font-bold rounded-lg text-[9px] uppercase hover:bg-slate-200 dark:hover:bg-gray-700 transition flex items-center justify-center gap-1" title="Preview">
                                     <i data-lucide="eye" class="w-3.5 h-3.5"></i> ${p.link_akses ? '' : 'Preview'}
                                 </button>
@@ -1742,6 +2996,7 @@
                                 <button onclick="triggerLynkCheckout('${p.lynkUrl}', '${p.name}')" class="px-2 py-2 bg-gradient-premium text-white font-bold rounded-lg text-[9px] uppercase hover:opacity-95 transition flex items-center justify-center gap-1 shadow-md shadow-indigo-500/10" title="Beli">
                                     <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> Beli
                                 </button>
+                                `}
                             </div>
                         </div>
                     </div>
