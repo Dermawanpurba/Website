@@ -1757,6 +1757,11 @@
             // Try to sync with Google Sheets on load (always uses the default URL)
             syncDatabaseData(true); // silent sync on load
 
+            // Periodically sync data from Google Sheets every 15 seconds to reflect manual edits
+            setInterval(() => {
+                syncDatabaseData(true);
+            }, 15000);
+
             updatePortalButton();
         });
 
@@ -1908,6 +1913,13 @@
                     renderLatestProducts();
                     renderAdminTable();
                     updateAdminKPIs();
+                }
+                
+                // Update LMS Courses dari Google Sheets
+                if (res.data.lmsCourses && Array.isArray(res.data.lmsCourses)) {
+                    platformState.lmsCoursesData = res.data.lmsCourses;
+                    localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
+                    renderAdminLMSTable();
                 }
                 
                 // Update Identitas Web dari Settings Google Sheets
@@ -2712,7 +2724,7 @@
             renderLMSFormChapters();
         }
 
-        function saveLMSCourse() {
+        async function saveLMSCourse() {
             const name = document.getElementById('lms-form-name')?.value?.trim();
             const desc = document.getElementById('lms-form-desc')?.value?.trim();
             const image = document.getElementById('lms-form-image')?.value?.trim();
@@ -2740,33 +2752,55 @@
                 }))
             };
 
-            platformState.lmsCoursesData.push(newCourse);
-            localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
+            Swal.fire({
+                title: 'Menyimpan Kelas LMS...',
+                text: 'Mengirim data ke Google Sheets...',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
 
-            document.getElementById('lms-modal').classList.add('hidden');
-            document.getElementById('lms-modal').classList.remove('flex');
-            renderAdminLMSTable();
+            const res = await callAPI('addLMSCourse', newCourse);
+            Swal.close();
 
-            Swal.fire({ title: '✅ Kelas LMS Disimpan!', text: `Kelas "${name}" berhasil ditambahkan.`, icon: 'success', confirmButtonColor: '#EF4444', timer: 2000, showConfirmButton: false });
+            if (res && res.success) {
+                document.getElementById('lms-modal').classList.add('hidden');
+                document.getElementById('lms-modal').classList.remove('flex');
+                await syncDatabaseData(true);
+                Swal.fire({ title: '✅ Kelas LMS Disimpan!', text: `Kelas "${name}" berhasil ditambahkan ke Google Sheets.`, icon: 'success', confirmButtonColor: '#EF4444', timer: 2000, showConfirmButton: false });
+            } else {
+                Swal.fire({ title: '❌ Gagal Menyimpan', text: res ? res.message : 'Koneksi gagal.', icon: 'error', confirmButtonColor: '#EF4444' });
+            }
         }
 
-        function deleteLMSCourse(id) {
-            Swal.fire({
+        async function deleteLMSCourse(id) {
+            const result = await Swal.fire({
                 title: 'Hapus Kelas LMS?',
-                text: 'Data kelas ini akan dihapus dari database lokal.',
+                text: 'Data kelas ini akan dihapus permanen dari Google Sheets!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#EF4444',
                 cancelButtonColor: '#6B7280',
                 confirmButtonText: 'Ya, Hapus'
-            }).then(result => {
-                if (result.isConfirmed) {
-                    platformState.lmsCoursesData = platformState.lmsCoursesData.filter(c => c.id !== id);
-                    localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
-                    renderAdminLMSTable();
-                    Swal.fire({ title: 'Dihapus!', icon: 'success', timer: 1500, showConfirmButton: false });
-                }
             });
+
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Menghapus Kelas LMS...',
+                    text: 'Menghubungi Google Sheets...',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading(); }
+                });
+
+                const res = await callAPI('deleteLMSCourse', { id: id });
+                Swal.close();
+
+                if (res && res.success) {
+                    await syncDatabaseData(true);
+                    Swal.fire({ title: 'Dihapus!', text: 'Kelas berhasil dihapus dari Google Sheets.', icon: 'success', timer: 1500, showConfirmButton: false });
+                } else {
+                    Swal.fire({ title: '❌ Gagal Menghapus', text: res ? res.message : 'Koneksi gagal.', icon: 'error', confirmButtonColor: '#EF4444' });
+                }
+            }
         }
 
         async function runSetupLMSDatabase() {
@@ -2835,13 +2869,12 @@
             Swal.close();
 
             if (res && res.success) {
+                await syncDatabaseData(true);
                 Swal.fire({
                     title: 'Berhasil!',
-                    text: 'Identitas web berhasil diperbarui di Google Sheets. Silakan sinkronkan data.',
+                    text: 'Identitas web berhasil diperbarui di Google Sheets!',
                     icon: 'success',
                     confirmButtonColor: '#4F46E5'
-                }).then(() => {
-                    syncDatabaseData();
                 });
             } else {
                 Swal.fire({
@@ -3173,12 +3206,7 @@
                     }
                 }
 
-                platformState.products = platformState.products.filter(p => p.id !== id);
-                saveToLocal();
-                renderStorefront();
-                renderLatestProducts();
-                renderAdminTable();
-                updateAdminKPIs();
+                await syncDatabaseData(true);
                 Swal.fire({
                     title: 'Terhapus!',
                     icon: 'success',
@@ -3234,18 +3262,7 @@
                 }
             }
 
-            const idx = platformState.products.findIndex(p => p.id === payload.id);
-            if (idx > -1) {
-                platformState.products[idx] = payload;
-            } else {
-                platformState.products.push(payload);
-            }
-
-            saveToLocal();
-            renderStorefront();
-            renderLatestProducts();
-            renderAdminTable();
-            updateAdminKPIs();
+            await syncDatabaseData(true);
             closeProductModal();
 
             Swal.fire({
