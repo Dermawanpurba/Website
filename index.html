@@ -1140,44 +1140,11 @@
                 </div>
             </div>
 
-            <!-- Google Sheets Connection Panel -->
+            <!-- Web Settings Panel -->
             <div
                 class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border rounded-3xl p-6 shadow-sm space-y-4">
-                <div
-                    class="flex items-center justify-between border-b border-slate-100 dark:border-premium-border/40 pb-3">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="database" class="w-5 h-5 text-premium-indigo"></i>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Koneksi Google Sheets (API Web App)
-                        </h3>
-                    </div>
-                    <span id="connection-status-badge"
-                        class="px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20 uppercase tracking-wider font-mono">Belum
-                        Terhubung</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                    <div class="md:col-span-8">
-                        <input type="text" id="api-url-input"
-                            placeholder="Masukkan URL Web App Google Apps Script Anda (https://script.google.com/macros/s/.../exec)"
-                            class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
-                    </div>
-                    <div class="md:col-span-4 flex gap-2">
-                        <button onclick="saveApiConnection()"
-                            class="flex-1 py-3 px-4 bg-gradient-premium text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:opacity-95 transition-all text-center">
-                            Simpan & Hubungkan
-                        </button>
-                        <button onclick="runSetupDatabase()"
-                            class="py-3 px-4 border border-premium-lightBorder dark:border-premium-border text-slate-700 dark:text-gray-300 font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-slate-100 dark:hover:bg-gray-800 transition-all text-center">
-                            Setup DB
-                        </button>
-                        <button onclick="syncDatabaseData()"
-                            class="py-3 px-4 bg-emerald-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-700 transition-all text-center">
-                            Sync
-                        </button>
-                    </div>
-                </div>
-                
                 <!-- Input Pengaturan Informasi Web -->
-                <div class="border-t border-slate-100 dark:border-premium-border/40 pt-4 mt-4 space-y-4">
+                <div class="space-y-4">
                     <div class="flex items-center gap-2">
                         <i data-lucide="settings" class="w-5 h-5 text-premium-indigo"></i>
                         <h3 class="text-sm font-bold text-slate-900 dark:text-white">Pengaturan Identitas Web</h3>
@@ -1763,6 +1730,9 @@
         ];
         // ====== END LMS DATABASE ======
 
+        // Global Constants
+        const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbzS3ax7cSrqzrW2Y7b3Lx_CSc96ZwxOUrV9WUZuUAX2bPIEokzNDjWXUlCrbXfoHi8Ywg/exec';
+
         // Global State
         let platformState = {
             products: JSON.parse(localStorage.getItem('dv_secure_products')) || INTEGRATED_DEFAULT_PRODUCTS,
@@ -1784,21 +1754,8 @@
             initThemeOnLoad();
             initCounterAnimation();
 
-            // Set input field value from localStorage
-            const savedUrl = localStorage.getItem('dv_api_url') || 'https://script.google.com/macros/s/AKfycbzS3ax7cSrqzrW2Y7b3Lx_CSc96ZwxOUrV9WUZuUAX2bPIEokzNDjWXUlCrbXfoHi8Ywg/exec';
-            const urlInput = document.getElementById('api-url-input');
-            if (urlInput) {
-                urlInput.value = savedUrl;
-            }
-            updateConnectionStatusBadge();
-
-            // Try to sync with Google Sheets on load if API is configured or running natively in GAS
-            if (savedUrl || (typeof google !== 'undefined' && google.script && google.script.run)) {
-                syncDatabaseData(true); // silent sync on load
-            } else {
-                renderStorefront();
-                renderLatestProducts();
-            }
+            // Try to sync with Google Sheets on load (always uses the default URL)
+            syncDatabaseData(true); // silent sync on load
 
             updatePortalButton();
         });
@@ -2018,10 +1975,7 @@
             }
 
             // Remote environment (XAMPP / local HTML / Google Sites)
-            const apiUrl = localStorage.getItem('dv_api_url') || 'https://script.google.com/macros/s/AKfycbzS3ax7cSrqzrW2Y7b3Lx_CSc96ZwxOUrV9WUZuUAX2bPIEokzNDjWXUlCrbXfoHi8Ywg/exec';
-            if (!apiUrl) {
-                return { success: false, isLocal: true, message: "URL API Web App belum diatur." };
-            }
+            const apiUrl = DEFAULT_API_URL;
 
             try {
                 const response = await fetch(apiUrl, {
@@ -2094,7 +2048,7 @@
             const userIn = document.getElementById('login-username').value.trim();
             const passIn = document.getElementById('login-password').value;
 
-            const apiUrl = localStorage.getItem('dv_api_url');
+            const apiUrl = DEFAULT_API_URL;
             const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
 
             if (apiUrl || isGas) {
@@ -2816,7 +2770,7 @@
         }
 
         async function runSetupLMSDatabase() {
-            const apiUrl = localStorage.getItem('dv_api_url');
+            const apiUrl = DEFAULT_API_URL;
             const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
             if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
             
@@ -2838,7 +2792,7 @@
         }
 
         async function syncLMSData() {
-            const apiUrl = localStorage.getItem('dv_api_url');
+            const apiUrl = DEFAULT_API_URL;
             const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
             if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
             
@@ -3194,7 +3148,7 @@
             });
 
             if (result.isConfirmed) {
-                const apiUrl = localStorage.getItem('dv_api_url');
+                const apiUrl = DEFAULT_API_URL;
                 if (apiUrl || (typeof google !== 'undefined' && google.script && google.script.run)) {
                     Swal.fire({
                         title: 'Menghapus Produk...',
@@ -3255,7 +3209,7 @@
                 trending: document.getElementById('form-p-trending').checked
             };
 
-            const apiUrl = localStorage.getItem('dv_api_url');
+            const apiUrl = DEFAULT_API_URL;
             if (apiUrl || (typeof google !== 'undefined' && google.script && google.script.run)) {
                 Swal.fire({
                     title: 'Menyimpan Produk...',
