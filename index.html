@@ -95,49 +95,67 @@
         #viewport-lms {
             animation: lmsFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         @keyframes lmsFadeIn {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .lms-course-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .lms-course-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.18);
         }
+
         .lms-progress-bar {
             height: 6px;
             border-radius: 999px;
             background: #E2E8F0;
             overflow: hidden;
         }
+
         .dark .lms-progress-bar {
             background: #1F2937;
         }
+
         .lms-progress-fill {
             height: 100%;
             border-radius: 999px;
             background: linear-gradient(90deg, #4F46E5, #8B5CF6);
             transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .lms-chapter-item {
             cursor: pointer;
             transition: all 0.2s;
             border-left: 3px solid transparent;
         }
+
         .lms-chapter-item:hover {
-            background: rgba(79,70,229,0.05);
+            background: rgba(79, 70, 229, 0.05);
         }
+
         .lms-chapter-item.active {
             border-left-color: #4F46E5;
-            background: rgba(79,70,229,0.07);
+            background: rgba(79, 70, 229, 0.07);
         }
+
         .lms-chapter-item.completed .lms-chapter-check {
             background: #10B981;
             border-color: #10B981;
             color: white;
         }
+
         .lms-chapter-check {
             width: 20px;
             height: 20px;
@@ -150,9 +168,11 @@
             transition: all 0.3s;
             font-size: 10px;
         }
+
         .dark .lms-chapter-check {
             border-color: #374151;
         }
+
         .lms-video-wrapper {
             position: relative;
             width: 100%;
@@ -161,6 +181,7 @@
             border-radius: 12px;
             overflow: hidden;
         }
+
         .lms-video-wrapper iframe {
             position: absolute;
             inset: 0;
@@ -168,6 +189,7 @@
             height: 100%;
             border: none;
         }
+
         .lms-video-placeholder {
             position: absolute;
             inset: 0;
@@ -178,6 +200,7 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             gap: 16px;
         }
+
         .lms-play-btn {
             width: 72px;
             height: 72px;
@@ -188,12 +211,14 @@
             justify-content: center;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 32px rgba(255,0,0,0.4);
+            box-shadow: 0 8px 32px rgba(255, 0, 0, 0.4);
         }
+
         .lms-play-btn:hover {
             transform: scale(1.12);
-            box-shadow: 0 12px 40px rgba(255,0,0,0.6);
+            box-shadow: 0 12px 40px rgba(255, 0, 0, 0.6);
         }
+
         .lms-badge-video {
             display: inline-flex;
             align-items: center;
@@ -206,10 +231,12 @@
             border-radius: 999px;
             letter-spacing: 0.03em;
         }
+
         .dark .lms-badge-video {
-            background: rgba(220,38,38,0.15);
+            background: rgba(220, 38, 38, 0.15);
             color: #F87171;
         }
+
         .lms-badge-pdf {
             display: inline-flex;
             align-items: center;
@@ -221,10 +248,12 @@
             padding: 3px 10px;
             border-radius: 999px;
         }
+
         .dark .lms-badge-pdf {
-            background: rgba(124,58,237,0.15);
+            background: rgba(124, 58, 237, 0.15);
             color: #A78BFA;
         }
+
         .lms-selesai-btn {
             background: white;
             border: 2px solid #4F46E5;
@@ -241,21 +270,25 @@
             width: 100%;
             justify-content: center;
         }
+
         .dark .lms-selesai-btn {
             background: #111827;
             border-color: #4F46E5;
             color: #818CF8;
         }
+
         .lms-selesai-btn:hover {
             background: #4F46E5;
             color: white;
             transform: translateY(-1px);
         }
+
         .lms-selesai-btn.done {
             background: #10B981;
             border-color: #10B981;
             color: white;
         }
+
         .lms-nav-btn {
             display: flex;
             align-items: center;
@@ -267,24 +300,38 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .lms-nav-prev {
             background: #F8FAFC;
             border: 1px solid #E2E8F0;
             color: #64748B;
         }
+
         .dark .lms-nav-prev {
             background: #1F2937;
             border-color: #374151;
             color: #9CA3AF;
         }
-        .lms-nav-prev:hover { background: #E2E8F0; }
-        .dark .lms-nav-prev:hover { background: #374151; }
+
+        .lms-nav-prev:hover {
+            background: #E2E8F0;
+        }
+
+        .dark .lms-nav-prev:hover {
+            background: #374151;
+        }
+
         .lms-nav-next {
             background: linear-gradient(135deg, #4F46E5, #8B5CF6);
             color: white;
             border: none;
         }
-        .lms-nav-next:hover { opacity: 0.88; transform: translateX(2px); }
+
+        .lms-nav-next:hover {
+            opacity: 0.88;
+            transform: translateX(2px);
+        }
+
         .lms-group-header {
             display: flex;
             align-items: center;
@@ -297,11 +344,15 @@
             border-bottom: 1px solid #F1F5F9;
             user-select: none;
         }
+
         .dark .lms-group-header {
             color: #F1F5F9;
             border-bottom-color: #1F2937;
         }
-        .lms-group-header:hover { background: rgba(79,70,229,0.04); }
+
+        .lms-group-header:hover {
+            background: rgba(79, 70, 229, 0.04);
+        }
     </style>
 </head>
 
@@ -320,7 +371,8 @@
                         <i data-lucide="layers" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h1 class="text-lg font-bold tracking-tight text-premium-textDark dark:text-white" id="web-header-name">DigitalVault</h1>
+                        <h1 class="text-lg font-bold tracking-tight text-premium-textDark dark:text-white"
+                            id="web-header-name">DigitalVault</h1>
                         <span
                             class="text-[9px] text-gray-400 dark:text-gray-500 font-semibold tracking-wider uppercase block leading-none">PREMIUM
                             HUB</span>
@@ -382,19 +434,24 @@
                 <!-- LMS Banner -->
                 <div class="bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-700 text-white py-12 px-4">
                     <div class="max-w-7xl mx-auto">
-                        <button onclick="closeLMS()" id="lms-back-btn" class="flex items-center gap-2 text-indigo-200 hover:text-white text-xs font-bold mb-6 transition-all">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i> <span id="lms-back-label">Kembali ke Beranda</span>
+                        <button onclick="closeLMS()" id="lms-back-btn"
+                            class="flex items-center gap-2 text-indigo-200 hover:text-white text-xs font-bold mb-6 transition-all">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> <span id="lms-back-label">Kembali ke
+                                Beranda</span>
                         </button>
                         <div class="flex items-center gap-3 mb-3">
                             <div class="bg-white/20 backdrop-blur-sm p-2.5 rounded-xl">
                                 <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">LMS E-Course</span>
+                                <span class="text-indigo-200 text-xs font-bold uppercase tracking-widest">LMS
+                                    E-Course</span>
                                 <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Kelas Pembelajaran</h1>
                             </div>
                         </div>
-                        <p class="text-indigo-200 text-sm max-w-2xl">Pelajari cara penggunaan tools dan template digital langsung dari video tutorial eksklusif. Tandai setiap materi sebagai selesai untuk melacak progres belajar Anda.</p>
+                        <p class="text-indigo-200 text-sm max-w-2xl">Pelajari cara penggunaan tools dan template digital
+                            langsung dari video tutorial eksklusif. Tandai setiap materi sebagai selesai untuk melacak
+                            progres belajar Anda.</p>
                         <div class="flex flex-wrap gap-6 mt-6">
                             <div class="flex items-center gap-2 text-xs">
                                 <i data-lucide="play-circle" class="w-4 h-4 text-indigo-300"></i>
@@ -410,7 +467,8 @@
 
                 <!-- Course Cards Grid -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div id="lms-course-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div id="lms-course-list"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         <!-- Dynamically rendered -->
                     </div>
                 </div>
@@ -419,14 +477,19 @@
             <!-- LMS: PLAYER VIEW -->
             <div id="lms-view-player" class="hidden min-h-screen bg-slate-50 dark:bg-premium-dark">
                 <!-- Top Bar -->
-                <div class="bg-white dark:bg-premium-card border-b border-slate-200 dark:border-premium-border px-4 py-3">
+                <div
+                    class="bg-white dark:bg-premium-card border-b border-slate-200 dark:border-premium-border px-4 py-3">
                     <div class="max-w-[1400px] mx-auto flex items-center justify-between">
-                        <button onclick="lmsBackToCourses()" class="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-premium-indigo text-xs font-bold transition-all">
+                        <button onclick="lmsBackToCourses()"
+                            class="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-premium-indigo text-xs font-bold transition-all">
                             <i data-lucide="arrow-left" class="w-4 h-4"></i> Kembali ke Daftar Kelas
                         </button>
                         <div class="text-center hidden md:block">
-                            <p id="lms-player-course-title" class="text-sm font-extrabold text-slate-900 dark:text-white"></p>
-                            <span class="text-[10px] text-premium-indigo font-bold font-mono tracking-wider uppercase">LMS E-Course</span>
+                            <p id="lms-player-course-title"
+                                class="text-sm font-extrabold text-slate-900 dark:text-white"></p>
+                            <span
+                                class="text-[10px] text-premium-indigo font-bold font-mono tracking-wider uppercase">LMS
+                                E-Course</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <div id="lms-overall-progress-wrap" class="hidden md:flex items-center gap-2">
@@ -434,7 +497,8 @@
                                 <div class="lms-progress-bar w-28">
                                     <div id="lms-overall-progress-bar" class="lms-progress-fill" style="width:0%"></div>
                                 </div>
-                                <span id="lms-overall-progress-pct" class="text-xs font-bold text-premium-indigo font-mono">0%</span>
+                                <span id="lms-overall-progress-pct"
+                                    class="text-xs font-bold text-premium-indigo font-mono">0%</span>
                             </div>
                         </div>
                     </div>
@@ -453,33 +517,41 @@
                         <!-- Type Badge + Title -->
                         <div class="space-y-2">
                             <div id="lms-material-badge"></div>
-                            <h2 id="lms-material-title" class="text-xl font-extrabold text-slate-900 dark:text-white"></h2>
-                            <p class="text-xs text-premium-indigo font-bold">Kelas: <span id="lms-material-course-name" class="hover:underline cursor-pointer" onclick="lmsBackToCourses()"></span></p>
+                            <h2 id="lms-material-title" class="text-xl font-extrabold text-slate-900 dark:text-white">
+                            </h2>
+                            <p class="text-xs text-premium-indigo font-bold">Kelas: <span id="lms-material-course-name"
+                                    class="hover:underline cursor-pointer" onclick="lmsBackToCourses()"></span></p>
                         </div>
 
                         <!-- Description -->
-                        <div class="bg-white dark:bg-premium-card border border-slate-200 dark:border-premium-border rounded-2xl p-5 space-y-2">
+                        <div
+                            class="bg-white dark:bg-premium-card border border-slate-200 dark:border-premium-border rounded-2xl p-5 space-y-2">
                             <h3 class="text-sm font-bold text-slate-900 dark:text-white">Deskripsi Materi</h3>
-                            <p id="lms-material-desc" class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed"></p>
+                            <p id="lms-material-desc" class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed">
+                            </p>
                         </div>
 
                         <!-- Mobile nav -->
                         <div class="flex gap-2 lg:hidden">
-                            <button id="lms-prev-btn-mobile" onclick="lmsNavigate(-1)" class="lms-nav-btn lms-nav-prev flex-1">
+                            <button id="lms-prev-btn-mobile" onclick="lmsNavigate(-1)"
+                                class="lms-nav-btn lms-nav-prev flex-1">
                                 <i data-lucide="chevron-left" class="w-4 h-4"></i> Prev
                             </button>
-                            <button id="lms-next-btn-mobile" onclick="lmsNavigate(1)" class="lms-nav-btn lms-nav-next flex-1">
+                            <button id="lms-next-btn-mobile" onclick="lmsNavigate(1)"
+                                class="lms-nav-btn lms-nav-next flex-1">
                                 Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
                         </div>
                     </div>
 
                     <!-- Right Sidebar: Completion + Chapter List -->
-                    <div class="w-full lg:w-[380px] bg-white dark:bg-premium-card border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-premium-border flex flex-col overflow-hidden">
+                    <div
+                        class="w-full lg:w-[380px] bg-white dark:bg-premium-card border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-premium-border flex flex-col overflow-hidden">
 
                         <!-- Selesaikan Materi Panel -->
                         <div class="p-5 border-b border-slate-100 dark:border-premium-border/50 space-y-3">
-                            <p class="text-sm font-bold text-center text-slate-900 dark:text-white">Selesaikan Materi Ini</p>
+                            <p class="text-sm font-bold text-center text-slate-900 dark:text-white">Selesaikan Materi
+                                Ini</p>
                             <button id="lms-selesai-btn" onclick="lmsMarkDone()" class="lms-selesai-btn">
                                 <i data-lucide="check" class="w-4 h-4"></i>
                                 Tandai Selesai &amp; Lanjut
@@ -517,13 +589,13 @@
                             #1 Marketplace Produk Digital Premium
                         </span>
 
-                        <h1
-                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight" id="web-hero-title">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight"
+                            id="web-hero-title">
                             Solusi Digital untuk <span class="text-gradient">Produktivitas</span> dan Operasional Modern
                         </h1>
 
-                        <p
-                            class="text-slate-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-normal" id="web-hero-desc">
+                        <p class="text-slate-500 dark:text-gray-400 text-sm md:text-base leading-relaxed max-w-xl font-normal"
+                            id="web-hero-desc">
                             Template Excel, Dashboard Looker Studio, Source Code, AI Automation, dan Tools Siap Pakai
                             untuk mempercepat pekerjaan Anda.
                         </p>
@@ -567,7 +639,7 @@
                                     <span
                                         class="text-slate-900 dark:text-white ml-1 font-extrabold font-mono text-sm">4.9/5</span>
                                 </div>
-                                <p class="text-slate-500 dark:text-gray-400 mt-0.5 font-medium">Dari 500+ Review
+                                <p class="text-slate-500 dark:text-gray-400 mt-0.5 font-medium">Dari 100+ Review
                                     Pelanggan Puas</p>
                             </div>
                         </div>
@@ -685,7 +757,7 @@
                                 <i data-lucide="download-cloud" class="w-5 h-5"></i>
                             </div>
                             <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white font-mono count-item"
-                                data-target="1200">0</h3>
+                                data-target="200">0</h3>
                             <p
                                 class="text-[11px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mt-1">
                                 Total Download</p>
@@ -697,7 +769,7 @@
                                 <i data-lucide="users" class="w-5 h-5"></i>
                             </div>
                             <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white font-mono count-item"
-                                data-target="500">0</h3>
+                                data-target="50">0</h3>
                             <p
                                 class="text-[11px] font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider mt-1">
                                 Pelanggan Aktif</p>
@@ -798,14 +870,16 @@
                 </div>
 
                 <!-- LMS Banner Teaser -->
-                <div onclick="openLMS()" class="cursor-pointer mt-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-4 flex items-center justify-between text-white shadow-lg hover:shadow-red-500/25 hover:scale-[1.01] transition-all">
+                <div onclick="openLMS()"
+                    class="cursor-pointer mt-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-4 flex items-center justify-between text-white shadow-lg hover:shadow-red-500/25 hover:scale-[1.01] transition-all">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
                             <i data-lucide="graduation-cap" class="w-5 h-5"></i>
                         </div>
                         <div>
                             <p class="font-extrabold text-sm">🎓 Kelas Pembelajaran</p>
-                            <p class="text-[11px] text-red-100">Tutorial video eksklusif cara penggunaan tools &amp; template</p>
+                            <p class="text-[11px] text-red-100">Tutorial video eksklusif cara penggunaan tools &amp;
+                                template</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-1 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
@@ -1009,14 +1083,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                         <div class="md:col-span-4 text-center">
                             <div class="w-32 h-32 rounded-full mx-auto bg-gradient-premium p-[3px] shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&fit=crop"
+                                <img src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY"
                                     class="w-full h-full object-cover rounded-full" alt="Creator Profile Image">
                             </div>
                             <h4 class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">
-                                Erwin Dermawan</h4>
+                                Dermawan Purba</h4>
                             <span
                                 class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior
-                                Maintenance Architect</span>
+                                Spv Maintenance Planner</span>
                         </div>
                         <div class="md:col-span-8 space-y-4">
                             <span
@@ -1066,7 +1140,8 @@
         </main>
 
         <!-- 2. SECURE ADMIN LOGIN GATEWAY VIEWPORT -->
-        <main id="viewport-login-gate" class="flex-grow flex flex-col items-center justify-center p-4 py-20 min-h-[70vh] hidden">
+        <main id="viewport-login-gate"
+            class="flex-grow flex flex-col items-center justify-center p-4 py-20 min-h-[70vh] hidden">
             <div
                 class="w-full max-w-md bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border rounded-3xl shadow-2xl overflow-hidden">
                 <!-- Branding Header -->
@@ -1151,13 +1226,16 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="space-y-1.5">
-                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA WEBSITE:</label>
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA
+                                WEBSITE:</label>
                             <input type="text" id="settings-web-name" placeholder="DigitalVault"
                                 class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
                         </div>
                         <div class="space-y-1.5">
-                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">INFORMASI / SLOGAN WEBSITE:</label>
-                            <input type="text" id="settings-web-info" placeholder="Solusi Digital untuk Produktivitas dan Operasional Modern"
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">INFORMASI /
+                                SLOGAN WEBSITE:</label>
+                            <input type="text" id="settings-web-info"
+                                placeholder="Solusi Digital untuk Produktivitas dan Operasional Modern"
                                 class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
                         </div>
                     </div>
@@ -1171,15 +1249,19 @@
             </div>
 
             <!-- LMS COURSES MANAGEMENT TABLE -->
-            <div class="bg-white dark:bg-premium-card border border-red-200 dark:border-red-900/40 rounded-3xl overflow-hidden shadow-sm">
-                <div class="p-6 border-b border-red-100 dark:border-red-900/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-red-50/50 dark:bg-red-950/10">
+            <div
+                class="bg-white dark:bg-premium-card border border-red-200 dark:border-red-900/40 rounded-3xl overflow-hidden shadow-sm">
+                <div
+                    class="p-6 border-b border-red-100 dark:border-red-900/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-red-50/50 dark:bg-red-950/10">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center text-white">
+                        <div
+                            class="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center text-white">
                             <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                         </div>
                         <div>
                             <h4 class="text-sm font-bold text-slate-900 dark:text-white">Manajemen Kelas LMS</h4>
-                            <p class="text-[11px] text-slate-500 dark:text-gray-400">Database khusus kelas pembelajaran — terpisah dari produk marketplace.</p>
+                            <p class="text-[11px] text-slate-500 dark:text-gray-400">Database khusus kelas pembelajaran
+                                — terpisah dari produk marketplace.</p>
                         </div>
                     </div>
                     <div class="flex gap-2">
@@ -1196,7 +1278,8 @@
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-xs font-mono">
                         <thead>
-                            <tr class="border-b border-slate-100 dark:border-premium-border/40 bg-slate-50 dark:bg-[#0d121f] text-slate-500">
+                            <tr
+                                class="border-b border-slate-100 dark:border-premium-border/40 bg-slate-50 dark:bg-[#0d121f] text-slate-500">
                                 <th class="p-4">Thumbnail</th>
                                 <th class="p-4">Nama Kelas</th>
                                 <th class="p-4">Jumlah Materi</th>
@@ -1204,7 +1287,8 @@
                                 <th class="p-4 text-right">Opsi</th>
                             </tr>
                         </thead>
-                        <tbody id="table-lms-courses-body" class="divide-y divide-slate-100 dark:divide-premium-border/20 text-slate-600 dark:text-gray-300">
+                        <tbody id="table-lms-courses-body"
+                            class="divide-y divide-slate-100 dark:divide-premium-border/20 text-slate-600 dark:text-gray-300">
                         </tbody>
                     </table>
                 </div>
@@ -1553,13 +1637,16 @@
 
     <!-- MODAL DRAWER: LMS CONTENT MANAGEMENT (ADMIN ONLY) -->
     <div id="lms-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transition-all text-slate-900 dark:text-white">
-            <div class="p-6 border-b border-slate-100 dark:border-premium-border/40 flex justify-between items-center bg-slate-50 dark:bg-[#0d121f]">
+        <div
+            class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transition-all text-slate-900 dark:text-white">
+            <div
+                class="p-6 border-b border-slate-100 dark:border-premium-border/40 flex justify-between items-center bg-slate-50 dark:bg-[#0d121f]">
                 <div>
                     <h3 class="text-sm font-bold">Manajemen Kurikulum LMS</h3>
                     <p class="text-[10px] text-slate-400">Kelola bab dan materi pembelajaran produk.</p>
                 </div>
-                <button onclick="document.getElementById('lms-modal').classList.add('hidden')" class="p-2 hover:bg-slate-200 dark:hover:bg-gray-800 rounded-xl text-slate-400">
+                <button onclick="document.getElementById('lms-modal').classList.add('hidden')"
+                    class="p-2 hover:bg-slate-200 dark:hover:bg-gray-800 rounded-xl text-slate-400">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -1914,14 +2001,14 @@
                     renderAdminTable();
                     updateAdminKPIs();
                 }
-                
+
                 // Update LMS Courses dari Google Sheets
                 if (res.data.lmsCourses && Array.isArray(res.data.lmsCourses)) {
                     platformState.lmsCoursesData = res.data.lmsCourses;
                     localStorage.setItem('lms_courses_data', JSON.stringify(platformState.lmsCoursesData));
                     renderAdminLMSTable();
                 }
-                
+
                 // Update Identitas Web dari Settings Google Sheets
                 if (res.data.settings) {
                     const settings = res.data.settings;
@@ -1935,7 +2022,7 @@
                         const titleEl = document.getElementById('web-hero-title');
                         const descEl = document.getElementById('web-hero-desc');
                         if (titleEl) titleEl.innerText = settings.web_info;
-                        
+
                         const inputInfo = document.getElementById('settings-web-info');
                         if (inputInfo) inputInfo.value = settings.web_info;
                     }
@@ -2080,7 +2167,7 @@
                     platformState.userRole = userRole;
                     sessionStorage.setItem('user_role', userRole);
                     sessionStorage.setItem('user_data', JSON.stringify(res.user));
-                    
+
                     if (userRole === 'Admin') {
                         platformState.isAdminAuthenticated = true;
                         sessionStorage.setItem('admin_logged_in', 'true');
@@ -2092,7 +2179,7 @@
                         updatePortalButton();
                         openLMS(false);
                     }
-                    
+
                     Swal.fire({
                         title: 'Otorisasi Berhasil',
                         text: `Selamat datang kembali, ${res.user.nama || userIn} (${userRole}).`,
@@ -2122,7 +2209,7 @@
                     showAdminPanel();
                     Swal.fire({
                         title: 'Otorisasi Berhasil',
-                        text: 'Selamat datang kembali, Erwin Dermawan (Admin).',
+                        text: 'Selamat datang kembali, Dermawan Purba (Admin).',
                         icon: 'success',
                         confirmButtonColor: '#4F46E5',
                         background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
@@ -2319,7 +2406,7 @@
                             <img src="${img}" alt="${course.name}" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-3 left-3 flex gap-2">
-                                <span class="bg-white/90 dark:bg-black/70 backdrop-blur-sm text-premium-indigo text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">${course.chapters ? (course.chapters.flatMap(g=>g.items||[]).length) : 1} Materi</span>
+                                <span class="bg-white/90 dark:bg-black/70 backdrop-blur-sm text-premium-indigo text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">${course.chapters ? (course.chapters.flatMap(g => g.items || []).length) : 1} Materi</span>
                             </div>
                             <div class="absolute top-3 right-3">
                                 ${course.badge_new ? '<span class="bg-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">Baru</span>' : ''}
@@ -2500,9 +2587,9 @@
                     <div class="border-b border-slate-100 dark:border-premium-border/40">
                         <div class="lms-group-header" onclick="lmsToggleGroup(${gi})">
                             <div>
-                                <span class="text-[9px] text-slate-400 font-mono uppercase tracking-wider block">${String(gi+1).padStart(2,'0')}</span>
+                                <span class="text-[9px] text-slate-400 font-mono uppercase tracking-wider block">${String(gi + 1).padStart(2, '0')}</span>
                                 <span>${group.group}</span>
-                                <span class="text-[10px] text-slate-400 font-normal ml-1">${(group.items||[]).length} Materi</span>
+                                <span class="text-[10px] text-slate-400 font-normal ml-1">${(group.items || []).length} Materi</span>
                             </div>
                             <span class="text-slate-400 text-lg font-light transition-transform ${isCollapsed ? '' : 'rotate-0'}" id="lms-grp-icon-${gi}">${isCollapsed ? '+' : '−'}</span>
                         </div>
@@ -2689,8 +2776,8 @@
                                 placeholder="Judul Materi" class="w-full bg-transparent border-b border-slate-200 dark:border-premium-border/50 py-1 text-xs font-bold focus:outline-none text-slate-900 dark:text-white">
                             <div class="flex gap-2">
                                 <select onchange="lmsFormGroups[${gi}].items[${ii}].type=this.value" class="bg-slate-50 dark:bg-premium-dark border border-slate-200 dark:border-premium-border rounded-lg p-1.5 text-xs font-bold focus:outline-none text-slate-900 dark:text-white">
-                                    <option value="video" ${item.type==='video'?'selected':''}>📹 Video</option>
-                                    <option value="pdf" ${item.type==='pdf'?'selected':''}>📄 PDF</option>
+                                    <option value="video" ${item.type === 'video' ? 'selected' : ''}>📹 Video</option>
+                                    <option value="pdf" ${item.type === 'pdf' ? 'selected' : ''}>📄 PDF</option>
                                 </select>
                                 <input type="text" value="${item.url}" onchange="lmsFormGroups[${gi}].items[${ii}].url=this.value"
                                     placeholder="https://www.youtube.com/watch?v=..." class="flex-1 bg-slate-50 dark:bg-premium-dark border border-slate-200 dark:border-premium-border rounded-lg p-1.5 text-xs focus:outline-none text-slate-900 dark:text-white">
@@ -2807,17 +2894,17 @@
             const apiUrl = DEFAULT_API_URL;
             const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
             if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
-            
+
             Swal.fire({
                 title: 'Setup DB LMS...',
                 text: 'Membuat sheet LMS_COURSES di Google Sheets Anda...',
                 allowOutsideClick: false,
                 didOpen: () => { Swal.showLoading(); }
             });
-            
+
             const res = await callAPI('setupLMSDatabase');
             Swal.close();
-            
+
             if (res && res.success) {
                 Swal.fire({ title: '✅ Setup LMS Berhasil!', text: res.message || 'Sheet LMS_COURSES berhasil dikonfigurasi.', icon: 'success', confirmButtonColor: '#4F46E5' });
             } else {
@@ -2829,7 +2916,7 @@
             const apiUrl = DEFAULT_API_URL;
             const isGas = (typeof google !== 'undefined' && google.script && google.script.run);
             if (!apiUrl && !isGas) { Swal.fire({ title: 'Error', text: 'Harap simpan URL API GAS terlebih dahulu.', icon: 'error' }); return; }
-            
+
             const courses = platformState.lmsCoursesData;
             Swal.fire({
                 title: 'Sync LMS...',
@@ -2837,10 +2924,10 @@
                 allowOutsideClick: false,
                 didOpen: () => { Swal.showLoading(); }
             });
-            
+
             const res = await callAPI('syncLMSCourses', courses);
             Swal.close();
-            
+
             if (res && res.success) {
                 Swal.fire({ title: '✅ Sync LMS Berhasil!', text: res.message || 'Semua kelas berhasil disinkronkan.', icon: 'success', confirmButtonColor: '#4F46E5' });
             } else {
@@ -2852,7 +2939,7 @@
         async function saveWebSettings() {
             const nameVal = document.getElementById('settings-web-name').value.trim();
             const infoVal = document.getElementById('settings-web-info').value.trim();
-            
+
             if (!nameVal || !infoVal) {
                 Swal.fire({ title: 'Error', text: 'Nama dan Informasi web harus diisi!', icon: 'error' });
                 return;
