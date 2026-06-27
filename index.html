@@ -465,6 +465,35 @@
                     </div>
                 </div>
 
+                <!-- Gemini Gems Section -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-2">
+                    <div class="bg-gradient-to-r from-purple-900/5 via-indigo-900/5 to-pink-900/5 dark:from-purple-950/20 dark:via-indigo-950/10 dark:to-pink-950/20 border border-purple-500/25 dark:border-purple-500/30 rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden">
+                        <!-- Background glow effects -->
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
+                            <div class="space-y-1">
+                                <span class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm shadow-purple-500/20">
+                                    💡 Fitur Eksklusif Member
+                                </span>
+                                <h2 class="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2 mt-2">
+                                    <i data-lucide="sparkles" class="w-6 h-6 text-purple-500 animate-pulse"></i>
+                                    Gemini AI Gems Assistant
+                                </h2>
+                                <p class="text-xs text-slate-500 dark:text-gray-400 max-w-2xl leading-relaxed">
+                                    Akses asisten AI khusus (Custom Gemini Gems) yang telah dioptimasi dengan knowledge base spesifik untuk mempercepat pemecahan masalah operasional, analisis data, dan penulisan script Anda.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Gemini Gems Grid -->
+                        <div id="lms-gemini-gems-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Course Cards Grid -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div id="lms-course-list"
@@ -1294,6 +1323,43 @@
                 </div>
             </div>
 
+            <!-- GEMINI GEMS MANAGEMENT TABLE -->
+            <div class="bg-white dark:bg-premium-card border border-purple-200 dark:border-purple-900/40 rounded-3xl overflow-hidden shadow-sm mt-8">
+                <div class="p-6 border-b border-purple-100 dark:border-purple-900/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-purple-50/50 dark:bg-purple-950/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">Manajemen Gemini AI Gems</h4>
+                            <p class="text-[11px] text-slate-500 dark:text-gray-400">Kelola sharelink Gemini Gems eksklusif yang bisa diakses oleh member aktif di halaman pembelajaran.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="openGeminiGemModal()" class="px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md shadow-purple-500/10">
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tambah Gemini Gem
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs font-mono">
+                        <thead>
+                            <tr class="border-b border-slate-100 dark:border-premium-border/40 bg-slate-50 dark:bg-[#0d121f] text-slate-500">
+                                <th class="p-4 w-12">Icon</th>
+                                <th class="p-4">Nama Gem</th>
+                                <th class="p-4">Deskripsi</th>
+                                <th class="p-4">Sharelink URL</th>
+                                <th class="p-4 w-24">Status</th>
+                                <th class="p-4 text-right w-36">Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-gemini-gems-body" class="divide-y divide-slate-100 dark:divide-premium-border/20 text-slate-600 dark:text-gray-300">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- ANALYTICS CARDS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card Total Products -->
@@ -1817,6 +1883,33 @@
         ];
         // ====== END LMS DATABASE ======
 
+        const DEFAULT_GEMINI_GEMS = [
+            {
+                id: "GEM-001",
+                name: "Gemini OEE & Excel Expert",
+                desc: "Asisten AI khusus untuk menganalisis data OEE, membuat formula Excel rumit, dan mendesain dashboard visual Looker Studio.",
+                url: "https://gemini.google.com/gems/share/excel-expert-placeholder",
+                active: true,
+                icon: "file-spreadsheet"
+            },
+            {
+                id: "GEM-002",
+                name: "Gemini Apps Script Pro",
+                desc: "Spesialis Google Apps Script (GAS). Tulis script otomatisasi spreadsheet, buat custom web apps, debug error, dan integrasi API.",
+                url: "https://gemini.google.com/gems/share/gas-pro-placeholder",
+                active: true,
+                icon: "code-2"
+            },
+            {
+                id: "GEM-003",
+                name: "Gemini Maintenance Strategist",
+                desc: "Partner AI diskusi taktis untuk merancang strategi preventive maintenance, menghitung MTBF/MTTR, dan optimasi ketersediaan unit.",
+                url: "https://gemini.google.com/gems/share/maint-strategist-placeholder",
+                active: true,
+                icon: "wrench"
+            }
+        ];
+
         // Global Constants
         const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbzS3ax7cSrqzrW2Y7b3Lx_CSc96ZwxOUrV9WUZuUAX2bPIEokzNDjWXUlCrbXfoHi8Ywg/exec';
 
@@ -1824,6 +1917,7 @@
         let platformState = {
             products: JSON.parse(localStorage.getItem('dv_secure_products')) || INTEGRATED_DEFAULT_PRODUCTS,
             lmsCoursesData: JSON.parse(localStorage.getItem('lms_courses_data')) || INTEGRATED_DEFAULT_LMS_COURSES,
+            geminiGems: JSON.parse(localStorage.getItem('gemini_gems_data')) || DEFAULT_GEMINI_GEMS,
             activeFilter: 'ALL',
             lynkClicks: parseInt(localStorage.getItem('dv_secure_clicks')) || 247,
             totalVisitors: 1284,
@@ -2009,9 +2103,17 @@
                     renderAdminLMSTable();
                 }
 
-                // Update Identitas Web dari Settings Google Sheets
+                // Update Identitas Web & Gemini Gems dari Settings Google Sheets
                 if (res.data.settings) {
                     const settings = res.data.settings;
+                    if (settings.gemini_gems) {
+                        try {
+                            platformState.geminiGems = JSON.parse(settings.gemini_gems);
+                            localStorage.setItem('gemini_gems_data', JSON.stringify(platformState.geminiGems));
+                        } catch (e) {
+                            console.error("Gagal mengurai settings.gemini_gems JSON:", e);
+                        }
+                    }
                     if (settings.web_name) {
                         document.getElementById('web-header-name').innerText = settings.web_name;
                         const inputName = document.getElementById('settings-web-name');
@@ -2131,6 +2233,7 @@
             document.getElementById('viewport-admin-panel').classList.remove('hidden');
             renderAdminTable();
             renderAdminLMSTable();
+            renderAdminGeminiGemsTable();
             updateAdminKPIs();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -2357,6 +2460,7 @@
             document.getElementById('lms-view-player').classList.add('hidden');
 
             renderLMSCourseList();
+            renderGeminiGems();
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
@@ -2971,6 +3075,231 @@
                     confirmButtonColor: '#EF4444'
                 });
             }
+        }
+
+        // ===== GEMINI GEMS MANAGEMENT FUNCTIONS =====
+        function renderGeminiGems() {
+            const container = document.getElementById('lms-gemini-gems-list');
+            if (!container) return;
+            
+            const gems = platformState.geminiGems || [];
+            const activeGems = gems.filter(g => g.active);
+            
+            if (activeGems.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center text-slate-400 py-6 font-mono text-xs bg-slate-50/50 dark:bg-slate-950/20 border border-dashed border-slate-200 dark:border-premium-border rounded-2xl">
+                        Belum ada Gemini Gems aktif yang dibagikan.
+                    </div>`;
+                return;
+            }
+            
+            container.innerHTML = activeGems.map(gem => {
+                let iconName = gem.icon || 'sparkles';
+                return `
+                    <div class="relative bg-white/60 dark:bg-premium-card/60 backdrop-blur-md border border-slate-200 dark:border-premium-border/60 hover:border-purple-500/40 dark:hover:border-purple-500/40 rounded-2xl p-5 flex flex-col justify-between gap-4 card-lift shadow-sm group">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/10 to-indigo-500/10 dark:from-purple-500/20 dark:to-indigo-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="${iconName}" class="w-5 h-5"></i>
+                                </div>
+                                <h3 class="font-extrabold text-xs text-slate-900 dark:text-white uppercase tracking-wider truncate flex-1">${gem.name}</h3>
+                            </div>
+                            <p class="text-[11px] text-slate-500 dark:text-gray-400 leading-relaxed line-clamp-3 h-12">${gem.desc}</p>
+                        </div>
+                        
+                        <a href="${gem.url}" target="_blank" class="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-[10px] uppercase transition-all shadow-md shadow-purple-500/10 hover:shadow-purple-500/25" title="Buka Gemini Gem">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Akses Gemini Gem
+                        </a>
+                    </div>
+                `;
+            }).join('');
+            
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function renderAdminGeminiGemsTable() {
+            const tbody = document.getElementById('table-gemini-gems-body');
+            if (!tbody) return;
+            
+            const gems = platformState.geminiGems || [];
+            if (gems.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 font-mono text-xs">Belum ada Gemini Gems. Klik "Tambah Gemini Gem" untuk menambahkan.</td></tr>`;
+                return;
+            }
+            
+            tbody.innerHTML = gems.map((gem, idx) => {
+                let iconName = gem.icon || 'sparkles';
+                return `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-gray-800/30 transition-all">
+                        <td class="p-4">
+                            <div class="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                                <i data-lucide="${iconName}" class="w-4 h-4"></i>
+                            </div>
+                        </td>
+                        <td class="p-4 font-bold text-slate-900 dark:text-white text-xs">${gem.name}</td>
+                        <td class="p-4 text-slate-500 text-[11px] max-w-[250px] truncate" title="${gem.desc}">${gem.desc}</td>
+                        <td class="p-4 text-slate-400 text-[10px] max-w-[200px] truncate">
+                            <a href="${gem.url}" target="_blank" class="hover:underline text-indigo-500">${gem.url}</a>
+                        </td>
+                        <td class="p-4">
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase ${gem.active ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400' : 'bg-slate-100 text-slate-700 dark:bg-gray-800 dark:text-gray-400'}">
+                                ${gem.active ? 'Aktif' : 'Nonaktif'}
+                            </span>
+                        </td>
+                        <td class="p-4 text-right">
+                            <div class="flex items-center justify-end gap-1.5">
+                                <button onclick="toggleGeminiGemStatus(${idx})" class="text-slate-500 hover:text-indigo-600 font-bold text-[10px] border border-slate-200 dark:border-premium-border px-2 py-1 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 transition-all">
+                                    ${gem.active ? 'Nonaktifkan' : 'Aktifkan'}
+                                </button>
+                                <button onclick="deleteGeminiGem(${idx})" class="text-red-500 hover:text-red-700 font-bold text-[10px] border border-red-200 dark:border-red-900/40 px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-all">
+                                    Hapus
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        async function toggleGeminiGemStatus(idx) {
+            platformState.geminiGems[idx].active = !platformState.geminiGems[idx].active;
+            localStorage.setItem('gemini_gems_data', JSON.stringify(platformState.geminiGems));
+            
+            Swal.fire({
+                title: 'Memperbarui status...',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading(); }
+            });
+            
+            const res = await callAPI('updateSettings', { gemini_gems: JSON.stringify(platformState.geminiGems) });
+            Swal.close();
+            
+            renderAdminGeminiGemsTable();
+            if (res && res.success) {
+                Swal.fire({ title: 'Berhasil!', text: 'Status Gemini Gem diperbarui.', icon: 'success', timer: 1000, showConfirmButton: false });
+            }
+        }
+
+        async function deleteGeminiGem(idx) {
+            const result = await Swal.fire({
+                title: 'Hapus Gemini Gem?',
+                text: 'Asisten AI ini tidak akan tersedia lagi untuk member!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EF4444',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: 'Ya, Hapus'
+            });
+            
+            if (result.isConfirmed) {
+                platformState.geminiGems.splice(idx, 1);
+                localStorage.setItem('gemini_gems_data', JSON.stringify(platformState.geminiGems));
+                
+                Swal.fire({
+                    title: 'Menghapus...',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading(); }
+                });
+                
+                const res = await callAPI('updateSettings', { gemini_gems: JSON.stringify(platformState.geminiGems) });
+                Swal.close();
+                
+                renderAdminGeminiGemsTable();
+                if (res && res.success) {
+                    Swal.fire({ title: 'Dihapus!', text: 'Gemini Gem berhasil dihapus.', icon: 'success', timer: 1000, showConfirmButton: false });
+                }
+            }
+        }
+
+        function openGeminiGemModal() {
+            Swal.fire({
+                title: 'Tambah Gemini AI Gem Baru 🚀',
+                html: `
+                    <div class="space-y-4 text-left text-xs font-mono p-1">
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">NAMA GEMINI GEM:</label>
+                            <input id="gem-form-name" type="text" placeholder="e.g., Gemini OEE & Excel Expert" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-purple-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">DESKRIPSI KEMAMPUAN:</label>
+                            <textarea id="gem-form-desc" placeholder="Jelaskan peran spesifik dan keahlian asisten AI ini..." rows="3" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-purple-500 text-slate-900 dark:text-white font-bold"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">SHARELINK GEMINI GEM URL:</label>
+                            <input id="gem-form-url" type="url" placeholder="https://gemini.google.com/gems/share/..." class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-purple-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">PILIH ICON ASISTEN:</label>
+                            <select id="gem-form-icon" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-purple-500 text-slate-900 dark:text-white font-bold">
+                                <option value="sparkles">✨ Sparkles (Default)</option>
+                                <option value="file-spreadsheet">📊 File Spreadsheet (Excel / Sheets)</option>
+                                <option value="code-2">💻 Code / Scripting (GAS / WebApps)</option>
+                                <option value="wrench">🔧 Wrench / Mechanical (Maintenance)</option>
+                                <option value="brain">🧠 Brain (Conceptual / Strategy)</option>
+                                <option value="message-square">💬 Message Square (Chat / Discussion)</option>
+                                <option value="line-chart">📈 Line Chart (Analytics / KPI)</option>
+                            </select>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#8B5CF6',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: 'Simpan Gem',
+                cancelButtonText: 'Batal',
+                focusConfirm: false,
+                background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A',
+                preConfirm: () => {
+                    const name = document.getElementById('gem-form-name').value.trim();
+                    const desc = document.getElementById('gem-form-desc').value.trim();
+                    const url = document.getElementById('gem-form-url').value.trim();
+                    const icon = document.getElementById('gem-form-icon').value;
+                    
+                    if (!name || !desc || !url) {
+                        Swal.showValidationMessage('Semua kolom input wajib diisi!');
+                        return false;
+                    }
+                    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                        Swal.showValidationMessage('URL sharelink harus valid (diawali http/https)!');
+                        return false;
+                    }
+                    return { name, desc, url, icon };
+                }
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const newGem = {
+                        id: 'GEM-' + Date.now(),
+                        name: result.value.name,
+                        desc: result.value.desc,
+                        url: result.value.url,
+                        icon: result.value.icon,
+                        active: true
+                    };
+                    
+                    if (!platformState.geminiGems) {
+                        platformState.geminiGems = [];
+                    }
+                    platformState.geminiGems.push(newGem);
+                    localStorage.setItem('gemini_gems_data', JSON.stringify(platformState.geminiGems));
+                    
+                    Swal.fire({
+                        title: 'Menyimpan...',
+                        allowOutsideClick: false,
+                        didOpen: () => { Swal.showLoading(); }
+                    });
+                    
+                    const res = await callAPI('updateSettings', { gemini_gems: JSON.stringify(platformState.geminiGems) });
+                    Swal.close();
+                    
+                    renderAdminGeminiGemsTable();
+                    if (res && res.success) {
+                        Swal.fire({ title: 'Berhasil!', text: 'Gemini Gem baru berhasil ditambahkan.', icon: 'success', timer: 1500, showConfirmButton: false });
+                    }
+                }
+            });
         }
         // ===== END LMS ADMIN FUNCTIONS =====
 
