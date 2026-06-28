@@ -1423,6 +1423,43 @@
                 </div>
             </div>
 
+            <!-- USER MANAGEMENT TABLE -->
+            <div class="bg-white dark:bg-premium-card border border-indigo-200 dark:border-indigo-900/40 rounded-3xl overflow-hidden shadow-sm mt-8">
+                <div class="p-6 border-b border-indigo-100 dark:border-indigo-900/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-indigo-50/50 dark:bg-indigo-950/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center text-white">
+                            <i data-lucide="users" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 dark:text-white">Manajemen Pengguna (Users)</h4>
+                            <p class="text-[11px] text-slate-500 dark:text-gray-400">Kelola akun pengguna/admin yang memiliki akses masuk ke platform DigitalVault.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="openUserModal()" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:opacity-90 transition-all flex items-center gap-1.5 shadow-md shadow-indigo-500/10 font-mono">
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Tambah Pengguna
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs font-mono">
+                        <thead>
+                            <tr class="border-b border-slate-100 dark:border-premium-border/40 bg-slate-50 dark:bg-[#0d121f] text-slate-500">
+                                <th class="p-4">Nama</th>
+                                <th class="p-4">Email</th>
+                                <th class="p-4">Username</th>
+                                <th class="p-4">Password</th>
+                                <th class="p-4">Role</th>
+                                <th class="p-4 text-right w-36">Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-users-body" class="divide-y divide-slate-100 dark:divide-premium-border/20 text-slate-600 dark:text-gray-300">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- ANALYTICS CARDS GRID -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card Total Products -->
@@ -1982,6 +2019,7 @@
             lmsCoursesData: JSON.parse(localStorage.getItem('lms_courses_data')) || INTEGRATED_DEFAULT_LMS_COURSES,
             geminiGems: JSON.parse(localStorage.getItem('gemini_gems_data')) || DEFAULT_GEMINI_GEMS,
             lmsPdfsData: JSON.parse(localStorage.getItem('lms_pdfs_data')) || [],
+            usersData: JSON.parse(localStorage.getItem('users_data')) || [],
             activeFilter: 'ALL',
             lynkClicks: parseInt(localStorage.getItem('dv_secure_clicks')) || 247,
             totalVisitors: 1284,
@@ -2174,6 +2212,13 @@
                     renderAdminLMSPdfsTable();
                 }
 
+                // Update Users dari Google Sheets
+                if (res.data.users && Array.isArray(res.data.users)) {
+                    platformState.usersData = res.data.users;
+                    localStorage.setItem('users_data', JSON.stringify(platformState.usersData));
+                    renderAdminUsersTable();
+                }
+
                 // Update Identitas Web & Gemini Gems dari Settings Google Sheets
                 if (res.data.settings) {
                     const settings = res.data.settings;
@@ -2305,6 +2350,8 @@
             renderAdminTable();
             renderAdminLMSTable();
             renderAdminGeminiGemsTable();
+            renderAdminLMSPdfsTable();
+            renderAdminUsersTable();
             updateAdminKPIs();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -4019,6 +4066,155 @@
                 };
                 anim();
             });
+        }
+
+        // ===== USER MANAGEMENT FUNCTIONS =====
+        function renderAdminUsersTable() {
+            const tbody = document.getElementById('table-users-body');
+            if (!tbody) return;
+            
+            const users = platformState.usersData || [];
+            if (users.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 font-mono text-xs">Belum ada data pengguna. Klik "Tambah Pengguna" untuk menambahkan.</td></tr>`;
+                return;
+            }
+            
+            tbody.innerHTML = users.map((u, idx) => {
+                return `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-gray-800/30 transition-all font-mono">
+                        <td class="p-4 font-bold text-slate-900 dark:text-white text-xs uppercase">${u.name || '-'}</td>
+                        <td class="p-4 text-slate-600 dark:text-gray-300 text-xs">${u.email || '-'}</td>
+                        <td class="p-4 text-slate-950 dark:text-white text-xs font-bold">${u.username || '-'}</td>
+                        <td class="p-4 text-slate-500 text-[11px]">${u.password || '-'}</td>
+                        <td class="p-4">
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase ${u.role === 'Admin' ? 'bg-purple-100 text-purple-800 dark:bg-purple-950/40 dark:text-purple-400' : 'bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400'}">
+                                ${u.role || 'User'}
+                            </span>
+                        </td>
+                        <td class="p-4 text-right">
+                            <div class="flex items-center justify-end gap-1.5">
+                                <button onclick="openUserModal(platformState.usersData[${idx}])" class="text-indigo-400 hover:text-indigo-600 font-bold text-[10px] border border-indigo-200 dark:border-indigo-900 px-2 py-1 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-950/20 transition-all font-mono">
+                                    Edit
+                                </button>
+                                <button onclick="deleteUser('${u.id}')" class="text-red-400 hover:text-red-600 font-bold text-[10px] border border-red-200 dark:border-red-900 px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 transition-all font-mono">
+                                    Hapus
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        async function openUserModal(userToEdit = null) {
+            const isEdit = !!userToEdit;
+            
+            Swal.fire({
+                title: isEdit ? 'Edit Pengguna 📝' : 'Tambah Pengguna Baru 👤',
+                html: `
+                    <div class="space-y-4 text-left text-xs font-mono p-1">
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">NAMA LENGKAP:</label>
+                            <input id="user-form-name" type="text" value="${isEdit ? userToEdit.name || '' : ''}" placeholder="e.g., Andi Wijaya" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">EMAIL:</label>
+                            <input id="user-form-email" type="email" value="${isEdit ? userToEdit.email || '' : ''}" placeholder="e.g., andi@example.com" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">USERNAME:</label>
+                            <input id="user-form-username" type="text" value="${isEdit ? userToEdit.username || '' : ''}" placeholder="e.g., andi_w" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">PASSWORD:</label>
+                            <input id="user-form-password" type="text" value="${isEdit ? userToEdit.password || '' : ''}" placeholder="e.g., password123" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white font-bold">
+                        </div>
+                        <div>
+                            <label class="text-slate-500 font-bold block mb-1">ROLE:</label>
+                            <select id="user-form-role" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-indigo-500 text-slate-900 dark:text-white font-bold">
+                                <option value="User" ${isEdit && userToEdit.role === 'User' ? 'selected' : ''}>User</option>
+                                <option value="Admin" ${isEdit && userToEdit.role === 'Admin' ? 'selected' : ''}>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#4F46E5',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: isEdit ? 'Simpan Perubahan' : 'Tambah Pengguna',
+                cancelButtonText: 'Batal',
+                focusConfirm: false,
+                background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A',
+                preConfirm: () => {
+                    const name = document.getElementById('user-form-name').value.trim();
+                    const email = document.getElementById('user-form-email').value.trim();
+                    const username = document.getElementById('user-form-username').value.trim();
+                    const password = document.getElementById('user-form-password').value.trim();
+                    const role = document.getElementById('user-form-role').value;
+                    
+                    if (!name || !username || !password) {
+                        Swal.showValidationMessage('Nama, Username, dan Password wajib diisi!');
+                        return false;
+                    }
+                    return { id: isEdit ? userToEdit.id : '', name, email, username, password, role, created_at: isEdit ? userToEdit.created_at : new Date().toISOString() };
+                }
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const payload = result.value;
+                    
+                    Swal.fire({
+                        title: 'Menyimpan Data Pengguna...',
+                        allowOutsideClick: false,
+                        didOpen: () => { Swal.showLoading(); }
+                    });
+                    
+                    const res = await callAPI('addUser', payload);
+                    Swal.close();
+                    
+                    if (res && res.success) {
+                        Swal.fire({ title: 'Berhasil!', text: res.message || 'Data pengguna berhasil disimpan.', icon: 'success', timer: 1500, showConfirmButton: false });
+                        await syncDatabaseData(true); // reload data
+                    } else {
+                        Swal.fire({ title: 'Gagal!', text: res ? res.message : 'Terjadi kesalahan.', icon: 'error' });
+                    }
+                }
+            });
+        }
+
+        async function deleteUser(id) {
+            const confirm = await Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Akun pengguna ini akan dihapus secara permanen dari sistem!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EF4444',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#111827' : '#FFFFFF',
+                color: document.documentElement.classList.contains('dark') ? '#FFFFFF' : '#0F172A'
+            });
+
+            if (confirm.isConfirmed) {
+                Swal.fire({
+                    title: 'Menghapus...',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading(); }
+                });
+                
+                const res = await callAPI('deleteUser', { id });
+                Swal.close();
+                
+                if (res && res.success) {
+                    Swal.fire({ title: 'Dihapus!', text: 'Pengguna berhasil dihapus.', icon: 'success', timer: 1500, showConfirmButton: false });
+                    await syncDatabaseData(true);
+                } else {
+                    Swal.fire({ title: '❌ Gagal Menghapus', text: res ? res.message : 'Koneksi gagal.', icon: 'error' });
+                }
+            }
         }
     </script>
 </body>
