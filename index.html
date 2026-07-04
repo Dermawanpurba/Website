@@ -2340,7 +2340,9 @@
 
         function showLoginGate() {
             hideAllViewports();
-            document.getElementById('viewport-login-gate').classList.remove('hidden');
+            const gate = document.getElementById('viewport-login-gate');
+            gate.classList.remove('hidden');
+            gate.classList.add('flex', 'flex-col');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
