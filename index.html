@@ -400,364 +400,50 @@
             background: rgba(79, 70, 229, 0.04);
         }
 
-        /* ===== 3D BOOK CARD - PRODUK UNGGULAN ===== */
+        /* ===== GOOGLE LABS STYLE CAROUSEL - PRODUK UNGGULAN ===== */
         #section-featured {
-            background: linear-gradient(135deg, #060b18 0%, #0d1426 50%, #080e1c 100%);
+            transition: background-color 0.5s ease;
         }
 
-        .book-card {
-            position: relative;
+        .labs-card {
+            position: absolute;
+            width: 275px;
+            height: 410px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(160deg, #0d1a35 0%, #0a1628 60%, #070e1f 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            overflow: visible;
-            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            will-change: transform;
-            flex-shrink: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
-        .book-card:hover {
-            transform: translateY(-18px) rotateX(4deg) scale(1.03);
+        .dark .labs-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
 
-        .book-card.glow-green {
-            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25), 0 8px 40px rgba(16, 185, 129, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        .labs-card-active {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.07), 0 1px 5px rgba(0, 0, 0, 0.02);
         }
 
-        .book-card.glow-purple {
-            box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.25), 0 8px 40px rgba(139, 92, 246, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        .dark .labs-card-active {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1.5px rgba(255, 255, 255, 0.12);
         }
 
-        .book-card.glow-blue {
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 8px 40px rgba(59, 130, 246, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .book-card.glow-orange {
-            box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.25), 0 8px 40px rgba(249, 115, 22, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .book-card.glow-amber {
-            box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25), 0 8px 40px rgba(245, 158, 11, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .book-card.glow-cyan {
-            box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.25), 0 8px 40px rgba(6, 182, 212, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .book-card.glow-green:hover {
-            box-shadow: 0 0 0 1.5px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.25), 0 25px 70px rgba(16, 185, 129, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card.glow-purple:hover {
-            box-shadow: 0 0 0 1.5px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.25), 0 25px 70px rgba(139, 92, 246, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card.glow-blue:hover {
-            box-shadow: 0 0 0 1.5px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.25), 0 25px 70px rgba(59, 130, 246, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card.glow-orange:hover {
-            box-shadow: 0 0 0 1.5px rgba(249, 115, 22, 0.5), 0 0 30px rgba(249, 115, 22, 0.25), 0 25px 70px rgba(249, 115, 22, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card.glow-amber:hover {
-            box-shadow: 0 0 0 1.5px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.25), 0 25px 70px rgba(245, 158, 11, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card.glow-cyan:hover {
-            box-shadow: 0 0 0 1.5px rgba(6, 182, 212, 0.5), 0 0 30px rgba(6, 182, 212, 0.25), 0 25px 70px rgba(6, 182, 212, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .book-card-inner {
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: linear-gradient(160deg, #0f1e3a 0%, #0c1730 60%, #09132a 100%);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .book-icon-badge {
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .book-bookmark {
-            position: absolute;
-            bottom: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 32px;
-            clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
-            z-index: 5;
-        }
-
-        .book-screen {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: #0a1020;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .book-screen img {
+        .labs-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.85;
-            transition: transform 0.5s ease, opacity 0.3s ease;
-        }
-
-        .book-card:hover .book-screen img {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-
-        .touch-to-open-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-            padding: 10px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            transition: color 0.3s ease;
-            background: rgba(255, 255, 255, 0.02);
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .book-card:hover .touch-to-open-btn {
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .touch-hand-icon {
-            width: 18px;
-            height: 18px;
-            animation: touchPulse 1.8s ease-in-out infinite;
-            display: inline-block;
-        }
-
-        @keyframes touchPulse {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: translateY(-3px) scale(1.1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes bookFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .book-float-1 {
-            animation: bookFloat 3.5s ease-in-out infinite;
-        }
-
-        .book-float-2 {
-            animation: bookFloat 4.1s ease-in-out infinite 0.6s;
-        }
-
-        .book-float-3 {
-            animation: bookFloat 3.8s ease-in-out infinite 1.2s;
-        }
-
-        .book-float-4 {
-            animation: bookFloat 4.4s ease-in-out infinite 0.3s;
-        }
-
-        .book-float-5 {
-            animation: bookFloat 3.6s ease-in-out infinite 0.9s;
-        }
-
-        .book-card:hover {
-            animation-play-state: paused;
-        }
-
-        .book-base-shadow {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 16px;
-            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
-            filter: blur(6px);
-            z-index: -1;
-            transition: width 0.3s ease, opacity 0.3s ease;
-        }
-
-        .book-card:hover .book-base-shadow {
-            width: 65%;
-            opacity: 0.7;
-        }
-
-        /* Section featured specific styling */
-        #section-featured .section-featured-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(79, 70, 229, 0.06) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 40% at 80% 30%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        /* Book spine effect */
-        .book-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5%;
-            height: 90%;
-            width: 4px;
-            border-radius: 0 0 0 14px;
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
-        }
-
-        .book-card.glow-green::before {
-            background: linear-gradient(to bottom, #10b981, #059669);
-        }
-
-        .book-card.glow-purple::before {
-            background: linear-gradient(to bottom, #8b5cf6, #7c3aed);
-        }
-
-        .book-card.glow-blue::before {
-            background: linear-gradient(to bottom, #3b82f6, #2563eb);
-        }
-
-        .book-card.glow-orange::before {
-            background: linear-gradient(to bottom, #f97316, #ea580c);
-        }
-
-        .book-card.glow-amber::before {
-            background: linear-gradient(to bottom, #f59e0b, #d97706);
-        }
-
-        .book-card.glow-cyan::before {
-            background: linear-gradient(to bottom, #06b6d4, #0891b2);
-        }
-
-        .book-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Filter tabs dark style */
-        .book-filter-tab {
-            padding: 7px 18px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.45);
-            background: rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-            transition: all 0.25s ease;
-            letter-spacing: 0.06em;
-        }
-
-        .book-filter-tab:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.75);
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .book-filter-tab.active {
-            background: rgba(79, 70, 229, 0.25);
-            border-color: rgba(99, 102, 241, 0.6);
-            color: #a5b4fc;
-        }
-
-        /* Action buttons in book card */
-        .book-action-btn {
-            flex: 1;
-            padding: 8px 4px;
-            border-radius: 8px;
-            font-size: 9px;
-            font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-
-        .book-action-preview {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .book-action-preview:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        .book-action-demo {
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.25);
-            color: #fbbf24;
-        }
-
-        .book-action-demo:hover {
-            background: rgba(245, 158, 11, 0.22);
-        }
-
-        .book-action-buy {
-            background: linear-gradient(135deg, #4F46E5, #7C3AED);
-            border: none;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-        }
-
-        .book-action-buy:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
+            border-radius: 16px;
+            -webkit-user-drag: none;
         }
 
         /* ============================================================
@@ -1321,45 +1007,59 @@
 
 
 
-                <!-- WRAPPER FOR SCROLL PINNING (SECTION 4) -->
-                <div id="section-featured-wrapper" class="relative h-[300vh]">
-                    <!-- SECTION 4 - PRODUK UNGGULAN (3D BOOK CARD DARK DESIGN) -->
-                    <section id="section-featured"
-                        class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden relative"
-                        style="background: linear-gradient(135deg, #060b18 0%, #0d1426 50%, #080e1c 100%);">
+                <!-- SECTION 4 - PRODUK UNGGULAN (GOOGLE LABS DESIGN) -->
+                <section id="section-featured" class="relative py-24 overflow-hidden select-none transition-colors duration-500 bg-[#f6f3ed] dark:bg-[#0b0f19] border-t border-b border-slate-200/50 dark:border-slate-800/40">
+                    <!-- Background Blobs -->
+                    <!-- Blue Blob (Left) -->
+                    <div class="absolute left-[-15vw] top-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#4285f4]/20 dark:bg-[#4285f4]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0"></div>
+                    <!-- Green Blob (Top Right) -->
+                    <div class="absolute right-[10vw] top-[-5vh] w-[40vw] h-[40vw] md:w-[30vw] md:h-[30vw] rounded-full bg-[#34a853]/20 dark:bg-[#10b981]/10 blur-[70px] md:blur-[80px] pointer-events-none z-0"></div>
+                    <!-- Pink Blob (Bottom Right) -->
+                    <div class="absolute right-[-15vw] bottom-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#ec4899]/20 dark:bg-[#ec4899]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0"></div>
 
-                        <!-- Background ambient effects -->
-                        <div class="section-featured-bg"></div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col items-center">
+                        
+                        <!-- Header Row with Overlapping Shape -->
+                        <div class="relative text-center mb-10">
+                            <!-- Soft overlapping green bubble behind text -->
+                            <div class="absolute left-[38%] top-[-30%] w-[120px] h-[120px] bg-[#00ff88]/30 dark:bg-[#10b981]/15 rounded-full blur-[25px] pointer-events-none"></div>
+                            
+                            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white relative z-10 leading-tight">
+                                Be the first to expe<span class="text-[#ec4899]">riment</span>
+                            </h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 font-medium uppercase tracking-widest">PRODUK UNGGULAN MINESTACK</p>
+                        </div>
 
-                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-8 relative z-10">
-                            <!-- Header Row -->
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                                <div>
-                                    <h2 class="text-2xl font-extrabold text-white">Produk Unggulan</h2>
-                                    <p class="text-xs text-slate-400 mt-1">Listing produk pilihan praktisi yang paling
-                                        dicari saat ini.</p>
-                                </div>
-
-                                <!-- Category filter switcher tabs (dark style) -->
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="filterKatalogBook('ALL', this)"
-                                        class="book-filter-tab store-tab-btn active">SEMUA</button>
-                                    <button onclick="filterKatalogBook('EXCEL', this)"
-                                        class="book-filter-tab store-tab-btn">Excel</button>
-                                    <button onclick="filterKatalogBook('LOOKER STUDIO', this)"
-                                        class="book-filter-tab store-tab-btn">Dashboard</button>
-                                </div>
-                            </div>
-
-                            <!-- Products Book Grid -->
-                            <div id="grid-store-products"
-                                class="flex gap-8 overflow-x-auto pb-8 pt-10 select-none scrollbar-hide"
-                                style="padding-left: 12px; padding-right: 12px;">
-                                <!-- Rendered dynamic book cards -->
+                        <!-- Carousel Container -->
+                        <div id="labs-carousel-container" class="relative w-full overflow-hidden flex flex-col items-center h-[460px] justify-center cursor-grab active:cursor-grabbing">
+                            <div id="labs-carousel-track" class="relative w-full h-[410px] flex items-center justify-center">
+                                <!-- Dynamically populated cards will go here -->
                             </div>
                         </div>
-                    </section>
-                </div>
+
+                        <!-- Navigation Controls -->
+                        <div class="flex items-center gap-4 mt-4 z-20">
+                            <button id="labs-prev-btn" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            </button>
+                            <button id="labs-next-btn" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Category Filters (Pills) -->
+                        <div class="flex flex-wrap justify-center gap-2 mt-8 z-20" id="labs-category-filters">
+                            <!-- Will be dynamically populated with labels.google-style pills -->
+                        </div>
+
+                        <!-- Bottom Description adaptation -->
+                        <div class="max-w-2xl text-center mt-12 z-20 px-4">
+                            <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                                Temukan <span class="text-slate-900 dark:text-white font-bold">inovasi terbaru kami</span> dan bantu membentuk <span class="text-slate-900 dark:text-white font-bold">masa depan digitalisasi pertambangan</span>. Dapatkan <span class="text-slate-900 dark:text-white font-bold">akses cepat</span>, bagikan <span class="text-slate-900 dark:text-white font-bold">umpan balik Anda</span>, dan bantu ubah teknologi ini menjadi <span class="text-[#ec4899] font-bold">produk yang Anda gunakan setiap hari</span>.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
 
 
@@ -3896,44 +3596,53 @@
             renderStorefront();
         }
 
-        // New dark-style filter for book cards in featured section
-        function filterKatalogBook(category, element) {
+        // ===== GOOGLE LABS STYLE CAROUSEL LOGIC =====
+        let currentOffset = 0;
+        let targetOffset = 0;
+        let filteredProducts = [];
+        let isDragging = false;
+        let startX = 0;
+        let dragOffsetStart = 0;
+
+        function filterKatalogBook(category) {
             platformState.activeFilter = category;
-
-            document.querySelectorAll('.book-filter-tab').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            if (element) element.classList.add('active');
-
-            const badge = document.getElementById('active-filter-badge');
-            if (badge) badge.innerText = category;
+            targetOffset = 0;
+            currentOffset = 0;
             renderStorefront();
         }
 
-        // Helper: Returns inline SVG path strings for book card icons
-        function getIconPath(icon) {
-            const paths = {
-                'layout-dashboard': '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>',
-                'file-spreadsheet': '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/>',
-                'code-2': '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>',
-                'bot': '<path d="M12 8V4H8"/><rect x="2" y="8" width="20" height="12" rx="2" ry="2"/><path d="M6 16a2 2 0 0 1 0-4"/><path d="M18 16a2 2 0 0 0 0-4"/><path d="M12 12v4"/>',
-                'youtube': '<path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>',
-                'package': '<path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>'
-            };
-            return paths[icon] || paths['package'];
+        // Render storefront category filter pills
+        function renderCategoryFilters() {
+            const container = document.getElementById('labs-category-filters');
+            if (!container) return;
+
+            const categories = [
+                { code: 'ALL', label: 'SEMUA' },
+                { code: 'EXCEL', label: 'EXCEL' },
+                { code: 'LOOKER STUDIO', label: 'DASHBOARD' },
+                { code: 'SOURCE CODE', label: 'SOURCE CODE' },
+                { code: 'AI AUTOMATION', label: 'AI AUTOMATION' },
+                { code: 'PEMBELAJARAN', label: 'PEMBELAJARAN' }
+            ];
+
+            container.innerHTML = categories.map(cat => {
+                const isActive = platformState.activeFilter === cat.code;
+                if (isActive) {
+                    return `<button onclick="filterKatalogBook('${cat.code}')" class="px-5 py-2 rounded-full text-xs font-bold bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm transition-all duration-300">${cat.label}</button>`;
+                } else {
+                    return `<button onclick="filterKatalogBook('${cat.code}')" class="px-5 py-2 rounded-full text-xs font-medium bg-[#eae6dd]/80 text-slate-700 hover:bg-[#dfdad0] dark:bg-slate-800/80 dark:text-slate-300 dark:hover:bg-slate-700 transition-all duration-300">${cat.label}</button>`;
+                }
+            }).join('');
         }
 
         // Render Storefront Product Cards
         function renderStorefront() {
-            const container = document.getElementById('grid-store-products');
-            targetHorizontalScroll = 0;
-            currentHorizontalScroll = 0;
-            if (container) {
-                container.scrollLeft = 0;
-            }
+            const track = document.getElementById('labs-carousel-track');
+            if (!track) return;
+            
             let list = platformState.products;
 
-            // Update actual stats in Section 2 with live platformState data
+            // Update stats
             const statProduk = document.getElementById('stat-total-produk');
             const statMember = document.getElementById('stat-total-member');
             if (statProduk) statProduk.textContent = (platformState.products.length || 0) + '+';
@@ -3942,197 +3651,243 @@
             if (platformState.activeFilter !== 'ALL') {
                 list = list.filter(p => p.category === platformState.activeFilter);
             }
+            
+            filteredProducts = list;
 
             if (list.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full border border-dashed border-slate-200 dark:border-premium-border p-12 text-center text-gray-500 rounded-3xl font-mono text-xs">
+                track.innerHTML = `
+                    <div class="border border-dashed border-slate-300 dark:border-slate-800 p-12 text-center text-gray-500 rounded-3xl font-mono text-xs max-w-sm">
                         TIDAK ADA PRODUK TERSEDIA PADA KATEGORI INI
                     </div>
                 `;
                 return;
             }
 
-            // Color palette mapped per category
-            const glowMap = {
-                'LOOKER STUDIO': { glow: 'glow-blue', iconBg: 'linear-gradient(135deg,#1d4ed8,#3b82f6)', iconColor: '#93c5fd', icon: 'layout-dashboard', bookmark: '#3b82f6' },
-                'EXCEL': { glow: 'glow-green', iconBg: 'linear-gradient(135deg,#059669,#10b981)', iconColor: '#6ee7b7', icon: 'file-spreadsheet', bookmark: '#10b981' },
-                'SOURCE CODE': { glow: 'glow-purple', iconBg: 'linear-gradient(135deg,#7c3aed,#8b5cf6)', iconColor: '#c4b5fd', icon: 'code-2', bookmark: '#8b5cf6' },
-                'AI AUTOMATION': { glow: 'glow-cyan', iconBg: 'linear-gradient(135deg,#0891b2,#06b6d4)', iconColor: '#67e8f9', icon: 'bot', bookmark: '#06b6d4' },
-                'PEMBELAJARAN': { glow: 'glow-orange', iconBg: 'linear-gradient(135deg,#c2410c,#f97316)', iconColor: '#fdba74', icon: 'youtube', bookmark: '#f97316' },
-                'DEFAULT': { glow: 'glow-amber', iconBg: 'linear-gradient(135deg,#b45309,#f59e0b)', iconColor: '#fde68a', icon: 'package', bookmark: '#f59e0b' }
-            };
-            const floatClasses = ['book-float-1', 'book-float-2', 'book-float-3', 'book-float-4', 'book-float-5'];
-
-            container.innerHTML = list.map((p, i) => {
+            // Render cards
+            track.innerHTML = list.map((p, i) => {
                 const defaultImg = p.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400';
-                const theme = glowMap[p.category] || glowMap['DEFAULT'];
-                const fc = floatClasses[i % floatClasses.length];
-                const ratingNum = parseFloat(p.rating) || 4.5;
                 const safeName = p.name.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
                 const safeUrl = p.lynkUrl || '#';
                 const safeLink = p.link_akses || '';
                 const safeUser = (p.user_demo || '-').replace(/'/g, '');
                 const safePass = (p.pass_demo || '-').replace(/'/g, '');
-                const displayName = p.name.length > 28 ? p.name.substring(0, 28) + '...' : p.name;
-                const displayDesc = p.desc.substring(0, 65) + (p.desc.length > 65 ? '...' : '');
-                const stars = Array.from({ length: 5 }, (_, si) => `<svg width="12" height="12" viewBox="0 0 24 24" fill="${si < Math.round(ratingNum) ? '#facc15' : 'none'}" stroke="#facc15" stroke-width="2" style="display:inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('');
                 const priceStr = parseInt(p.price).toLocaleString('id-ID');
-                const iconSvg = getIconPath(theme.icon);
 
                 return `
-                <div class="book-card ${theme.glow} ${fc}" style="width: 230px; min-height: 420px; flex-shrink: 0; margin-top: 20px; position: relative;" onclick="triggerPreview(this.dataset.name, this.dataset.img)" data-name="${safeName}" data-img="${defaultImg}">
-
-
-                    <!-- Floating icon badge -->
-                    <div class="book-icon-badge" style="background: ${theme.iconBg};">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${theme.iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            ${iconSvg}
-                        </svg>
+                <div class="labs-card" data-index="${i}" data-name="${safeName}" data-img="${defaultImg}" onclick="handleCardClick(${i})">
+                    <!-- Image Area -->
+                    <div class="relative w-full h-[150px] rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+                        <img src="${defaultImg}" alt="${safeName}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                        ${p.best_seller ? `<span class="absolute top-3 left-3 bg-[#4285f4] text-white text-[8px] font-bold tracking-wider px-2 py-0.5 rounded-full uppercase">Best Seller</span>` : ''}
+                        ${p.new ? `<span class="absolute top-3 left-3 bg-[#34a853] text-white text-[8px] font-bold tracking-wider px-2 py-0.5 rounded-full uppercase">New</span>` : ''}
                     </div>
-
-                    <!-- Bookmark -->
-                    <div class="book-bookmark" style="background: ${theme.bookmark};"></div>
-
-                    <!-- Base shadow -->
-                    <div class="book-base-shadow"></div>
-
-                    <!-- Inner card -->
-                    <div class="book-card-inner" style="margin: 0;">
-                        <!-- Header area -->
-                        <div style="padding: 32px 16px 12px; text-align: center; flex-shrink: 0;">
-                            <h3 style="font-size: 13px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; text-shadow: 0 1px 6px rgba(0,0,0,0.5); margin-bottom: 6px;">${displayName}</h3>
-                            <p style="font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.5; height: 30px; overflow: hidden;">${displayDesc}</p>
+                    
+                    <!-- Info Area -->
+                    <div class="flex-grow flex flex-col justify-between overflow-hidden">
+                        <div>
+                            <!-- Category Tag -->
+                            <span class="text-[9px] font-bold tracking-widest text-[#ec4899] uppercase mb-1 block">${p.category}</span>
+                            <!-- Title -->
+                            <h3 class="text-sm font-bold text-slate-800 dark:text-white mb-1.5 line-clamp-2 leading-tight">${p.name}</h3>
+                            <!-- Description -->
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed mb-3">${p.desc}</p>
                         </div>
-
-                        <!-- Dashboard Screen Preview -->
-                        <div class="book-screen" style="margin: 0 12px; height: 140px; flex-shrink: 0;">
-                            <img src="${defaultImg}" alt="${safeName}" loading="lazy">
-                            <!-- Screen glare -->
-                            <div style="position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom, rgba(255,255,255,0.06), transparent); pointer-events:none;"></div>
-                            ${p.best_seller ? '<div style="position:absolute;top:6px;right:6px;background:#4f46e5;color:#fff;font-size:7px;font-weight:800;padding:2px 7px;border-radius:99px;font-family:monospace;letter-spacing:0.08em;">BEST SELLER</div>' : ''}
-                            ${p.new ? '<div style="position:absolute;top:6px;right:6px;background:#10b981;color:#fff;font-size:7px;font-weight:800;padding:2px 7px;border-radius:99px;font-family:monospace;letter-spacing:0.08em;">NEW</div>' : ''}
-                        </div>
-
-                        <!-- Touch to open -->
-                        <div class="touch-to-open-btn" style="margin: 10px 12px 0; border-radius: 8px; flex-shrink: 0;">
-                            <svg class="touch-hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-                            TOUCH TO OPEN
-                        </div>
-
-                        <!-- Divider -->
-                        <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 10px 12px;"></div>
-
-                        <!-- Rating + Price -->
-                        <div style="padding: 0 14px 10px; flex-shrink: 0;">
-                            <div style="display:flex; align-items:center; gap:6px; margin-bottom: 6px;">
-                                <span style="display:flex; gap:1px;">${stars}</span>
-                                <span style="font-size:11px; font-weight:800; color:#fff; font-family:monospace;">${ratingNum.toFixed(1)}</span>
+                        
+                        <div>
+                            <!-- Price and Rating -->
+                            <div class="flex items-center justify-between mb-3 text-[10px] font-mono">
+                                <span class="text-slate-400 dark:text-slate-500 uppercase tracking-wider">Investasi:</span>
+                                <span class="text-[#34a853] dark:text-[#00ff88] font-bold text-xs">Rp ${priceStr}</span>
                             </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-family:monospace; font-size:9px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em;">
-                                <span>INVESTASI:</span>
-                                <span style="color:#4ade80; font-weight:800; font-size:11px;">Rp ${priceStr}</span>
+                            
+                            <!-- Actions -->
+                            <div class="flex gap-2" onclick="event.stopPropagation()">
+                                ${safeLink ? `
+                                <button class="flex-1 py-2 px-1 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[9px] font-bold tracking-wider flex items-center justify-center gap-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="triggerDemo('${safeName}', '${safeLink}', '${safeUser}', '${safePass}')">
+                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" class="inline-block"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    DEMO
+                                </button>
+                                ` : ''}
+                                <button class="flex-1 py-2 px-1 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-bold tracking-wider flex items-center justify-center gap-1 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors" onclick="triggerLynkCheckout('${safeUrl}', '${safeName}')">
+                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                                    BELI
+                                </button>
                             </div>
-                        </div>
-
-                        <!-- Action buttons -->
-                        <div style="display:flex; gap:6px; padding: 0 12px 14px; flex-shrink: 0;" onclick="event.stopPropagation()">
-                            <button class="book-action-btn book-action-preview" onclick="triggerPreview(this.closest('.book-card').dataset.name, this.closest('.book-card').dataset.img)" title="Preview">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            </button>
-                            ${safeLink ? `
-                            <button class="book-action-btn book-action-demo" data-link="${safeLink}" data-user="${safeUser}" data-pass="${safePass}" onclick="triggerDemo(this.closest('.book-card').dataset.name, this.dataset.link, this.dataset.user, this.dataset.pass)" title="Demo">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                DEMO
-                            </button>` : ''}
-                            <button class="book-action-btn book-action-buy" data-url="${safeUrl}" onclick="triggerLynkCheckout(this.dataset.url, this.closest('.book-card').dataset.name)" title="Beli">
-                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                                BELI
-                            </button>
+                            
+                            <!-- Details link / trigger preview -->
+                            <div class="text-center mt-2.5">
+                                <button class="text-[9px] font-bold text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" onclick="triggerPreview('${safeName}', '${defaultImg}')">
+                                    Detail Info &amp; Skema &rarr;
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 `;
             }).join('');
+
+            // Render category pills
+            renderCategoryFilters();
+
+            // Reset layout immediately
+            updateLabsCarouselLayout();
+
             if (typeof lucide !== 'undefined') lucide.createIcons();
-            adjustFeaturedSectionHeight();
         }
 
-        // Adjust Featured Section height based on horizontal scrolling requirement
-        function adjustFeaturedSectionHeight() {
-            const container = document.getElementById('grid-store-products');
-            const wrapper = document.getElementById('section-featured-wrapper');
-            const section = document.getElementById('section-featured');
-            if (!container || !wrapper || !section) return;
+        // Layout update math for the curved/arc carousel
+        function updateLabsCarouselLayout() {
+            const track = document.getElementById('labs-carousel-track');
+            if (!track) return;
+            const cards = track.querySelectorAll('.labs-card');
+            if (cards.length === 0) return;
 
-            // Wait a brief tick to ensure DOM layouts are updated
-            setTimeout(() => {
-                const maxScroll = container.scrollWidth - container.clientWidth;
+            const spacing = window.innerWidth < 640 ? 210 : 255;
+            const curvature = window.innerWidth < 640 ? 12 : 16;
+            const angleStep = window.innerWidth < 640 ? 3 : 4.5;
 
-                if (maxScroll <= 0) {
-                    wrapper.style.height = 'auto';
-                    wrapper.classList.remove('h-[300vh]', 'h-[200vh]');
-                    section.style.position = 'relative';
-                    section.style.height = 'auto';
-                    section.classList.remove('h-screen', 'sticky', 'top-0', 'justify-center', 'overflow-hidden');
-                    section.classList.add('py-12');
+            cards.forEach((card, idx) => {
+                const diff = idx - currentOffset;
+
+                const translateX = diff * spacing;
+                const translateY = Math.pow(diff, 2) * curvature;
+                const rotateZ = diff * angleStep;
+                const scale = 1 - Math.min(0.5, Math.abs(diff) * 0.06);
+                const opacity = Math.max(0, 1 - Math.abs(diff) * 0.35);
+
+                card.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) rotate(${rotateZ}deg) scale(${scale})`;
+                card.style.opacity = opacity;
+                card.style.zIndex = Math.round(100 - Math.abs(diff) * 10);
+                card.style.pointerEvents = Math.abs(diff) < 1.1 ? 'auto' : 'none';
+
+                if (Math.abs(diff) < 0.5) {
+                    card.classList.add('labs-card-active');
                 } else {
-                    wrapper.style.height = '125vh'; // Optimized vertical scroll track height to eliminate bottom empty space
-                    section.style.position = '';
-                    section.style.height = '';
-                    section.classList.add('h-screen', 'sticky', 'top-0', 'justify-center', 'overflow-hidden');
-                    section.classList.remove('py-12');
+                    card.classList.remove('labs-card-active');
                 }
-            }, 50);
+            });
         }
 
-        // Vertical-scroll-driven horizontal slider parallax for featured products
-        let targetHorizontalScroll = 0;
-        let currentHorizontalScroll = 0;
+        // Animation Loop using LERP
+        function animateLabsCarousel() {
+            const diff = targetOffset - currentOffset;
+            if (Math.abs(diff) > 0.001) {
+                currentOffset += diff * 0.085;
+                updateLabsCarouselLayout();
+            } else {
+                currentOffset = targetOffset;
+                updateLabsCarouselLayout();
+            }
+            requestAnimationFrame(animateLabsCarousel);
+        }
 
-        function updateStorefrontScrollParallax() {
-            const container = document.getElementById('grid-store-products');
-            const wrapper = document.getElementById('section-featured-wrapper');
-            if (!container || !wrapper) return;
-
-            const rect = wrapper.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-
-            // Calculate sticky scroll progress:
-            // Starts sticking when rect.top = 0
-            // Ends sticking when rect.bottom = viewportHeight (which means rect.top = viewportHeight - rect.height)
-            const totalStickyDistance = rect.height - viewportHeight;
-            const scrolledDistance = -rect.top;
-
-            if (totalStickyDistance <= 0) return;
-
-            const rawFactor = Math.max(0, Math.min(1, scrolledDistance / totalStickyDistance));
-            // Map progress so it reaches 100% when vertical scroll is at 82% (adds scroll buffer at end)
-            const factor = Math.min(1, rawFactor / 0.82);
-            const maxScroll = container.scrollWidth - container.clientWidth;
-
-            if (maxScroll > 0) {
-                targetHorizontalScroll = factor * maxScroll;
+        // Card click handler: center it, or open preview if already centered
+        function handleCardClick(index) {
+            if (Math.abs(index - targetOffset) < 0.1) {
+                const prod = filteredProducts[index];
+                if (prod) {
+                    triggerPreview(prod.name, prod.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400');
+                }
+            } else {
+                targetOffset = index;
             }
         }
 
-        // LERP loop to keep changes buttery smooth
-        function animateParallaxScroll() {
-            const container = document.getElementById('grid-store-products');
-            if (container) {
-                const diff = targetHorizontalScroll - currentHorizontalScroll;
-                if (Math.abs(diff) > 0.1) {
-                    currentHorizontalScroll += diff * 0.045; // LERP speed factor — slowed for smoother feel
-                    container.scrollLeft = currentHorizontalScroll;
-                }
-            }
-            requestAnimationFrame(animateParallaxScroll);
-        }
-        animateParallaxScroll();
+        // Drag and swipe navigation events
+        function initLabsDragEvents() {
+            const container = document.getElementById('labs-carousel-container');
+            if (!container) return;
 
-        window.addEventListener('scroll', updateStorefrontScrollParallax, { passive: true });
+            // Mouse Drag
+            container.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                isDragging = true;
+                startX = e.clientX;
+                dragOffsetStart = targetOffset;
+                container.style.cursor = 'grabbing';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const containerWidth = container.clientWidth || 500;
+                const offsetChange = -(deltaX / containerWidth) * 3.5;
+                targetOffset = dragOffsetStart + offsetChange;
+
+                const N = filteredProducts.length;
+                targetOffset = Math.max(-0.5, Math.min(N - 0.5, targetOffset));
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                container.style.cursor = 'grab';
+
+                const N = filteredProducts.length;
+                targetOffset = Math.round(targetOffset);
+                targetOffset = Math.max(0, Math.min(N - 1, targetOffset));
+            });
+
+            // Touch Swipe (Mobile)
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                dragOffsetStart = targetOffset;
+            }, { passive: true });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                const containerWidth = container.clientWidth || 500;
+                const offsetChange = -(deltaX / containerWidth) * 3.5;
+                targetOffset = dragOffsetStart + offsetChange;
+
+                const N = filteredProducts.length;
+                targetOffset = Math.max(-0.5, Math.min(N - 0.5, targetOffset));
+            }, { passive: true });
+
+            container.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                const N = filteredProducts.length;
+                targetOffset = Math.round(targetOffset);
+                targetOffset = Math.max(0, Math.min(N - 1, targetOffset));
+            });
+        }
+
+        // Navigation Chevron Controls
+        function initLabsNavButtons() {
+            const prevBtn = document.getElementById('labs-prev-btn');
+            const nextBtn = document.getElementById('labs-next-btn');
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    targetOffset = Math.max(0, targetOffset - 1);
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    targetOffset = Math.min(filteredProducts.length - 1, targetOffset + 1);
+                });
+            }
+        }
+
+        // Run logic loops
+        animateLabsCarousel();
+
+        // Safe setup listener
+        document.addEventListener('DOMContentLoaded', () => {
+            initLabsDragEvents();
+            initLabsNavButtons();
+        });
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            initLabsDragEvents();
+            initLabsNavButtons();
+        }
+
         window.addEventListener('resize', () => {
-            updateStorefrontScrollParallax();
-            adjustFeaturedSectionHeight();
+            updateLabsCarouselLayout();
         }, { passive: true });
 
 
