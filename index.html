@@ -411,7 +411,7 @@
             flex-direction: column;
             background: linear-gradient(160deg, #0d1a35 0%, #0a1628 60%, #070e1f 100%);
             border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             overflow: visible;
             transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease;
             cursor: pointer;
@@ -424,24 +424,58 @@
             transform: translateY(-18px) rotateX(4deg) scale(1.03);
         }
 
-        .book-card.glow-green { box-shadow: 0 0 0 1px rgba(16,185,129,0.25), 0 8px 40px rgba(16,185,129,0.12), 0 20px 60px rgba(0,0,0,0.5); }
-        .book-card.glow-purple { box-shadow: 0 0 0 1px rgba(139,92,246,0.25), 0 8px 40px rgba(139,92,246,0.12), 0 20px 60px rgba(0,0,0,0.5); }
-        .book-card.glow-blue { box-shadow: 0 0 0 1px rgba(59,130,246,0.25), 0 8px 40px rgba(59,130,246,0.12), 0 20px 60px rgba(0,0,0,0.5); }
-        .book-card.glow-orange { box-shadow: 0 0 0 1px rgba(249,115,22,0.25), 0 8px 40px rgba(249,115,22,0.12), 0 20px 60px rgba(0,0,0,0.5); }
-        .book-card.glow-amber { box-shadow: 0 0 0 1px rgba(245,158,11,0.25), 0 8px 40px rgba(245,158,11,0.12), 0 20px 60px rgba(0,0,0,0.5); }
-        .book-card.glow-cyan { box-shadow: 0 0 0 1px rgba(6,182,212,0.25), 0 8px 40px rgba(6,182,212,0.12), 0 20px 60px rgba(0,0,0,0.5); }
+        .book-card.glow-green {
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25), 0 8px 40px rgba(16, 185, 129, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
 
-        .book-card.glow-green:hover { box-shadow: 0 0 0 1.5px rgba(16,185,129,0.5), 0 0 30px rgba(16,185,129,0.25), 0 25px 70px rgba(16,185,129,0.15), 0 35px 80px rgba(0,0,0,0.6); }
-        .book-card.glow-purple:hover { box-shadow: 0 0 0 1.5px rgba(139,92,246,0.5), 0 0 30px rgba(139,92,246,0.25), 0 25px 70px rgba(139,92,246,0.15), 0 35px 80px rgba(0,0,0,0.6); }
-        .book-card.glow-blue:hover { box-shadow: 0 0 0 1.5px rgba(59,130,246,0.5), 0 0 30px rgba(59,130,246,0.25), 0 25px 70px rgba(59,130,246,0.15), 0 35px 80px rgba(0,0,0,0.6); }
-        .book-card.glow-orange:hover { box-shadow: 0 0 0 1.5px rgba(249,115,22,0.5), 0 0 30px rgba(249,115,22,0.25), 0 25px 70px rgba(249,115,22,0.15), 0 35px 80px rgba(0,0,0,0.6); }
-        .book-card.glow-amber:hover { box-shadow: 0 0 0 1.5px rgba(245,158,11,0.5), 0 0 30px rgba(245,158,11,0.25), 0 25px 70px rgba(245,158,11,0.15), 0 35px 80px rgba(0,0,0,0.6); }
-        .book-card.glow-cyan:hover { box-shadow: 0 0 0 1.5px rgba(6,182,212,0.5), 0 0 30px rgba(6,182,212,0.25), 0 25px 70px rgba(6,182,212,0.15), 0 35px 80px rgba(0,0,0,0.6); }
+        .book-card.glow-purple {
+            box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.25), 0 8px 40px rgba(139, 92, 246, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card.glow-blue {
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 8px 40px rgba(59, 130, 246, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card.glow-orange {
+            box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.25), 0 8px 40px rgba(249, 115, 22, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card.glow-amber {
+            box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25), 0 8px 40px rgba(245, 158, 11, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card.glow-cyan {
+            box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.25), 0 8px 40px rgba(6, 182, 212, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-card.glow-green:hover {
+            box-shadow: 0 0 0 1.5px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.25), 0 25px 70px rgba(16, 185, 129, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-card.glow-purple:hover {
+            box-shadow: 0 0 0 1.5px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.25), 0 25px 70px rgba(139, 92, 246, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-card.glow-blue:hover {
+            box-shadow: 0 0 0 1.5px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.25), 0 25px 70px rgba(59, 130, 246, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-card.glow-orange:hover {
+            box-shadow: 0 0 0 1.5px rgba(249, 115, 22, 0.5), 0 0 30px rgba(249, 115, 22, 0.25), 0 25px 70px rgba(249, 115, 22, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-card.glow-amber:hover {
+            box-shadow: 0 0 0 1.5px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.25), 0 25px 70px rgba(245, 158, 11, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-card.glow-cyan:hover {
+            box-shadow: 0 0 0 1.5px rgba(6, 182, 212, 0.5), 0 0 30px rgba(6, 182, 212, 0.25), 0 25px 70px rgba(6, 182, 212, 0.15), 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
 
         .book-card-inner {
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             background: linear-gradient(160deg, #0f1e3a 0%, #0c1730 60%, #09132a 100%);
             height: 100%;
             display: flex;
@@ -460,8 +494,8 @@
             align-items: center;
             justify-content: center;
             z-index: 10;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            border: 2px solid rgba(255,255,255,0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.12);
         }
 
         .book-bookmark {
@@ -479,9 +513,9 @@
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             background: #0a1020;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .book-screen img {
@@ -506,17 +540,17 @@
             font-weight: 800;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             padding: 10px 0;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             transition: color 0.3s ease;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             cursor: pointer;
             font-family: 'JetBrains Mono', monospace;
         }
 
         .book-card:hover .touch-to-open-btn {
-            color: rgba(255,255,255,0.95);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .touch-hand-icon {
@@ -527,20 +561,50 @@
         }
 
         @keyframes touchPulse {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-3px) scale(1.1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateY(-3px) scale(1.1);
+                opacity: 1;
+            }
         }
 
         @keyframes bookFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
-        .book-float-1 { animation: bookFloat 3.5s ease-in-out infinite; }
-        .book-float-2 { animation: bookFloat 4.1s ease-in-out infinite 0.6s; }
-        .book-float-3 { animation: bookFloat 3.8s ease-in-out infinite 1.2s; }
-        .book-float-4 { animation: bookFloat 4.4s ease-in-out infinite 0.3s; }
-        .book-float-5 { animation: bookFloat 3.6s ease-in-out infinite 0.9s; }
+        .book-float-1 {
+            animation: bookFloat 3.5s ease-in-out infinite;
+        }
+
+        .book-float-2 {
+            animation: bookFloat 4.1s ease-in-out infinite 0.6s;
+        }
+
+        .book-float-3 {
+            animation: bookFloat 3.8s ease-in-out infinite 1.2s;
+        }
+
+        .book-float-4 {
+            animation: bookFloat 4.4s ease-in-out infinite 0.3s;
+        }
+
+        .book-float-5 {
+            animation: bookFloat 3.6s ease-in-out infinite 0.9s;
+        }
 
         .book-card:hover {
             animation-play-state: paused;
@@ -553,7 +617,7 @@
             transform: translateX(-50%);
             width: 80%;
             height: 16px;
-            background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
             filter: blur(6px);
             z-index: -1;
             transition: width 0.3s ease, opacity 0.3s ease;
@@ -568,9 +632,9 @@
         #section-featured .section-featured-bg {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(79,70,229,0.06) 0%, transparent 70%),
-                        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139,92,246,0.04) 0%, transparent 60%),
-                        radial-gradient(ellipse 50% 40% at 80% 30%, rgba(6,182,212,0.03) 0%, transparent 60%);
+            background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(79, 70, 229, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 30%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -586,13 +650,34 @@
             opacity: 0.5;
             transition: opacity 0.3s ease;
         }
-        .book-card.glow-green::before { background: linear-gradient(to bottom, #10b981, #059669); }
-        .book-card.glow-purple::before { background: linear-gradient(to bottom, #8b5cf6, #7c3aed); }
-        .book-card.glow-blue::before { background: linear-gradient(to bottom, #3b82f6, #2563eb); }
-        .book-card.glow-orange::before { background: linear-gradient(to bottom, #f97316, #ea580c); }
-        .book-card.glow-amber::before { background: linear-gradient(to bottom, #f59e0b, #d97706); }
-        .book-card.glow-cyan::before { background: linear-gradient(to bottom, #06b6d4, #0891b2); }
-        .book-card:hover::before { opacity: 1; }
+
+        .book-card.glow-green::before {
+            background: linear-gradient(to bottom, #10b981, #059669);
+        }
+
+        .book-card.glow-purple::before {
+            background: linear-gradient(to bottom, #8b5cf6, #7c3aed);
+        }
+
+        .book-card.glow-blue::before {
+            background: linear-gradient(to bottom, #3b82f6, #2563eb);
+        }
+
+        .book-card.glow-orange::before {
+            background: linear-gradient(to bottom, #f97316, #ea580c);
+        }
+
+        .book-card.glow-amber::before {
+            background: linear-gradient(to bottom, #f59e0b, #d97706);
+        }
+
+        .book-card.glow-cyan::before {
+            background: linear-gradient(to bottom, #06b6d4, #0891b2);
+        }
+
+        .book-card:hover::before {
+            opacity: 1;
+        }
 
         /* Filter tabs dark style */
         .book-filter-tab {
@@ -602,21 +687,23 @@
             font-weight: 700;
             font-family: 'JetBrains Mono', monospace;
             text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.45);
-            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.04);
             cursor: pointer;
             transition: all 0.25s ease;
             letter-spacing: 0.06em;
         }
+
         .book-filter-tab:hover {
-            border-color: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.75);
-            background: rgba(255,255,255,0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.07);
         }
+
         .book-filter-tab.active {
-            background: rgba(79,70,229,0.25);
-            border-color: rgba(99,102,241,0.6);
+            background: rgba(79, 70, 229, 0.25);
+            border-color: rgba(99, 102, 241, 0.6);
             color: #a5b4fc;
         }
 
@@ -639,25 +726,93 @@
             border: none;
             outline: none;
         }
+
         .book-action-preview {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
         }
-        .book-action-preview:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+        .book-action-preview:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
         .book-action-demo {
-            background: rgba(245,158,11,0.12);
-            border: 1px solid rgba(245,158,11,0.25);
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.25);
             color: #fbbf24;
         }
-        .book-action-demo:hover { background: rgba(245,158,11,0.22); }
+
+        .book-action-demo:hover {
+            background: rgba(245, 158, 11, 0.22);
+        }
+
         .book-action-buy {
             background: linear-gradient(135deg, #4F46E5, #7C3AED);
             border: none;
             color: #fff;
-            box-shadow: 0 4px 15px rgba(79,70,229,0.3);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
         }
-        .book-action-buy:hover { opacity: 0.9; transform: scale(1.02); }
+
+        .book-action-buy:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* ============================================================
+           MOTION TEXT — mask reveal & GSAP animation utilities
+        ============================================================ */
+        .ms-mw {
+            overflow: hidden;
+            display: inline-block;
+        }
+        .ms-mi {
+            display: block;
+            transform: translateY(105%);
+            will-change: transform;
+        }
+        .ms-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #a5b4fc;
+            background: rgba(79,70,229,.08);
+            border: 1px solid rgba(99,102,241,.2);
+            border-radius: 100px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(14px);
+        }
+        .ms-badge-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #818cf8;
+            box-shadow: 0 0 8px #818cf8;
+            animation: ms-pdot 2s ease-in-out infinite;
+        }
+        @keyframes ms-pdot {
+            0%,100%{opacity:1;transform:scale(1);}
+            50%{opacity:.45;transform:scale(.65);}
+        }
+        .ms-lead-anim {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+        .ms-btns-anim {
+            opacity: 0;
+            transform: scale(.95) translateY(10px);
+        }
+        .ms-orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            will-change: transform;
+            z-index: 0;
+        }
     </style>
 </head>
 
@@ -998,19 +1153,24 @@
                     class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 space-y-8">
 
                     <!-- Top Row: Badge + Headline + Description (left 60%, right 40% is canvas) -->
-                    <div class="max-w-2xl space-y-5">
-                        <span
-                            class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-950/60 bg-indigo-950/40 text-[11px] text-indigo-400 font-bold uppercase tracking-wider">
-                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400 animate-pulse"></i>
+                    <!-- Parallax orbs (motion text) -->
+                    <div class="ms-orb" id="ms-orb-a" style="width:560px;height:560px;background:radial-gradient(circle,rgba(79,70,229,.09),transparent 70%);top:-30%;left:-8%;" aria-hidden="true"></div>
+                    <div class="ms-orb" id="ms-orb-b" style="width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);bottom:-10%;right:5%;" aria-hidden="true"></div>
+
+                    <div class="max-w-2xl space-y-5" style="position:relative;z-index:2;">
+                        <!-- Motion badge -->
+                        <div class="ms-badge" id="ms-hero-badge">
+                            <span class="ms-badge-dot"></span>
                             #1 Marketplace Produk Digital Premium
-                        </span>
+                        </div>
 
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
                             id="web-hero-title">
-                            Solusi Digital untuk <span class="text-gradient">Produktivitas</span> dan Operasional Modern
+                            <span class="ms-mw"><span class="ms-mi">Solusi Digital untuk</span></span><br>
+                            <span class="ms-mw"><span class="ms-mi"><span class="text-gradient">Produktivitas</span> dan Operasional Modern</span></span>
                         </h1>
 
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal" id="web-hero-desc">
+                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal ms-lead-anim" id="web-hero-desc">
                             Template Excel, Dashboard Google Apps Script, Source Code, AI Automation, dan Tools Siap
                             Pakai
                             untuk mempercepat pekerjaan Anda.
@@ -1275,7 +1435,8 @@
                 <div id="section-featured-wrapper" class="relative h-[300vh]">
                     <!-- SECTION 4 - PRODUK UNGGULAN (3D BOOK CARD DARK DESIGN) -->
                     <section id="section-featured"
-                        class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden relative" style="background: linear-gradient(135deg, #060b18 0%, #0d1426 50%, #080e1c 100%);">
+                        class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden relative"
+                        style="background: linear-gradient(135deg, #060b18 0%, #0d1426 50%, #080e1c 100%);">
 
                         <!-- Background ambient effects -->
                         <div class="section-featured-bg"></div>
@@ -1285,7 +1446,8 @@
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                 <div>
                                     <h2 class="text-2xl font-extrabold text-white">Produk Unggulan</h2>
-                                    <p class="text-xs text-slate-400 mt-1">Listing produk pilihan praktisi yang paling dicari saat ini.</p>
+                                    <p class="text-xs text-slate-400 mt-1">Listing produk pilihan praktisi yang paling
+                                        dicari saat ini.</p>
                                 </div>
 
                                 <!-- Category filter switcher tabs (dark style) -->
@@ -1301,7 +1463,8 @@
 
                             <!-- Products Book Grid -->
                             <div id="grid-store-products"
-                                class="flex gap-8 overflow-x-auto pb-8 pt-10 select-none scrollbar-hide" style="padding-left: 12px; padding-right: 12px;">
+                                class="flex gap-8 overflow-x-auto pb-8 pt-10 select-none scrollbar-hide"
+                                style="padding-left: 12px; padding-right: 12px;">
                                 <!-- Rendered dynamic book cards -->
                             </div>
                         </div>
@@ -1313,7 +1476,9 @@
                 <!-- SECTION 6 - TESTIMONI -->
                 <section id="section-testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-16 pb-8">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Apa Kata Pelanggan Kami</h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" id="ms-testi-h2">
+                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Apa Kata Pelanggan Kami</span></span>
+                        </h2>
                         <p class="text-sm text-slate-500 dark:text-gray-400">Tingkat efisiensi kerja yang dialami secara
                             nyata setelah implementasi.</p>
                     </div>
@@ -1403,7 +1568,9 @@
                 <!-- SECTION 7 - FAQ ACCORDION -->
                 <section id="section-faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 py-12">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Pertanyaan Umum</h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" id="ms-faq-h2">
+                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Pertanyaan Umum</span></span>
+                        </h2>
                         <p class="text-sm text-slate-500 dark:text-gray-400">Jawaban instan seputar pengiriman produk,
                             format file, dan lisensi.</p>
                     </div>
@@ -1443,7 +1610,7 @@
                                     Ya! Seluruh pelanggan Mine Stack mendapatkan pembaruan (lifetime updates) gratis
                                     untuk
                                     setiap modul yang mengalami penyesuaian fungsional tanpa ada tambahan biaya
-                                    berlangganan.
+                                     berlangganan.
                                 </p>
                             </div>
                         </div>
@@ -1452,43 +1619,27 @@
 
                 <!-- SECTION 8 - TENTANG KAMI / CREATOR PROFILE -->
                 <section id="section-about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div
-                        class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border p-8 rounded-2xl relative overflow-hidden">
+                    <div class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border p-8 rounded-2xl relative overflow-hidden">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-4 text-center">
                                 <div class="w-32 h-32 rounded-full mx-auto bg-gradient-premium p-[3px] shadow-lg">
                                     <img src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY"
                                         class="w-full h-full object-cover rounded-full" alt="Creator Profile Image">
                                 </div>
-                                <h4
-                                    class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">
-                                    Dermawan Purba</h4>
-                                <span
-                                    class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior
-                                    Spv Maintenance Planner</span>
+                                <h4 class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">Dermawan Purba</h4>
+                                <span class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior Spv Maintenance Planner</span>
                             </div>
                             <div class="md:col-span-8 space-y-4">
-                                <span
-                                    class="text-[10px] font-bold text-premium-indigo uppercase tracking-widest font-mono">Arsitek
-                                    Sistem Digital</span>
-                                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Didesain Langsung
-                                    oleh
-                                    Praktisi Industri</h3>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed">
-                                    Dibangun oleh praktisi Maintenance Planner dan pengembang sistem digital yang
-                                    berfokus
-                                    pada produktivitas industri, maintenance, dashboard, dan otomasi kerja. Kami
-                                    merancang
-                                    setiap baris kode dan bagan KPI agar teruji andal saat disinkronisasikan ke dalam
-                                    workflow operasional harian Anda.
+                                <span class="text-[10px] font-bold text-premium-indigo uppercase tracking-widest font-mono">Arsitek Sistem Digital</span>
+                                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="ms-about-h3">
+                                    <span class="ms-mw" style="display:block;"><span class="ms-mi">Didesain Langsung oleh Praktisi Industri</span></span>
+                                </h3>
+                                <p class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed" id="ms-about-desc">
+                                    Dibangun oleh praktisi Maintenance Planner dan pengembang sistem digital yang berfokus pada produktivitas industri, maintenance, dashboard, dan otomasi kerja. Kami merancang setiap baris kode dan bagan KPI agar teruji andal saat disinkronisasikan ke dalam workflow operasional harian Anda.
                                 </p>
                                 <div class="flex flex-wrap gap-2 pt-1">
-                                    <span
-                                        class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">EXCEL
-                                        EXTREME PIPELINES</span>
-                                    <span
-                                        class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">LOOKER
-                                        REPORT SUITE</span>
+                                    <span class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">EXCEL EXTREME PIPELINES</span>
+                                    <span class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">LOOKER REPORT SUITE</span>
                                 </div>
                             </div>
                         </div>
@@ -1496,16 +1647,14 @@
                 </section>
 
                 <!-- SECTION 9 - CTA AKHIR -->
-                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-                    <div
-                        class="bg-gradient-premium p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl">
+                <section id="section-cta" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                    <div class="bg-gradient-premium p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl">
                         <div class="relative z-10 max-w-xl mx-auto space-y-5">
-                            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">Siap Meningkatkan
-                                Produktivitas Anda?</h2>
-                            <p class="text-xs text-indigo-100 font-light leading-relaxed">
-                                Miliki segera rangkaian lengkap template dashboard dan instrumen otomasi premium
-                                penunjang
-                                performa tim Anda di Lynk.id.
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight" id="ms-cta-h2">
+                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Siap Meningkatkan Produktivitas Anda?</span></span>
+                            </h2>
+                            <p class="text-xs text-indigo-100 font-light leading-relaxed" id="ms-cta-desc">
+                                Miliki segera rangkaian lengkap template dashboard dan instrumen otomasi premium penunjang performa tim Anda di Lynk.id.
                             </p>
                             <a href="https://lynk.id" target="_blank"
                                 class="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-indigo-900 font-bold text-xs rounded-xl shadow-lg hover:scale-105 transition-all uppercase tracking-wider">
@@ -3922,7 +4071,7 @@
                 'PEMBELAJARAN': { glow: 'glow-orange', iconBg: 'linear-gradient(135deg,#c2410c,#f97316)', iconColor: '#fdba74', icon: 'youtube', bookmark: '#f97316' },
                 'DEFAULT': { glow: 'glow-amber', iconBg: 'linear-gradient(135deg,#b45309,#f59e0b)', iconColor: '#fde68a', icon: 'package', bookmark: '#f59e0b' }
             };
-            const floatClasses = ['book-float-1','book-float-2','book-float-3','book-float-4','book-float-5'];
+            const floatClasses = ['book-float-1', 'book-float-2', 'book-float-3', 'book-float-4', 'book-float-5'];
 
             container.innerHTML = list.map((p, i) => {
                 const defaultImg = p.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400';
@@ -3936,7 +4085,7 @@
                 const safePass = (p.pass_demo || '-').replace(/'/g, '');
                 const displayName = p.name.length > 28 ? p.name.substring(0, 28) + '...' : p.name;
                 const displayDesc = p.desc.substring(0, 65) + (p.desc.length > 65 ? '...' : '');
-                const stars = Array.from({length: 5}, (_, si) => `<svg width="12" height="12" viewBox="0 0 24 24" fill="${si < Math.round(ratingNum) ? '#facc15' : 'none'}" stroke="#facc15" stroke-width="2" style="display:inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('');
+                const stars = Array.from({ length: 5 }, (_, si) => `<svg width="12" height="12" viewBox="0 0 24 24" fill="${si < Math.round(ratingNum) ? '#facc15' : 'none'}" stroke="#facc15" stroke-width="2" style="display:inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('');
                 const priceStr = parseInt(p.price).toLocaleString('id-ID');
                 const iconSvg = getIconPath(theme.icon);
 
@@ -5207,6 +5356,7 @@
         </button>
     </div>
 
+
     <script>
         function toggleContactPopup() {
             const popup = document.getElementById('contact-popup');
@@ -5218,6 +5368,157 @@
                 popup.classList.add('hidden');
             }
         }
+    </script>
+
+    <!-- MOTION TEXT: GSAP hero text animation only (no Lenis) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+    /* Fallback: jika GSAP gagal fire, tampilkan teks setelah 2s */
+    (function() {
+        var t = setTimeout(function() {
+            var b = document.getElementById('ms-hero-badge');
+            var d = document.getElementById('web-hero-desc');
+            var m = document.querySelectorAll('.ms-mi');
+            if (b) b.style.cssText += 'opacity:1!important;transform:none!important;';
+            if (d) d.style.cssText  += 'opacity:1!important;transform:none!important;';
+            m.forEach(function(el){ el.style.cssText += 'transform:translateY(0)!important;'; });
+        }, 2000);
+        window._msFallbackTimer = t;
+    })();
+    </script>
+
+    <script>
+    window.addEventListener('load', function() {
+        clearTimeout(window._msFallbackTimer);
+        if (typeof gsap === 'undefined') return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ─────────────────────────────────────────────────────────────
+           HERO: entrance animation (on page load, fires immediately)
+           CSS .ms-mi { transform:translateY(105%) } handles initial state
+        ───────────────────────────────────────────────────────────── */
+        var badge = document.getElementById('ms-hero-badge');
+        var masks = document.querySelectorAll('#web-hero-title .ms-mi');
+        var desc  = document.getElementById('web-hero-desc');
+
+        if (badge) gsap.set(badge, { opacity: 0, y: 14 });
+        if (masks.length) gsap.set(masks, { y: '105%' });
+        if (desc)  gsap.set(desc,  { opacity: 0, y: 18 });
+
+        var tl = gsap.timeline({ delay: 0.3 });
+        if (badge)        tl.to(badge, { opacity: 1, y: 0,   duration: 0.6,  ease: 'power4.out' });
+        if (masks.length) tl.to(masks, { y: '0%',            duration: 0.85, ease: 'power4.out', stagger: 0.13 }, badge ? '-=0.3' : 0);
+        if (desc)         tl.to(desc,  { opacity: 1, y: 0,   duration: 0.7,  ease: 'power4.out' }, '-=0.4');
+
+        /* ─────────────────────────────────────────────────────────────
+           PARALLAX ORBS — hero only
+        ───────────────────────────────────────────────────────────── */
+        [['#ms-orb-a','#section-hero',0.16],['#ms-orb-b','#section-hero',-0.12]].forEach(function(it) {
+            var orb = document.querySelector(it[0]);
+            var sec = document.querySelector(it[1]);
+            if (!orb || !sec) return;
+            gsap.to(orb, {
+                y: function(){ return sec.offsetHeight * it[2]; },
+                ease: 'none',
+                scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
+            });
+        });
+
+        /* ═══════════════════════════════════════════════════════════════
+           BELOW-FOLD SCROLL REVEAL — IntersectionObserver
+           
+           Kenapa IntersectionObserver, bukan ScrollTrigger?
+           → ScrollTrigger kalkulasi posisi saat setup (window.load).
+             Konten dinamis (produk, dll.) yang load setelahnya ubah
+             tinggi halaman → posisi trigger jadi salah → animasi tidak
+             fire saat scroll pertama, baru benar setelah reload.
+           
+           → IntersectionObserver deteksi visibilitas secara real-time,
+             tidak perlu tahu posisi awal. Selalu benar, tanpa refresh.
+        ═══════════════════════════════════════════════════════════════ */
+
+        /* ── Observer 1: Mask-reveal heading (.ms-mi) ─────────────── */
+        /* CSS .ms-mi { transform:translateY(105%) } sudah handle       */
+        /* initial state. Observer hanya trigger gsap.to ke y:0%.      */
+        var maskObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                var mis = entry.target.querySelectorAll('.ms-mi');
+                if (mis.length) {
+                    gsap.to(mis, {
+                        y: '0%',
+                        duration: 0.82,
+                        ease: 'power4.out',
+                        stagger: 0.09,
+                        overwrite: 'auto',
+                    });
+                }
+                maskObserver.unobserve(entry.target);
+            });
+        }, {
+            /* rootMargin bottom negatif = element harus sudah 15%
+               masuk viewport baru trigger (seperti start:'top 85%') */
+            rootMargin: '0px 0px -12% 0px',
+            threshold: 0,
+        });
+
+        /* ── Observer 2: Fade + slide-up elements ─────────────────── */
+        /* Elemen mulai opacity normal (tidak disembunyikan CSS).       */
+        /* Observer tambahkan class 'ms-anim-pending' sesaat sebelum   */
+        /* elemen masuk, lalu GSAP animate dari opacity:0 ke 1.        */
+        /* Karena fromTo + immediateRender:false, elemen TIDAK          */
+        /* tersembunyi kecuali saat animasi sedang jalan.              */
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                var delay = parseFloat(el.getAttribute('data-ms-delay') || '0');
+                gsap.fromTo(el,
+                    { opacity: 0, y: 18 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.72,
+                        ease: 'power4.out',
+                        delay: delay,
+                        immediateRender: false,
+                        overwrite: 'auto',
+                    }
+                );
+                fadeObserver.unobserve(el);
+            });
+        }, {
+            rootMargin: '0px 0px -8% 0px',
+            threshold: 0,
+        });
+
+        /* ── Daftarkan elemen heading ke maskObserver ──────────────── */
+        ['ms-testi-h2', 'ms-faq-h2', 'ms-about-h3', 'ms-cta-h2'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) maskObserver.observe(el);
+        });
+
+        /* ── Daftarkan elemen teks ke fadeObserver ─────────────────── */
+        /* Set data-ms-delay untuk stagger timing                       */
+        [
+            { sel: '#section-testimonials .text-center p', delay: 0.18 },
+            { sel: '#section-faq .text-center p',          delay: 0.18 },
+            { sel: '#ms-about-desc',                        delay: 0.22 },
+            { sel: '#ms-cta-desc',                          delay: 0.22 },
+            { sel: '#section-cta a',                        delay: 0.38 },
+        ].forEach(function(item) {
+            var el = document.querySelector(item.sel);
+            if (!el) return;
+            el.setAttribute('data-ms-delay', item.delay);
+            fadeObserver.observe(el);
+        });
+
+        /* ── ScrollTrigger hanya untuk parallax orbs (sudah ada) ──── */
+        /* Tidak perlu refresh karena orbs ada di hero yang statis.    */
+    });
     </script>
 </body>
 
