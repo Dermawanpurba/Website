@@ -453,11 +453,13 @@
             overflow: hidden;
             display: inline-block;
         }
+
         .ms-mi {
             display: block;
             transform: translateY(105%);
             will-change: transform;
         }
+
         .ms-badge {
             display: inline-flex;
             align-items: center;
@@ -465,33 +467,48 @@
             font-size: 11px;
             font-weight: 600;
             color: #a5b4fc;
-            background: rgba(79,70,229,.08);
-            border: 1px solid rgba(99,102,241,.2);
+            background: rgba(79, 70, 229, .08);
+            border: 1px solid rgba(99, 102, 241, .2);
             border-radius: 100px;
             padding: 6px 16px;
             margin-bottom: 20px;
             opacity: 0;
             transform: translateY(14px);
         }
+
         .ms-badge-dot {
-            width: 6px; height: 6px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: #818cf8;
             box-shadow: 0 0 8px #818cf8;
             animation: ms-pdot 2s ease-in-out infinite;
         }
+
         @keyframes ms-pdot {
-            0%,100%{opacity:1;transform:scale(1);}
-            50%{opacity:.45;transform:scale(.65);}
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .45;
+                transform: scale(.65);
+            }
         }
+
         .ms-lead-anim {
             opacity: 0;
             transform: translateY(18px);
         }
+
         .ms-btns-anim {
             opacity: 0;
             transform: scale(.95) translateY(10px);
         }
+
         .ms-orb {
             position: absolute;
             border-radius: 50%;
@@ -546,6 +563,7 @@
 
                 <!-- Navigation Actions Right -->
                 <div class="flex items-center gap-3">
+
                     <!-- Theme Toggle -->
                     <button onclick="toggleTheme()"
                         class="p-2 rounded-xl border border-slate-800 hover:bg-slate-800/40 text-slate-300 transition-all">
@@ -840,8 +858,12 @@
 
                     <!-- Top Row: Badge + Headline + Description (left 60%, right 40% is canvas) -->
                     <!-- Parallax orbs (motion text) -->
-                    <div class="ms-orb" id="ms-orb-a" style="width:560px;height:560px;background:radial-gradient(circle,rgba(79,70,229,.09),transparent 70%);top:-30%;left:-8%;" aria-hidden="true"></div>
-                    <div class="ms-orb" id="ms-orb-b" style="width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);bottom:-10%;right:5%;" aria-hidden="true"></div>
+                    <div class="ms-orb" id="ms-orb-a"
+                        style="width:560px;height:560px;background:radial-gradient(circle,rgba(79,70,229,.09),transparent 70%);top:-30%;left:-8%;"
+                        aria-hidden="true"></div>
+                    <div class="ms-orb" id="ms-orb-b"
+                        style="width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);bottom:-10%;right:5%;"
+                        aria-hidden="true"></div>
 
                     <div class="max-w-2xl space-y-5" style="position:relative;z-index:2;">
                         <!-- Motion badge -->
@@ -853,10 +875,12 @@
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
                             id="web-hero-title">
                             <span class="ms-mw"><span class="ms-mi">Solusi Digital untuk</span></span><br>
-                            <span class="ms-mw"><span class="ms-mi"><span class="text-gradient">Produktivitas</span> dan Operasional Modern</span></span>
+                            <span class="ms-mw"><span class="ms-mi"><span class="text-gradient">Produktivitas</span> dan
+                                    Operasional Modern</span></span>
                         </h1>
 
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal ms-lead-anim" id="web-hero-desc">
+                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal ms-lead-anim"
+                            id="web-hero-desc">
                             Template Excel, Dashboard Google Apps Script, Source Code, AI Automation, dan Tools Siap
                             Pakai
                             untuk mempercepat pekerjaan Anda.
@@ -975,13 +999,14 @@
                             <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-indigo-400"></i>
                             Platform Pembelajaran Eksklusif
                         </span>
-                        <h2
-                            class="text-2xl md:text-3xl font-extrabold text-slate-100 dark:text-white video-title-shadow">
-                            Tersedia Juga <span
-                                class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Kelas
-                                Pembelajaran</span></h2>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md"
+                            id="ms-learning-h2">
+                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Tersedia Juga <span
+                                        class="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-300 dark:to-purple-300 bg-clip-text text-transparent">Kelas
+                                        Pembelajaran</span></span></span>
+                        </h2>
                         <p
-                            class="text-sm text-slate-300 dark:text-slate-300 max-w-xl mx-auto leading-relaxed video-text-shadow font-medium">
+                            class="text-sm text-slate-700 dark:text-slate-200 max-w-xl mx-auto leading-relaxed font-medium">
                             Lebih dari sekedar produk digital — dapatkan akses ke kelas, video tutorial, PDF panduan,
                             dan
                             source code lengkap yang dirancang untuk praktisi modern.
@@ -996,66 +1021,107 @@
                         <!-- Background Video (optimized via Cloudinary: q_auto, f_auto, w_1280) -->
                         <video id="learning-hero-video" autoplay loop muted playsinline preload="none"
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-                            <source
-                                src="https://res.cloudinary.com/df4kb9dla/video/upload/q_auto,f_auto,w_1280/v1783692490/hero_promosi.mp4"
+                            <source src="https://res.cloudinary.com/df4kb9dla/video/upload/v1783733592/motion2.mp4"
                                 type="video/mp4">
                         </video>
                         <!-- Vignette edge fade -->
-                        <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 55%,rgba(2,6,23,0.35) 100%);z-index:1;"></div>
+                        <div
+                            style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 55%,rgba(2,6,23,0.35) 100%);z-index:1;">
+                        </div>
                     </div>
                 </section>
 
 
 
                 <!-- SECTION 4 - PRODUK UNGGULAN (GOOGLE LABS DESIGN) -->
-                <section id="section-featured" class="relative py-24 overflow-hidden select-none transition-colors duration-500 bg-[#f6f3ed] dark:bg-[#0b0f19] border-t border-b border-slate-200/50 dark:border-slate-800/40">
+                <section id="section-featured"
+                    class="relative py-24 overflow-hidden select-none transition-colors duration-500 bg-[#f6f3ed] dark:bg-[#0b0f19] border-t border-b border-slate-200/50 dark:border-slate-800/40">
                     <!-- Background Blobs -->
                     <!-- Blue Blob (Left) -->
-                    <div class="absolute left-[-15vw] top-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#4285f4]/20 dark:bg-[#4285f4]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0"></div>
+                    <div
+                        class="absolute left-[-15vw] top-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#4285f4]/20 dark:bg-[#4285f4]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0">
+                    </div>
                     <!-- Green Blob (Top Right) -->
-                    <div class="absolute right-[10vw] top-[-5vh] w-[40vw] h-[40vw] md:w-[30vw] md:h-[30vw] rounded-full bg-[#34a853]/20 dark:bg-[#10b981]/10 blur-[70px] md:blur-[80px] pointer-events-none z-0"></div>
+                    <div
+                        class="absolute right-[10vw] top-[-5vh] w-[40vw] h-[40vw] md:w-[30vw] md:h-[30vw] rounded-full bg-[#34a853]/20 dark:bg-[#10b981]/10 blur-[70px] md:blur-[80px] pointer-events-none z-0">
+                    </div>
                     <!-- Pink Blob (Bottom Right) -->
-                    <div class="absolute right-[-15vw] bottom-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#ec4899]/20 dark:bg-[#ec4899]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0"></div>
+                    <div
+                        class="absolute right-[-15vw] bottom-[5vh] w-[45vw] h-[45vw] md:w-[35vw] md:h-[35vw] rounded-full bg-[#ec4899]/20 dark:bg-[#ec4899]/15 blur-[80px] md:blur-[100px] pointer-events-none z-0">
+                    </div>
 
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col items-center">
-                        
+
                         <!-- Header Row with Overlapping Shape -->
                         <div class="relative text-center mb-10">
                             <!-- Soft overlapping green bubble behind text -->
-                            <div class="absolute left-[38%] top-[-30%] w-[120px] h-[120px] bg-[#00ff88]/30 dark:bg-[#10b981]/15 rounded-full blur-[25px] pointer-events-none"></div>
-                            
-                            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white relative z-10 leading-tight">
-                                Be the first to expe<span class="text-[#ec4899]">riment</span>
+                            <div
+                                class="absolute left-[38%] top-[-30%] w-[120px] h-[120px] bg-[#00ff88]/30 dark:bg-[#10b981]/15 rounded-full blur-[25px] pointer-events-none">
+                            </div>
+
+                            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white relative z-10 leading-tight drop-shadow-sm dark:drop-shadow-md"
+                                id="ms-experiment-h2">
+                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Be the first to expe<span
+                                            class="text-pink-600 dark:text-pink-400">riment</span></span></span>
                             </h2>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 font-medium uppercase tracking-widest">PRODUK UNGGULAN MINESTACK</p>
+                            <p
+                                class="text-xs text-slate-600 dark:text-slate-300 mt-3 font-bold uppercase tracking-widest">
+                                PRODUK UNGGULAN MINESTACK</p>
                         </div>
 
                         <!-- Carousel Container -->
-                        <div id="labs-carousel-container" class="relative w-full overflow-hidden flex flex-col items-center h-[460px] justify-center cursor-grab active:cursor-grabbing">
-                            <div id="labs-carousel-track" class="relative w-full h-[410px] flex items-center justify-center">
+                        <div id="labs-carousel-container"
+                            class="relative w-full overflow-hidden flex flex-col items-center h-[460px] justify-center cursor-grab active:cursor-grabbing">
+                            <div id="labs-carousel-track"
+                                class="relative w-full h-[410px] flex items-center justify-center">
                                 <!-- Dynamically populated cards will go here -->
                             </div>
                         </div>
 
                         <!-- Navigation Controls -->
                         <div class="flex items-center gap-4 mt-4 z-20">
-                            <button id="labs-prev-btn" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            <button id="labs-prev-btn"
+                                class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
                             </button>
-                            <button id="labs-next-btn" class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            <button id="labs-next-btn"
+                                class="w-10 h-10 rounded-full flex items-center justify-center bg-[#eae6dd] dark:bg-[#1e293b] text-slate-800 dark:text-white border border-slate-300/20 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
                             </button>
                         </div>
 
+                        <!-- Search Input -->
+                        <div class="w-full max-w-md mx-auto mt-6 z-20 px-4 relative group">
+                            <i data-lucide="search" class="absolute left-7 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors"></i>
+                            <input type="text" id="storefront-search-input" placeholder="Cari produk (Tekan Ctrl+K)..." 
+                                class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-full py-2.5 pl-10 pr-4 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm"
+                                oninput="handleSearchInput()">
+                        </div>
+
                         <!-- Category Filters (Pills) -->
-                        <div class="flex flex-wrap justify-center gap-2 mt-8 z-20" id="labs-category-filters">
+                        <div class="flex flex-wrap justify-center gap-2 mt-4 z-20" id="labs-category-filters">
                             <!-- Will be dynamically populated with labels.google-style pills -->
                         </div>
 
                         <!-- Bottom Description adaptation -->
                         <div class="max-w-2xl text-center mt-12 z-20 px-4">
-                            <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
-                                Temukan <span class="text-slate-900 dark:text-white font-bold">inovasi terbaru kami</span> dan bantu membentuk <span class="text-slate-900 dark:text-white font-bold">masa depan digitalisasi pertambangan</span>. Dapatkan <span class="text-slate-900 dark:text-white font-bold">akses cepat</span>, bagikan <span class="text-slate-900 dark:text-white font-bold">umpan balik Anda</span>, dan bantu ubah teknologi ini menjadi <span class="text-[#ec4899] font-bold">produk yang Anda gunakan setiap hari</span>.
+                            <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed"
+                                id="ms-innovation-p">
+                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Temukan <span
+                                            class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">inovasi terbaru kami</span>
+                                        dan bantu membentuk <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">masa
+                                            depan digitalisasi pertambangan</span>. Dapatkan <span
+                                            class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">akses cepat</span>, bagikan
+                                        <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">umpan balik Anda</span>,
+                                        dan bantu ubah teknologi ini menjadi <span
+                                            class="text-pink-600 dark:text-pink-400 font-bold drop-shadow-sm dark:drop-shadow-md">produk yang Anda gunakan setiap
+                                            hari</span>.</span></span>
                             </p>
                         </div>
                     </div>
@@ -1066,10 +1132,11 @@
                 <!-- SECTION 6 - TESTIMONI -->
                 <section id="section-testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-16 pb-8">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" id="ms-testi-h2">
-                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Apa Kata Pelanggan Kami</span></span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md" id="ms-testi-h2">
+                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Apa Kata Pelanggan
+                                    Kami</span></span>
                         </h2>
-                        <p class="text-sm text-slate-500 dark:text-gray-400">Tingkat efisiensi kerja yang dialami secara
+                        <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">Tingkat efisiensi kerja yang dialami secara
                             nyata setelah implementasi.</p>
                     </div>
 
@@ -1158,11 +1225,10 @@
                 <!-- SECTION 7 - FAQ ACCORDION -->
                 <section id="section-faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 py-12">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" id="ms-faq-h2">
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md" id="ms-faq-h2">
                             <span class="ms-mw" style="display:block;"><span class="ms-mi">Pertanyaan Umum</span></span>
                         </h2>
-                        <p class="text-sm text-slate-500 dark:text-gray-400">Jawaban instan seputar pengiriman produk,
-                            format file, dan lisensi.</p>
+                        <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">Jawaban instan seputar pengiriman produk, format file, dan lisensi.</p>
                     </div>
 
                     <div class="space-y-3">
@@ -1176,7 +1242,7 @@
                             </button>
                             <div id="faq-ans-0" class="max-h-0 overflow-hidden transition-all duration-300">
                                 <p
-                                    class="p-5 pt-0 text-xs text-slate-500 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
+                                    class="p-5 pt-0 text-xs text-slate-600 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
                                     Transaksi Anda di Lynk.id diproses secara instan. Begitu pembayaran dikonfirmasi,
                                     tautan
                                     pengunduhan folder penyimpanan awan berisikan file template/source code akan
@@ -1196,11 +1262,28 @@
                             </button>
                             <div id="faq-ans-1" class="max-h-0 overflow-hidden transition-all duration-300">
                                 <p
-                                    class="p-5 pt-0 text-xs text-slate-500 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
+                                    class="p-5 pt-0 text-xs text-slate-600 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
                                     Ya! Seluruh pelanggan Mine Stack mendapatkan pembaruan (lifetime updates) gratis
                                     untuk
                                     setiap modul yang mengalami penyesuaian fungsional tanpa ada tambahan biaya
-                                     berlangganan.
+                                    berlangganan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="border border-premium-lightBorder dark:border-premium-border bg-white dark:bg-premium-card rounded-2xl overflow-hidden transition-all duration-300">
+                            <button onclick="toggleFaq(2)"
+                                class="w-full flex items-center justify-between p-5 text-left font-bold text-sm text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-gray-800/20">
+                                <span>Jika saya mendaftar member apa yang saya dapatkan?</span>
+                                <i id="faq-icon-2" data-lucide="plus"
+                                    class="w-4 h-4 text-premium-indigo transition-all"></i>
+                            </button>
+                            <div id="faq-ans-2" class="max-h-0 overflow-hidden transition-all duration-300">
+                                <p
+                                    class="p-5 pt-0 text-xs text-slate-600 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
+                                    Fasilitas belajar dgn modul lengkap dari pdf dan video pembelajaran, source code
+                                    webapp demo yang terus di update gratis.
                                 </p>
                             </div>
                         </div>
@@ -1209,27 +1292,42 @@
 
                 <!-- SECTION 8 - TENTANG KAMI / CREATOR PROFILE -->
                 <section id="section-about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border p-8 rounded-2xl relative overflow-hidden">
+                    <div
+                        class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border p-8 rounded-2xl relative overflow-hidden">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-4 text-center">
                                 <div class="w-32 h-32 rounded-full mx-auto bg-gradient-premium p-[3px] shadow-lg">
                                     <img src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY"
                                         class="w-full h-full object-cover rounded-full" alt="Creator Profile Image">
                                 </div>
-                                <h4 class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">Dermawan Purba</h4>
-                                <span class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior Spv Maintenance Planner</span>
+                                <h4
+                                    class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">
+                                    Dermawan Purba</h4>
+                                <span
+                                    class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior
+                                    Spv Maintenance Planner</span>
                             </div>
                             <div class="md:col-span-8 space-y-4">
-                                <span class="text-[10px] font-bold text-premium-indigo uppercase tracking-widest font-mono">Arsitek Sistem Digital</span>
+                                <span
+                                    class="text-[10px] font-bold text-premium-indigo uppercase tracking-widest font-mono">Arsitek
+                                    Sistem Digital</span>
                                 <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="ms-about-h3">
-                                    <span class="ms-mw" style="display:block;"><span class="ms-mi">Didesain Langsung oleh Praktisi Industri</span></span>
+                                    <span class="ms-mw" style="display:block;"><span class="ms-mi">Didesain Langsung
+                                            oleh Praktisi Industri</span></span>
                                 </h3>
                                 <p class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed" id="ms-about-desc">
-                                    Dibangun oleh praktisi Maintenance Planner dan pengembang sistem digital yang berfokus pada produktivitas industri, maintenance, dashboard, dan otomasi kerja. Kami merancang setiap baris kode dan bagan KPI agar teruji andal saat disinkronisasikan ke dalam workflow operasional harian Anda.
+                                    Dibangun oleh praktisi Maintenance Planner dan pengembang sistem digital yang
+                                    berfokus pada produktivitas industri, maintenance, dashboard, dan otomasi kerja.
+                                    Kami merancang setiap baris kode dan bagan KPI agar teruji andal saat
+                                    disinkronisasikan ke dalam workflow operasional harian Anda.
                                 </p>
                                 <div class="flex flex-wrap gap-2 pt-1">
-                                    <span class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">EXCEL EXTREME PIPELINES</span>
-                                    <span class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">LOOKER REPORT SUITE</span>
+                                    <span
+                                        class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">EXCEL
+                                        EXTREME PIPELINES</span>
+                                    <span
+                                        class="bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-950 text-premium-indigo font-mono text-[9px] font-bold px-2 py-1 rounded">GOOGLE
+                                        APPS SCRIPT</span>
                                 </div>
                             </div>
                         </div>
@@ -1238,13 +1336,16 @@
 
                 <!-- SECTION 9 - CTA AKHIR -->
                 <section id="section-cta" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-                    <div class="bg-gradient-premium p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl">
+                    <div
+                        class="bg-gradient-premium p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl">
                         <div class="relative z-10 max-w-xl mx-auto space-y-5">
-                            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight" id="ms-cta-h2">
-                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Siap Meningkatkan Produktivitas Anda?</span></span>
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-md" id="ms-cta-h2">
+                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Siap Meningkatkan
+                                        Produktivitas Anda?</span></span>
                             </h2>
-                            <p class="text-xs text-indigo-100 font-light leading-relaxed" id="ms-cta-desc">
-                                Miliki segera rangkaian lengkap template dashboard dan instrumen otomasi premium penunjang performa tim Anda di Lynk.id.
+                            <p class="text-sm text-indigo-50 font-medium leading-relaxed drop-shadow-sm" id="ms-cta-desc">
+                                Miliki segera rangkaian lengkap template dashboard dan instrumen otomasi premium
+                                penunjang performa tim Anda di Lynk.id.
                             </p>
                             <a href="https://lynk.id" target="_blank"
                                 class="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-indigo-900 font-bold text-xs rounded-xl shadow-lg hover:scale-105 transition-all uppercase tracking-wider">
@@ -1929,7 +2030,7 @@
             {
                 id: "DV-001",
                 name: "Dashboard PA & MTBF Maintenance Monitoring",
-                category: "LOOKER STUDIO",
+                category: "GOOGLE APPS SCRIPT DESIGN",
                 desc: "Monitoring ketersediaan alat berat pertambangan dan analisis performa secara real-time.",
                 price: 249000,
                 rating: "4.9 (25)",
@@ -1963,7 +2064,7 @@
             {
                 id: "DV-003",
                 name: "Dashboard Produksi & Utilisasi Alat Berat Tambang",
-                category: "LOOKER STUDIO",
+                category: "GOOGLE APPS SCRIPT",
                 desc: "Integrasi database fleet dispatch untuk tracking pencapaian target tonase harian dan jam kerja unit.",
                 price: 499000,
                 rating: "5.0 (42)",
@@ -2018,7 +2119,7 @@
             {
                 id: "LMS-001",
                 name: "Panduan Penggunaan Template Excel & Dashboard OEE",
-                desc: "Video panduan langkah demi langkah cara mengoperasikan template excel planner dan sinkronisasi ke Looker Studio.",
+                desc: "Video panduan langkah demi langkah cara mengoperasikan template excel planner dan sinkronisasi ke Webapp Costum.",
                 image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400",
                 badge_new: true,
                 badge_trending: false,
@@ -2031,9 +2132,9 @@
                         ]
                     },
                     {
-                        group: "Sinkronisasi ke Looker Studio",
+                        group: "Sinkronisasi ke Webapps",
                         items: [
-                            { id: "ch-3", title: "Menghubungkan Google Sheet ke Looker Studio", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Langkah-langkah menyambungkan data dari Google Sheets ke Dashboard Costume Webapps secara otomatis." },
+                            { id: "ch-3", title: "Menghubungkan Google Sheet ke Google apps script", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Langkah-langkah menyambungkan data dari Google Sheets ke Dashboard Costume Webapps secara otomatis." },
                             { id: "ch-4", title: "Kustomisasi Grafik dan KPI", type: "video", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", desc: "Cara menyesuaikan tampilan grafik OEE dan kartu KPI di dashboard." }
                         ]
                     },
@@ -2087,7 +2188,7 @@
             {
                 id: "GEM-001",
                 name: "Gemini OEE & Excel Expert",
-                desc: "Asisten AI khusus untuk menganalisis data OEE, membuat formula Excel rumit, dan mendesain dashboard visual Looker Studio.",
+                desc: "Asisten AI khusus untuk menganalisis data OEE, membuat formula Excel rumit, dan mendesain dashboard visual Google apps Script.",
                 url: "https://gemini.google.com/gems/share/excel-expert-placeholder",
                 active: true,
                 icon: "file-spreadsheet"
@@ -2375,9 +2476,10 @@
                         document.title = settings.web_name + " - Premium Digital Products Marketplace";
                     }
                     if (settings.web_info) {
-                        const titleEl = document.getElementById('web-hero-title');
-                        const descEl = document.getElementById('web-hero-desc');
-                        if (titleEl) titleEl.innerText = settings.web_info;
+                        // The following lines were commented out to prevent overwriting the DOM structure and gradient effect of the hero title.
+                        // const titleEl = document.getElementById('web-hero-title');
+                        // const descEl = document.getElementById('web-hero-desc');
+                        // if (titleEl) titleEl.innerText = settings.web_info;
 
                         const inputInfo = document.getElementById('settings-web-info');
                         if (inputInfo) inputInfo.value = settings.web_info;
@@ -3611,6 +3713,12 @@
             renderStorefront();
         }
 
+        function handleSearchInput() {
+            targetOffset = 0;
+            currentOffset = 0;
+            renderStorefront();
+        }
+
         // Render storefront category filter pills
         function renderCategoryFilters() {
             const container = document.getElementById('labs-category-filters');
@@ -3619,7 +3727,7 @@
             const categories = [
                 { code: 'ALL', label: 'SEMUA' },
                 { code: 'EXCEL', label: 'EXCEL' },
-                { code: 'LOOKER STUDIO', label: 'DASHBOARD' },
+                { code: 'WEBAPPS', label: 'DASHBOARD' },
                 { code: 'SOURCE CODE', label: 'SOURCE CODE' },
                 { code: 'AI AUTOMATION', label: 'AI AUTOMATION' },
                 { code: 'PEMBELAJARAN', label: 'PEMBELAJARAN' }
@@ -3639,7 +3747,7 @@
         function renderStorefront() {
             const track = document.getElementById('labs-carousel-track');
             if (!track) return;
-            
+
             let list = platformState.products;
 
             // Update stats
@@ -3651,7 +3759,13 @@
             if (platformState.activeFilter !== 'ALL') {
                 list = list.filter(p => p.category === platformState.activeFilter);
             }
-            
+
+            const searchInput = document.getElementById('storefront-search-input');
+            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            if (searchQuery) {
+                list = list.filter(p => p.name.toLowerCase().includes(searchQuery) || (p.desc && p.desc.toLowerCase().includes(searchQuery)));
+            }
+
             filteredProducts = list;
 
             if (list.length === 0) {
@@ -3880,6 +3994,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             initLabsDragEvents();
             initLabsNavButtons();
+
+            // Global Ctrl+K listener for Search
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    // Ensure we're in storefront view
+                    const storefront = document.getElementById('viewport-storefront');
+                    if (storefront && storefront.classList.contains('hidden')) {
+                        if (typeof routeToStorefront === 'function') routeToStorefront();
+                    }
+                    const searchInput = document.getElementById('storefront-search-input');
+                    if (searchInput) {
+                        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        setTimeout(() => searchInput.focus(), 500);
+                    }
+                }
+            });
         });
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
             initLabsDragEvents();
@@ -4496,7 +4627,7 @@
                     <div class="space-y-4 text-left text-xs font-mono p-1">
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">NAMA FOLDER MATERI:</label>
-                            <input id="folder-form-name" type="text" placeholder="e.g., Template Excel OEE & Looker Studio" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-emerald-500 text-slate-900 dark:text-white font-bold">
+                            <input id="folder-form-name" type="text" placeholder="e.g., Template Excel OEE & Web Apps Costum" class="w-full bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-2.5 focus:outline-none focus:border-emerald-500 text-slate-900 dark:text-white font-bold">
                         </div>
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">DESKRIPSI FOLDER:</label>
@@ -5020,197 +5151,197 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <script>
-    /* Fallback: jika GSAP gagal fire, tampilkan teks setelah 2s */
-    (function() {
-        var t = setTimeout(function() {
-            var b = document.getElementById('ms-hero-badge');
-            var d = document.getElementById('web-hero-desc');
-            var m = document.querySelectorAll('.ms-mi');
-            if (b) b.style.cssText += 'opacity:1!important;transform:none!important;';
-            if (d) d.style.cssText  += 'opacity:1!important;transform:none!important;';
-            m.forEach(function(el){ el.style.cssText += 'transform:translateY(0)!important;'; });
-        }, 2000);
-        window._msFallbackTimer = t;
-    })();
+        /* Fallback: jika GSAP gagal fire, tampilkan teks setelah 2s */
+        (function () {
+            var t = setTimeout(function () {
+                var b = document.getElementById('ms-hero-badge');
+                var d = document.getElementById('web-hero-desc');
+                var m = document.querySelectorAll('.ms-mi');
+                if (b) b.style.cssText += 'opacity:1!important;transform:none!important;';
+                if (d) d.style.cssText += 'opacity:1!important;transform:none!important;';
+                m.forEach(function (el) { el.style.cssText += 'transform:translateY(0)!important;'; });
+            }, 2000);
+            window._msFallbackTimer = t;
+        })();
     </script>
 
     <script>
-    window.addEventListener('load', function() {
-        clearTimeout(window._msFallbackTimer);
-        if (typeof gsap === 'undefined') return;
+        window.addEventListener('load', function () {
+            clearTimeout(window._msFallbackTimer);
+            if (typeof gsap === 'undefined') return;
 
-        gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger);
 
-        /* ─────────────────────────────────────────────────────────────
-           HERO: entrance animation (on page load, fires immediately)
-           CSS .ms-mi { transform:translateY(105%) } handles initial state
-        ───────────────────────────────────────────────────────────── */
-        var badge = document.getElementById('ms-hero-badge');
-        var masks = document.querySelectorAll('#web-hero-title .ms-mi');
-        var desc  = document.getElementById('web-hero-desc');
+            /* ─────────────────────────────────────────────────────────────
+               HERO: entrance animation (on page load, fires immediately)
+               CSS .ms-mi { transform:translateY(105%) } handles initial state
+            ───────────────────────────────────────────────────────────── */
+            var badge = document.getElementById('ms-hero-badge');
+            var masks = document.querySelectorAll('#web-hero-title .ms-mi');
+            var desc = document.getElementById('web-hero-desc');
 
-        if (badge) gsap.set(badge, { opacity: 0, y: 14 });
-        if (masks.length) gsap.set(masks, { y: '105%' });
-        if (desc)  gsap.set(desc,  { opacity: 0, y: 18 });
+            if (badge) gsap.set(badge, { opacity: 0, y: 14 });
+            if (masks.length) gsap.set(masks, { y: '105%' });
+            if (desc) gsap.set(desc, { opacity: 0, y: 18 });
 
-        var tl = gsap.timeline({ delay: 0.3 });
-        if (badge)        tl.to(badge, { opacity: 1, y: 0,   duration: 0.6,  ease: 'power4.out' });
-        if (masks.length) tl.to(masks, { y: '0%',            duration: 0.85, ease: 'power4.out', stagger: 0.13 }, badge ? '-=0.3' : 0);
-        if (desc)         tl.to(desc,  { opacity: 1, y: 0,   duration: 0.7,  ease: 'power4.out' }, '-=0.4');
+            var tl = gsap.timeline({ delay: 0.3 });
+            if (badge) tl.to(badge, { opacity: 1, y: 0, duration: 0.6, ease: 'power4.out' });
+            if (masks.length) tl.to(masks, { y: '0%', duration: 0.85, ease: 'power4.out', stagger: 0.13 }, badge ? '-=0.3' : 0);
+            if (desc) tl.to(desc, { opacity: 1, y: 0, duration: 0.7, ease: 'power4.out' }, '-=0.4');
 
-        /* ─────────────────────────────────────────────────────────────
-           PARALLAX ORBS — hero only
-        ───────────────────────────────────────────────────────────── */
-        [['#ms-orb-a','#section-hero',0.16],['#ms-orb-b','#section-hero',-0.12]].forEach(function(it) {
-            var orb = document.querySelector(it[0]);
-            var sec = document.querySelector(it[1]);
-            if (!orb || !sec) return;
-            gsap.to(orb, {
-                y: function(){ return sec.offsetHeight * it[2]; },
-                ease: 'none',
-                scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
+            /* ─────────────────────────────────────────────────────────────
+               PARALLAX ORBS — hero only
+            ───────────────────────────────────────────────────────────── */
+            [['#ms-orb-a', '#section-hero', 0.16], ['#ms-orb-b', '#section-hero', -0.12]].forEach(function (it) {
+                var orb = document.querySelector(it[0]);
+                var sec = document.querySelector(it[1]);
+                if (!orb || !sec) return;
+                gsap.to(orb, {
+                    y: function () { return sec.offsetHeight * it[2]; },
+                    ease: 'none',
+                    scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
+                });
             });
-        });
 
-        /* ═══════════════════════════════════════════════════════════════
-           BELOW-FOLD SCROLL REVEAL — IntersectionObserver
-           
-           Kenapa IntersectionObserver, bukan ScrollTrigger?
-           → ScrollTrigger kalkulasi posisi saat setup (window.load).
-             Konten dinamis (produk, dll.) yang load setelahnya ubah
-             tinggi halaman → posisi trigger jadi salah → animasi tidak
-             fire saat scroll pertama, baru benar setelah reload.
-           
-           → IntersectionObserver deteksi visibilitas secara real-time,
-             tidak perlu tahu posisi awal. Selalu benar, tanpa refresh.
-        ═══════════════════════════════════════════════════════════════ */
+            /* ═══════════════════════════════════════════════════════════════
+               BELOW-FOLD SCROLL REVEAL — IntersectionObserver
+               
+               Kenapa IntersectionObserver, bukan ScrollTrigger?
+               → ScrollTrigger kalkulasi posisi saat setup (window.load).
+                 Konten dinamis (produk, dll.) yang load setelahnya ubah
+                 tinggi halaman → posisi trigger jadi salah → animasi tidak
+                 fire saat scroll pertama, baru benar setelah reload.
+               
+               → IntersectionObserver deteksi visibilitas secara real-time,
+                 tidak perlu tahu posisi awal. Selalu benar, tanpa refresh.
+            ═══════════════════════════════════════════════════════════════ */
 
-        /* ── Observer 1: Mask-reveal heading (.ms-mi) ─────────────── */
-        /* CSS .ms-mi { transform:translateY(105%) } sudah handle       */
-        /* initial state. Observer hanya trigger gsap.to ke y:0%.      */
-        var maskObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (!entry.isIntersecting) return;
-                var mis = entry.target.querySelectorAll('.ms-mi');
-                if (mis.length) {
-                    gsap.to(mis, {
-                        y: '0%',
-                        duration: 0.82,
-                        ease: 'power4.out',
-                        stagger: 0.09,
-                        overwrite: 'auto',
-                    });
-                }
-                maskObserver.unobserve(entry.target);
-            });
-        }, {
-            /* rootMargin bottom negatif = element harus sudah 15%
-               masuk viewport baru trigger (seperti start:'top 85%') */
-            rootMargin: '0px 0px -12% 0px',
-            threshold: 0,
-        });
-
-        /* ── Observer 2: Fade + slide-up elements ─────────────────── */
-        /* Elemen mulai opacity normal (tidak disembunyikan CSS).       */
-        /* Observer tambahkan class 'ms-anim-pending' sesaat sebelum   */
-        /* elemen masuk, lalu GSAP animate dari opacity:0 ke 1.        */
-        /* Karena fromTo + immediateRender:false, elemen TIDAK          */
-        /* tersembunyi kecuali saat animasi sedang jalan.              */
-        var fadeObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (!entry.isIntersecting) return;
-                var el = entry.target;
-                var delay = parseFloat(el.getAttribute('data-ms-delay') || '0');
-                gsap.fromTo(el,
-                    { opacity: 0, y: 18 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.72,
-                        ease: 'power4.out',
-                        delay: delay,
-                        immediateRender: false,
-                        overwrite: 'auto',
+            /* ── Observer 1: Mask-reveal heading (.ms-mi) ─────────────── */
+            /* CSS .ms-mi { transform:translateY(105%) } sudah handle       */
+            /* initial state. Observer hanya trigger gsap.to ke y:0%.      */
+            var maskObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var mis = entry.target.querySelectorAll('.ms-mi');
+                    if (mis.length) {
+                        gsap.to(mis, {
+                            y: '0%',
+                            duration: 0.82,
+                            ease: 'power4.out',
+                            stagger: 0.09,
+                            overwrite: 'auto',
+                        });
                     }
-                );
-                fadeObserver.unobserve(el);
+                    maskObserver.unobserve(entry.target);
+                });
+            }, {
+                /* rootMargin bottom negatif = element harus sudah 15%
+                   masuk viewport baru trigger (seperti start:'top 85%') */
+                rootMargin: '0px 0px -12% 0px',
+                threshold: 0,
             });
-        }, {
-            rootMargin: '0px 0px -8% 0px',
-            threshold: 0,
-        });
 
-        /* ── Daftarkan elemen heading ke maskObserver ──────────────── */
-        ['ms-testi-h2', 'ms-faq-h2', 'ms-about-h3', 'ms-cta-h2'].forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el) maskObserver.observe(el);
-        });
+            /* ── Observer 2: Fade + slide-up elements ─────────────────── */
+            /* Elemen mulai opacity normal (tidak disembunyikan CSS).       */
+            /* Observer tambahkan class 'ms-anim-pending' sesaat sebelum   */
+            /* elemen masuk, lalu GSAP animate dari opacity:0 ke 1.        */
+            /* Karena fromTo + immediateRender:false, elemen TIDAK          */
+            /* tersembunyi kecuali saat animasi sedang jalan.              */
+            var fadeObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    var delay = parseFloat(el.getAttribute('data-ms-delay') || '0');
+                    gsap.fromTo(el,
+                        { opacity: 0, y: 18 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.72,
+                            ease: 'power4.out',
+                            delay: delay,
+                            immediateRender: false,
+                            overwrite: 'auto',
+                        }
+                    );
+                    fadeObserver.unobserve(el);
+                });
+            }, {
+                rootMargin: '0px 0px -8% 0px',
+                threshold: 0,
+            });
 
-        /* ── Daftarkan elemen teks ke fadeObserver ─────────────────── */
-        /* Set data-ms-delay untuk stagger timing                       */
-        [
-            { sel: '#section-testimonials .text-center p', delay: 0.18 },
-            { sel: '#section-faq .text-center p',          delay: 0.18 },
-            { sel: '#ms-about-desc',                        delay: 0.22 },
-            { sel: '#ms-cta-desc',                          delay: 0.22 },
-            { sel: '#section-cta a',                        delay: 0.38 },
-        ].forEach(function(item) {
-            var el = document.querySelector(item.sel);
-            if (!el) return;
-            el.setAttribute('data-ms-delay', item.delay);
-            fadeObserver.observe(el);
-        });
+            /* ── Daftarkan elemen heading ke maskObserver ──────────────── */
+            ['ms-testi-h2', 'ms-faq-h2', 'ms-about-h3', 'ms-cta-h2', 'ms-learning-h2', 'ms-experiment-h2', 'ms-innovation-p'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el) maskObserver.observe(el);
+            });
 
-        /* ── ScrollTrigger hanya untuk parallax orbs (sudah ada) ──── */
-        /* Tidak perlu refresh karena orbs ada di hero yang statis.    */
+            /* ── Daftarkan elemen teks ke fadeObserver ─────────────────── */
+            /* Set data-ms-delay untuk stagger timing                       */
+            [
+                { sel: '#section-testimonials .text-center p', delay: 0.18 },
+                { sel: '#section-faq .text-center p', delay: 0.18 },
+                { sel: '#ms-about-desc', delay: 0.22 },
+                { sel: '#ms-cta-desc', delay: 0.22 },
+                { sel: '#section-cta a', delay: 0.38 },
+            ].forEach(function (item) {
+                var el = document.querySelector(item.sel);
+                if (!el) return;
+                el.setAttribute('data-ms-delay', item.delay);
+                fadeObserver.observe(el);
+            });
 
-        /* ── Scroll Zoom Effect: Section 3 Video (kecil → besar) ─────── */
-        (function() {
-            var wrapper = document.getElementById('learning-video-wrapper');
-            if (!wrapper) return;
+            /* ── ScrollTrigger hanya untuk parallax orbs (sudah ada) ──── */
+            /* Tidak perlu refresh karena orbs ada di hero yang statis.    */
 
-            var ticking = false;
-            var SCALE_MIN = 0.35;   /* skala saat section BARU masuk dari bawah layar */
-            var SCALE_MAX = 1.02;   /* skala penuh saat section sudah di tengah layar   */
+            /* ── Scroll Zoom Effect: Section 3 Video (kecil → besar) ─────── */
+            (function () {
+                var wrapper = document.getElementById('learning-video-wrapper');
+                if (!wrapper) return;
 
-            function updateScale() {
-                var rect = wrapper.getBoundingClientRect();
-                var winH = window.innerHeight;
+                var ticking = false;
+                var SCALE_MIN = 0.35;   /* skala saat section BARU masuk dari bawah layar */
+                var SCALE_MAX = 1.02;   /* skala penuh saat section sudah di tengah layar   */
 
-                /*
-                 * Titik awal  : rect.top = winH        → section baru muncul dari bawah (scale MIN)
-                 * Titik akhir : rect.top = winH * 0.05 → section hampir penuh di layar  (scale MAX)
-                 * Rentang aktif: scrollDistance = winH * 0.95
-                 */
-                var scrollStart = winH;
-                var scrollEnd   = winH * 0.05;
-                var scrollRange = scrollStart - scrollEnd;
+                function updateScale() {
+                    var rect = wrapper.getBoundingClientRect();
+                    var winH = window.innerHeight;
 
-                var progress = (scrollStart - rect.top) / scrollRange;
-                progress = Math.max(0, Math.min(1, progress));
+                    /*
+                     * Titik awal  : rect.top = winH        → section baru muncul dari bawah (scale MIN)
+                     * Titik akhir : rect.top = winH * 0.05 → section hampir penuh di layar  (scale MAX)
+                     * Rentang aktif: scrollDistance = winH * 0.95
+                     */
+                    var scrollStart = winH;
+                    var scrollEnd = winH * 0.05;
+                    var scrollRange = scrollStart - scrollEnd;
 
-                /* easing: ease-in-out cubic untuk gerakan natural */
-                var eased = progress < 0.5
-                    ? 4 * progress * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    var progress = (scrollStart - rect.top) / scrollRange;
+                    progress = Math.max(0, Math.min(1, progress));
 
-                var scale = SCALE_MIN + (SCALE_MAX - SCALE_MIN) * eased;
-                wrapper.style.transform = 'scale(' + scale.toFixed(4) + ')';
-                ticking = false;
-            }
+                    /* easing: ease-in-out cubic untuk gerakan natural */
+                    var eased = progress < 0.5
+                        ? 4 * progress * progress * progress
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 
-            function onScroll() {
-                if (!ticking) {
-                    requestAnimationFrame(updateScale);
-                    ticking = true;
+                    var scale = SCALE_MIN + (SCALE_MAX - SCALE_MIN) * eased;
+                    wrapper.style.transform = 'scale(' + scale.toFixed(4) + ')';
+                    ticking = false;
                 }
-            }
 
-            /* Jalankan sekali saat load untuk set posisi awal */
-            updateScale();
-            window.addEventListener('scroll', onScroll, { passive: true });
-        })();
-    });
+                function onScroll() {
+                    if (!ticking) {
+                        requestAnimationFrame(updateScale);
+                        ticking = true;
+                    }
+                }
+
+                /* Jalankan sekali saat load untuk set posisi awal */
+                updateScale();
+                window.addEventListener('scroll', onScroll, { passive: true });
+            })();
+        });
     </script>
 </body>
 
