@@ -46,12 +46,63 @@
         }
     </script>
     <style>
+        :root {
+            --ms-ease: cubic-bezier(.22, 1, .36, 1);
+        }
+
+        html { scroll-padding-top: 88px; }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F8FAFC;
             color: #0F172A;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s;
+            text-rendering: optimizeLegibility;
+        }
+
+        button, a, input { -webkit-tap-highlight-color: transparent; }
+        button:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(129, 140, 248, .65);
+            outline-offset: 3px;
+        }
+
+        .ms-reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s var(--ms-ease), transform .7s var(--ms-ease);
+        }
+        .ms-reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .ms-reveal-delay-1 { transition-delay: .08s; }
+        .ms-reveal-delay-2 { transition-delay: .16s; }
+        .ms-reveal-delay-3 { transition-delay: .24s; }
+
+        .ms-hero-glow {
+            position: absolute;
+            width: min(42vw, 560px);
+            aspect-ratio: 1;
+            right: -8%;
+            top: 10%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,.25), rgba(168,85,247,.08) 42%, transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
+            animation: msGlowFloat 9s ease-in-out infinite;
+        }
+
+        @keyframes msGlowFloat {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(-18px, 16px, 0) scale(1.06); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+            .ms-reveal { opacity: 1; transform: none; }
         }
 
         .dark body {
@@ -833,6 +884,7 @@
             <!-- HERO & STATISTIK WRAPPER WITH BACKGROUND CANVAS (FRUTIX ANIMATION) -->
             <div id="hero-stats-wrapper"
                 class="relative w-full overflow-hidden bg-slate-950 border-b border-premium-border/50 pb-16 md:pb-24">
+                <div class="ms-hero-glow" aria-hidden="true"></div>
                 <!-- Background Animation Canvas (Fixed overlay) -->
                 <canvas id="animation-canvas"
                     class="fixed top-0 left-0 w-full h-screen object-cover pointer-events-none opacity-40 mix-blend-lighten z-0"></canvas>
@@ -844,22 +896,21 @@
                     <!-- Top Row: Badge + Headline + Description (left 60%, right 40% is canvas) -->
                     <div class="max-w-2xl space-y-5" style="position:relative;z-index:2;">
                         <!-- Motion badge -->
-                        <div class="ms-badge" id="ms-hero-badge">
+                        <div class="ms-badge ms-reveal" id="ms-hero-badge">
                             <span class="ms-badge-dot"></span>
-                            #1 Marketplace Produk Digital Premium
+                            Aset digital premium untuk kerja yang lebih cerdas
                         </div>
 
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
+                        <h1 class="ms-reveal ms-reveal-delay-1 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]"
                             id="web-hero-title">
-                            Solusi Digital untuk<br>
-                            <span class="text-gradient">Produktivitas</span> dan Operasional Modern
+                            Bangun sistem kerja yang<br>
+                            <span class="text-gradient">lebih cepat, rapi,</span> dan terukur.
                         </h1>
 
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal"
+                        <p class="ms-reveal ms-reveal-delay-2 text-slate-300 text-sm md:text-base leading-relaxed font-normal max-w-xl"
                             id="web-hero-desc">
-                            Template Excel, Dashboard Google Apps Script, Source Code, AI Automation, dan Tools Siap
-                            Pakai
-                            untuk mempercepat pekerjaan Anda.
+                            Temukan template Excel, dashboard, source code, dan automasi AI siap pakai yang dirancang oleh
+                            praktisi industri untuk memangkas pekerjaan berulang dan mempercepat keputusan.
                         </p>
                     </div>
 
@@ -872,13 +923,13 @@
                             <!-- CTA Buttons -->
                             <div class="flex flex-wrap gap-3">
                                 <button onclick="scrollToSection('section-featured')"
-                                    class="px-6 py-3.5 rounded-xl bg-gradient-premium text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-indigo-500/20 hover:scale-105 transition-all flex items-center gap-2">
+                                    class="ms-reveal ms-reveal-delay-3 px-6 py-3.5 rounded-xl bg-gradient-premium text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 hover:shadow-indigo-500/40 transition-all flex items-center gap-2">
                                     <i data-lucide="layout-grid" class="w-4 h-4"></i>
                                     <span>Lihat Katalog</span>
                                 </button>
                                 <a href="https://lynk.id/dermawanpurba" target="_blank"
-                                    class="px-6 py-3.5 rounded-xl border border-white/20 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all flex items-center gap-2">
-                                    <span>Kunjungi lynk.id</span>
+                                    class="ms-reveal ms-reveal-delay-3 px-6 py-3.5 rounded-xl border border-white/20 text-white font-bold text-xs uppercase tracking-wider hover:-translate-y-0.5 hover:bg-white/10 transition-all flex items-center gap-2">
+                                    <span>Lihat semua produk</span>
                                     <i data-lucide="external-link" class="w-4 h-4"></i>
                                 </a>
                             </div>
@@ -905,7 +956,7 @@
                                         <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
                                         <span class="text-white ml-1 font-extrabold font-mono text-sm">4.9/5</span>
                                     </div>
-                                    <p class="text-slate-400 mt-0.5 font-medium">Dari 100+ Review Pelanggan Puas</p>
+                                    <p class="text-slate-400 mt-0.5 font-medium">Dipercaya oleh 100+ pelanggan</p>
                                 </div>
                             </div>
                         </div>
@@ -965,6 +1016,35 @@
                     </div>
                 </section>
 
+                <!-- SECTION 3 - VALUE PROPOSITION & PROCESS -->
+                <section id="section-value" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                        <div class="lg:col-span-5 rounded-3xl bg-white dark:bg-premium-card border border-slate-200 dark:border-premium-border p-7 md:p-9 shadow-xl shadow-slate-950/5 ms-reveal">
+                            <span class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-indigo-500">
+                                <i data-lucide="target" class="w-4 h-4"></i> Dibuat untuk workflow nyata
+                            </span>
+                            <h2 class="mt-4 text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Bukan sekadar template. Ini fondasi kerja yang lebih rapi.</h2>
+                            <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Mine Stack membantu praktisi maintenance, engineering, dan operasional mengurangi pekerjaan manual dengan aset digital yang siap disesuaikan.</p>
+                            <div class="mt-7 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
+                                <div class="flex items-center gap-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 p-3"><i data-lucide="zap" class="w-4 h-4 text-indigo-500"></i><span class="text-xs font-bold text-slate-700 dark:text-slate-200">Siap dipakai dan mudah dikustomisasi</span></div>
+                                <div class="flex items-center gap-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 p-3"><i data-lucide="book-open-check" class="w-4 h-4 text-emerald-500"></i><span class="text-xs font-bold text-slate-700 dark:text-slate-200">Dilengkapi panduan dan pembelajaran</span></div>
+                                <div class="flex items-center gap-3 rounded-2xl bg-violet-50 dark:bg-violet-950/30 p-3"><i data-lucide="refresh-cw" class="w-4 h-4 text-violet-500"></i><span class="text-xs font-bold text-slate-700 dark:text-slate-200">Terus diperbarui sesuai kebutuhan</span></div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 rounded-3xl bg-slate-900 dark:bg-[#0d1220] border border-slate-700/60 p-7 md:p-9 shadow-xl shadow-slate-950/20 ms-reveal ms-reveal-delay-1">
+                            <div class="flex items-center justify-between gap-4 mb-7">
+                                <div><span class="text-[10px] font-bold uppercase tracking-[.18em] text-indigo-300">Mulai dalam beberapa langkah</span><h3 class="mt-2 text-xl md:text-2xl font-extrabold text-white">Cara kerja Mine Stack</h3></div>
+                                <i data-lucide="route" class="hidden sm:block w-8 h-8 text-indigo-400"></i>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><span class="text-2xl font-black text-indigo-300">01</span><h4 class="mt-3 text-sm font-bold text-white">Pilih aset digital</h4><p class="mt-1 text-xs leading-relaxed text-slate-400">Temukan template atau tools sesuai kebutuhan tim Anda.</p></div>
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><span class="text-2xl font-black text-indigo-300">02</span><h4 class="mt-3 text-sm font-bold text-white">Checkout aman</h4><p class="mt-1 text-xs leading-relaxed text-slate-400">Pembayaran diproses melalui Lynk.id secara praktis.</p></div>
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><span class="text-2xl font-black text-indigo-300">03</span><h4 class="mt-3 text-sm font-bold text-white">Akses instan</h4><p class="mt-1 text-xs leading-relaxed text-slate-400">Dapatkan file dan materi pendukung setelah transaksi.</p></div>
+                                <div class="rounded-2xl border border-white/10 bg-white/5 p-4"><span class="text-2xl font-black text-indigo-300">04</span><h4 class="mt-3 text-sm font-bold text-white">Terapkan dan kembangkan</h4><p class="mt-1 text-xs leading-relaxed text-slate-400">Sesuaikan dengan workflow dan tingkatkan produktivitas.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- SECTION 2B - KELAS PEMBELAJARAN SHOWCASE -->
                 <section id="section-learning" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-10">
@@ -1037,11 +1117,11 @@
 
                             <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white relative z-10 leading-tight drop-shadow-sm dark:drop-shadow-md"
                                 id="ms-experiment-h2">
-                                Be the first to expe<span class="text-pink-600 dark:text-pink-400">riment</span>
+                                Pilih tools yang siap<br class="hidden md:block"> <span class="text-pink-600 dark:text-pink-400">menggerakkan</span> pekerjaan Anda
                             </h2>
                             <p
                                 class="text-xs text-slate-600 dark:text-slate-300 mt-3 font-bold uppercase tracking-widest">
-                                PRODUK UNGGULAN MINESTACK</p>
+                                KATALOG PRODUK DIGITAL MINE STACK</p>
                         </div>
 
                         <!-- Carousel Container -->
@@ -1252,8 +1332,8 @@
                             <div id="faq-ans-2" class="max-h-0 overflow-hidden transition-all duration-300">
                                 <p
                                     class="p-5 pt-0 text-xs text-slate-600 dark:text-gray-400 leading-relaxed border-t border-slate-100 dark:border-premium-border/40">
-                                    Fasilitas belajar dgn modul lengkap dari pdf dan video pembelajaran, source code
-                                    webapp demo yang terus di update gratis.
+                                    Dapatkan modul PDF, video pembelajaran, dan source code web app demo yang terus
+                                    diperbarui secara gratis.
                                 </p>
                             </div>
                         </div>
@@ -1882,7 +1962,11 @@
                     </h4>
                     <ul class="text-xs space-y-2 font-medium">
                         <li><button onclick="scrollToSection('section-hero')"
-                                class="hover:text-premium-indigo transition-all">Beranda Utas</button></li>
+                                class="hover:text-premium-indigo transition-all">Beranda</button></li>
+                        <li><button onclick="scrollToSection('section-value')"
+                                class="hover:text-premium-indigo transition-all">Cara Kerja</button></li>
+                        <li><button onclick="scrollToSection('section-value')"
+                                class="hover:text-premium-indigo transition-all">Cara Kerja</button></li>
                         <li><button onclick="scrollToSection('section-featured')"
                                 class="hover:text-premium-indigo transition-all">Katalog Unggulan</button></li>
                         <li><button onclick="routeToAdminGate()" class="hover:text-premium-indigo transition-all">Portal
@@ -1909,7 +1993,7 @@
             <!-- License copyright statement -->
             <div
                 class="max-w-7xl mx-auto border-t border-slate-100 dark:border-premium-border/40 pt-8 text-center text-[11px] flex flex-col md:flex-row justify-between items-center gap-4">
-                <p>&copy; 2026 MINE STACK ENTERPRISE. SEMUA TOMBOL PEMBELIAN DIARAHKAN UTAMA KE LYNK.ID</p>
+                <p>&copy; 2026 MINE STACK ENTERPRISE. Seluruh transaksi pembelian diarahkan melalui Lynk.id.</p>
                 <div class="text-[10px] text-gray-500">
                     develop by : dermawan.prb@gmail.com |
                     <a href="https://www.linkedin.com/in/dermawan-purba-5b69241a9" target="_blank"
@@ -5107,6 +5191,12 @@
         (() => {
             const canvas = document.getElementById('animation-canvas');
             if (!canvas) return;
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                canvas.style.display = 'none';
+                return;
+            }
             const ctx = canvas.getContext('2d');
 
             const totalFrames = 120;
@@ -5163,22 +5253,22 @@
                 ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
             }
 
+            let animationStarted = false;
+            let animationFrameId = 0;
+
             function preloadImages() {
                 for (let i = 1; i <= totalFrames; i++) {
                     const img = new Image();
+                    img.decoding = 'async';
                     img.onload = () => {
                         loadedCount++;
-                        if (i === 1) {
-                            drawFrame(0);
-                        }
-                        if (loadedCount === totalFrames) {
-                            requestAnimationFrame(updateLoop);
+                        if (i === 1) drawFrame(0);
+                        if (loadedCount === totalFrames && !animationStarted) {
+                            animationStarted = true;
+                            animationFrameId = requestAnimationFrame(updateLoop);
                         }
                     };
-                    img.onerror = () => {
-                        console.error('Failed to load animation frame:', img.src);
-                        loadedCount++;
-                    };
+                    img.onerror = () => { loadedCount++; };
                     img.src = getFramePath(i);
                     images.push(img);
                 }
@@ -5188,36 +5278,58 @@
                 currentFrameIndex += (targetFrameIndex - currentFrameIndex) * lerpFactor;
                 const frameToRender = Math.max(0, Math.min(totalFrames - 1, Math.round(currentFrameIndex)));
                 drawFrame(frameToRender);
-                requestAnimationFrame(updateLoop);
+                animationFrameId = requestAnimationFrame(updateLoop);
             }
 
+            let scrollTicking = false;
             function handleScroll() {
-                const heroSection = document.getElementById('section-hero');
-                if (!heroSection) return;
+                if (scrollTicking) return;
+                scrollTicking = true;
+                requestAnimationFrame(() => {
+                    const heroSection = document.getElementById('section-hero');
+                    if (!heroSection) { scrollTicking = false; return; }
 
-                const scrollTop = window.scrollY;
-                const heroHeight = heroSection.offsetHeight || 600;
+                    const scrollTop = window.scrollY;
+                    const heroHeight = heroSection.offsetHeight || 600;
+                    const progress = Math.min(1, Math.max(0, scrollTop / heroHeight));
+                    targetFrameIndex = progress * (totalFrames - 1);
 
-                const progress = Math.min(1, Math.max(0, scrollTop / heroHeight));
-                targetFrameIndex = progress * (totalFrames - 1);
-
-                // Efek parallax: Canvas tetap fixed di layar saat di hero (section 1), lalu scroll up & fade out keluar layar sebelum masuk ke section 2 (stats)
-                if (scrollTop > heroHeight) {
-                    const offset = scrollTop - heroHeight;
-                    canvas.style.transform = `translateY(-${offset}px)`;
-                    canvas.style.opacity = Math.max(0, 0.4 - offset / 200);
-                } else {
-                    canvas.style.transform = 'translateY(0)';
-                    canvas.style.opacity = '0.4';
-                }
+                    if (scrollTop > heroHeight) {
+                        const offset = scrollTop - heroHeight;
+                        canvas.style.transform = `translateY(-${offset}px)`;
+                        canvas.style.opacity = Math.max(0, 0.4 - offset / 200);
+                    } else {
+                        canvas.style.transform = 'translateY(0)';
+                        canvas.style.opacity = '0.4';
+                    }
+                    scrollTicking = false;
+                });
             }
 
-            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleScroll, { passive: true });
             window.addEventListener('resize', resizeCanvas);
 
             // Initialize
             resizeCanvas();
             preloadImages();
+        })();
+
+        // Progressive reveal for landing-page content.
+        (() => {
+            const items = document.querySelectorAll('#viewport-storefront .ms-reveal, #viewport-storefront section > div');
+            if (!items.length) return;
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+            items.forEach(item => {
+                if (!item.classList.contains('ms-reveal')) item.classList.add('ms-reveal');
+                observer.observe(item);
+            });
         })();
     </script>
 
