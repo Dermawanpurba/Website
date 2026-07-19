@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="dark scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -446,20 +446,39 @@
             -webkit-user-drag: none;
         }
 
-        /* ============================================================
-           MOTION TEXT — mask reveal & GSAP animation utilities
-        ============================================================ */
-        .ms-mw {
-            overflow: hidden;
-            display: inline-block;
+        /* Quick View Modal Animation */
+        @keyframes quickViewScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.94) translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
-        .ms-mi {
-            display: block;
-            transform: translateY(105%);
-            will-change: transform;
+        .animate-quickview {
+            animation: quickViewScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        /* Social Proof Toast Animation */
+        @keyframes toastSlideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .animate-toast-in {
+            animation: toastSlideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ===== HERO BADGE STYLING ===== */
         .ms-badge {
             display: inline-flex;
             align-items: center;
@@ -472,8 +491,6 @@
             border-radius: 100px;
             padding: 6px 16px;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(14px);
         }
 
         .ms-badge-dot {
@@ -482,39 +499,6 @@
             border-radius: 50%;
             background: #818cf8;
             box-shadow: 0 0 8px #818cf8;
-            animation: ms-pdot 2s ease-in-out infinite;
-        }
-
-        @keyframes ms-pdot {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: .45;
-                transform: scale(.65);
-            }
-        }
-
-        .ms-lead-anim {
-            opacity: 0;
-            transform: translateY(18px);
-        }
-
-        .ms-btns-anim {
-            opacity: 0;
-            transform: scale(.95) translateY(10px);
-        }
-
-        .ms-orb {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            will-change: transform;
-            z-index: 0;
         }
     </style>
 </head>
@@ -530,8 +514,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                 <!-- Logo & Brand -->
                 <div class="flex items-center gap-3">
-                    <div class="bg-gradient-premium p-2 rounded-xl text-white shadow-md shadow-indigo-500/20">
-                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    <div class="bg-gradient-premium p-2 rounded-xl text-white shadow-md shadow-indigo-500/20 w-9 h-9 flex items-center justify-center overflow-hidden" id="web-logo-container">
+                        <img id="web-logo-img" src="" class="hidden w-full h-full object-cover rounded-lg" alt="Logo">
+                        <i id="web-logo-icon" data-lucide="layers" class="w-5 h-5"></i>
                     </div>
                     <div>
                         <h1 class="text-lg font-bold tracking-tight text-white" id="web-header-name">Mine Stack</h1>
@@ -857,14 +842,6 @@
                     class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 space-y-8">
 
                     <!-- Top Row: Badge + Headline + Description (left 60%, right 40% is canvas) -->
-                    <!-- Parallax orbs (motion text) -->
-                    <div class="ms-orb" id="ms-orb-a"
-                        style="width:560px;height:560px;background:radial-gradient(circle,rgba(79,70,229,.09),transparent 70%);top:-30%;left:-8%;"
-                        aria-hidden="true"></div>
-                    <div class="ms-orb" id="ms-orb-b"
-                        style="width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);bottom:-10%;right:5%;"
-                        aria-hidden="true"></div>
-
                     <div class="max-w-2xl space-y-5" style="position:relative;z-index:2;">
                         <!-- Motion badge -->
                         <div class="ms-badge" id="ms-hero-badge">
@@ -874,12 +851,11 @@
 
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
                             id="web-hero-title">
-                            <span class="ms-mw"><span class="ms-mi">Solusi Digital untuk</span></span><br>
-                            <span class="ms-mw"><span class="ms-mi"><span class="text-gradient">Produktivitas</span> dan
-                                    Operasional Modern</span></span>
+                            Solusi Digital untuk<br>
+                            <span class="text-gradient">Produktivitas</span> dan Operasional Modern
                         </h1>
 
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal ms-lead-anim"
+                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-normal"
                             id="web-hero-desc">
                             Template Excel, Dashboard Google Apps Script, Source Code, AI Automation, dan Tools Siap
                             Pakai
@@ -995,27 +971,27 @@
                     <!-- Header -->
                     <div class="text-center space-y-3">
                         <span
-                            class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-500/20 bg-indigo-950/40 text-[11px] text-indigo-400 font-bold uppercase tracking-wider">
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-indigo-400/30 bg-indigo-950/60 text-[11px] text-indigo-300 font-bold uppercase tracking-wider">
                             <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-indigo-400"></i>
                             Platform Pembelajaran Eksklusif
                         </span>
-                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md"
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-white drop-shadow-md"
                             id="ms-learning-h2">
-                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Tersedia Juga <span
-                                        class="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-300 dark:to-purple-300 bg-clip-text text-transparent">Kelas
-                                        Pembelajaran</span></span></span>
+                            Tersedia Juga <span
+                                class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Kelas
+                                Pembelajaran</span>
                         </h2>
                         <p
-                            class="text-sm text-slate-700 dark:text-slate-200 max-w-xl mx-auto leading-relaxed font-medium">
+                            class="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed font-medium">
                             Lebih dari sekedar produk digital — dapatkan akses ke kelas, video tutorial, PDF panduan,
                             dan
                             source code lengkap yang dirancang untuk praktisi modern.
                         </p>
                     </div>
 
-                    <!-- Video Scroll Zoom Wrapper -->
+                    <!-- Video Showcase Wrapper -->
                     <div id="learning-video-wrapper"
-                        style="position:relative;width:100%;overflow:hidden;border-radius:1.5rem;border:1px solid rgba(99,102,241,0.15);box-shadow:0 25px 60px -15px rgba(0,0,0,0.7);transform:scale(0.35);transform-origin:center center;transition:transform 0.04s linear;will-change:transform;">
+                        style="position:relative;width:100%;overflow:hidden;border-radius:1.5rem;border:1px solid rgba(99,102,241,0.15);box-shadow:0 25px 60px -15px rgba(0,0,0,0.7);">
                         <!-- Aspect ratio box -->
                         <div style="padding-top:56.25%;"></div>
                         <!-- Background Video (optimized via Cloudinary: q_auto, f_auto, w_1280) -->
@@ -1061,8 +1037,7 @@
 
                             <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white relative z-10 leading-tight drop-shadow-sm dark:drop-shadow-md"
                                 id="ms-experiment-h2">
-                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Be the first to expe<span
-                                            class="text-pink-600 dark:text-pink-400">riment</span></span></span>
+                                Be the first to expe<span class="text-pink-600 dark:text-pink-400">riment</span>
                             </h2>
                             <p
                                 class="text-xs text-slate-600 dark:text-slate-300 mt-3 font-bold uppercase tracking-widest">
@@ -1113,15 +1088,11 @@
                         <div class="max-w-2xl text-center mt-12 z-20 px-4">
                             <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium leading-relaxed"
                                 id="ms-innovation-p">
-                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Temukan <span
-                                            class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">inovasi terbaru kami</span>
-                                        dan bantu membentuk <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">masa
-                                            depan digitalisasi pertambangan</span>. Dapatkan <span
-                                            class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">akses cepat</span>, bagikan
-                                        <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">umpan balik Anda</span>,
-                                        dan bantu ubah teknologi ini menjadi <span
-                                            class="text-pink-600 dark:text-pink-400 font-bold drop-shadow-sm dark:drop-shadow-md">produk yang Anda gunakan setiap
-                                            hari</span>.</span></span>
+                                Temukan <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">inovasi terbaru kami</span>
+                                dan bantu membentuk <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">masa depan digitalisasi pertambangan</span>. Dapatkan <span
+                                class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">akses cepat</span>, bagikan
+                                <span class="text-slate-900 dark:text-white font-bold drop-shadow-sm dark:drop-shadow-md">umpan balik Anda</span>,
+                                dan bantu ubah teknologi ini menjadi <span class="text-pink-600 dark:text-pink-400 font-bold drop-shadow-sm dark:drop-shadow-md">produk yang Anda gunakan setiap hari</span>.
                             </p>
                         </div>
                     </div>
@@ -1132,11 +1103,10 @@
                 <!-- SECTION 6 - TESTIMONI -->
                 <section id="section-testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pt-16 pb-8">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md" id="ms-testi-h2">
-                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Apa Kata Pelanggan
-                                    Kami</span></span>
+                        <h2 class="text-3xl font-extrabold text-white drop-shadow-md" id="ms-testi-h2">
+                            Apa Kata Pelanggan Kami
                         </h2>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">Tingkat efisiensi kerja yang dialami secara
+                        <p class="text-sm text-slate-300 font-medium">Tingkat efisiensi kerja yang dialami secara
                             nyata setelah implementasi.</p>
                     </div>
 
@@ -1225,10 +1195,10 @@
                 <!-- SECTION 7 - FAQ ACCORDION -->
                 <section id="section-faq" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 py-12">
                     <div class="text-center space-y-2">
-                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white drop-shadow-sm dark:drop-shadow-md" id="ms-faq-h2">
-                            <span class="ms-mw" style="display:block;"><span class="ms-mi">Pertanyaan Umum</span></span>
+                        <h2 class="text-3xl font-extrabold text-white drop-shadow-md" id="ms-faq-h2">
+                            Pertanyaan Umum
                         </h2>
-                        <p class="text-sm text-slate-700 dark:text-slate-300 font-medium">Jawaban instan seputar pengiriman produk, format file, dan lisensi.</p>
+                        <p class="text-sm text-slate-300 font-medium">Jawaban instan seputar pengiriman produk, format file, dan lisensi.</p>
                     </div>
 
                     <div class="space-y-3">
@@ -1297,13 +1267,13 @@
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-4 text-center">
                                 <div class="w-32 h-32 rounded-full mx-auto bg-gradient-premium p-[3px] shadow-lg">
-                                    <img src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY"
+                                    <img id="creator-profile-img" src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY"
                                         class="w-full h-full object-cover rounded-full" alt="Creator Profile Image">
                                 </div>
-                                <h4
+                                <h4 id="creator-name-display"
                                     class="text-sm font-bold text-slate-900 dark:text-white mt-4 uppercase tracking-wider">
                                     Dermawan Purba</h4>
-                                <span
+                                <span id="creator-title-display"
                                     class="text-[10px] text-premium-indigo font-bold tracking-widest font-mono block">Senior
                                     Spv Maintenance Planner</span>
                             </div>
@@ -1312,10 +1282,9 @@
                                     class="text-[10px] font-bold text-premium-indigo uppercase tracking-widest font-mono">Arsitek
                                     Sistem Digital</span>
                                 <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="ms-about-h3">
-                                    <span class="ms-mw" style="display:block;"><span class="ms-mi">Didesain Langsung
-                                            oleh Praktisi Industri</span></span>
+                                    Didesain Langsung oleh Praktisi Industri
                                 </h3>
-                                <p class="text-xs text-slate-500 dark:text-gray-400 leading-relaxed" id="ms-about-desc">
+                                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed" id="ms-about-desc">
                                     Dibangun oleh praktisi Maintenance Planner dan pengembang sistem digital yang
                                     berfokus pada produktivitas industri, maintenance, dashboard, dan otomasi kerja.
                                     Kami merancang setiap baris kode dan bagan KPI agar teruji andal saat
@@ -1340,8 +1309,7 @@
                         class="bg-gradient-premium p-8 md:p-12 rounded-3xl text-center relative overflow-hidden shadow-2xl">
                         <div class="relative z-10 max-w-xl mx-auto space-y-5">
                             <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-md" id="ms-cta-h2">
-                                <span class="ms-mw" style="display:block;"><span class="ms-mi">Siap Meningkatkan
-                                        Produktivitas Anda?</span></span>
+                                Siap Meningkatkan Produktivitas Anda?
                             </h2>
                             <p class="text-sm text-indigo-50 font-medium leading-relaxed drop-shadow-sm" id="ms-cta-desc">
                                 Miliki segera rangkaian lengkap template dashboard dan instrumen otomasi premium
@@ -1447,32 +1415,103 @@
 
             <!-- Web Settings Panel -->
             <div
-                class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border rounded-3xl p-6 shadow-sm space-y-4">
-                <!-- Input Pengaturan Informasi Web -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2">
+                class="bg-white dark:bg-premium-card border border-premium-lightBorder dark:border-premium-border rounded-3xl p-6 shadow-sm space-y-6">
+                <!-- Input Pengaturan Informasi & Visual Web -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
                         <i data-lucide="settings" class="w-5 h-5 text-premium-indigo"></i>
-                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Pengaturan Identitas Web</h3>
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white">Pengaturan Identitas &amp; Visual Web</h3>
                     </div>
+
+                    <!-- Row 1: Web Name & Slogan -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="space-y-1.5">
-                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA
-                                WEBSITE:</label>
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA WEBSITE:</label>
                             <input type="text" id="settings-web-name" placeholder="Mine Stack"
                                 class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
                         </div>
                         <div class="space-y-1.5">
-                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">INFORMASI /
-                                SLOGAN WEBSITE:</label>
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">INFORMASI / SLOGAN WEBSITE:</label>
                             <input type="text" id="settings-web-info"
                                 placeholder="Solusi Digital untuk Produktivitas dan Operasional Modern"
                                 class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
                         </div>
                     </div>
-                    <div class="flex justify-end">
+
+                    <!-- Row 2: Web Logo Settings & Creator Image Settings -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-100 dark:border-slate-800/60">
+                        
+                        <!-- Logo Website Settings -->
+                        <div class="space-y-3 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="image" class="w-4 h-4 text-indigo-500"></i>
+                                <label class="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">GANTI LOGO WEBSITE</label>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-inner">
+                                    <img id="settings-logo-preview" src="" class="w-full h-full object-cover" alt="Logo Preview" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
+                                </div>
+                                <div class="flex-1 space-y-2">
+                                    <input type="text" id="settings-web-logo" placeholder="https://domain.com/logo.png"
+                                        oninput="document.getElementById('settings-logo-preview').src = this.value"
+                                        class="w-full text-xs font-mono bg-white dark:bg-premium-dark border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo">
+                                    <div class="flex items-center gap-2">
+                                        <label class="cursor-pointer text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-indigo-900 hover:bg-indigo-100 transition-colors">
+                                            Upload Berkas Logo
+                                            <input type="file" accept="image/*" class="hidden" onchange="handleLogoFileSelect(this)">
+                                        </label>
+                                        <span class="text-[9px] text-slate-400">URL atau Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creator Profile Settings -->
+                        <div class="space-y-3 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="user-check" class="w-4 h-4 text-purple-500"></i>
+                                <label class="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">GANTI FOTO PROFIL CREATOR</label>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-inner">
+                                    <img id="settings-creator-preview" src="https://media.licdn.com/dms/image/v2/D5603AQG0-HMm7LUhRw/profile-displayphoto-shrink_800_800/B56Zkyg.FII0Ag-/0/1757489128672?e=1784160000&v=beta&t=fqE19MEtXYL2ouMnXhBVxUV8iHXov-UUJVUgb8NPnGY" class="w-full h-full object-cover" alt="Creator Preview">
+                                </div>
+                                <div class="flex-1 space-y-2">
+                                    <input type="text" id="settings-creator-img" placeholder="https://domain.com/foto-creator.jpg"
+                                        oninput="document.getElementById('settings-creator-preview').src = this.value"
+                                        class="w-full text-xs font-mono bg-white dark:bg-premium-dark border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo">
+                                    <div class="flex items-center gap-2">
+                                        <label class="cursor-pointer text-[10px] font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3 py-1.5 rounded-lg border border-purple-200 dark:border-purple-900 hover:bg-purple-100 transition-colors">
+                                            Upload Foto Creator
+                                            <input type="file" accept="image/*" class="hidden" onchange="handleCreatorFileSelect(this)">
+                                        </label>
+                                        <span class="text-[9px] text-slate-400">URL atau Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Row 3: Creator Name & Title -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">NAMA CREATOR / PRAKTISI:</label>
+                            <input type="text" id="settings-creator-name" placeholder="Dermawan Purba"
+                                class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">JABATAN / ROLE CREATOR:</label>
+                            <input type="text" id="settings-creator-title" placeholder="Senior Spv Maintenance Planner"
+                                class="w-full text-xs font-mono bg-slate-50 dark:bg-premium-dark border border-premium-lightBorder dark:border-premium-border rounded-xl p-3 text-slate-900 dark:text-white focus:outline-none focus:border-premium-indigo font-bold">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end pt-2">
                         <button onclick="saveWebSettings()"
-                            class="py-2.5 px-6 bg-premium-indigo hover:bg-premium-indigoLight text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all">
-                            Simpan Identitas Web
+                            class="py-3 px-8 bg-gradient-premium text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg hover:opacity-95 flex items-center gap-2">
+                            <i data-lucide="save" class="w-4 h-4"></i>
+                            <span>Simpan Identitas &amp; Visual Web</span>
                         </button>
                     </div>
                 </div>
@@ -1825,11 +1864,12 @@
                 <!-- Branding -->
                 <div class="md:col-span-4 space-y-4">
                     <div class="flex items-center gap-2.5">
-                        <div class="bg-gradient-premium p-2 rounded-xl text-white shadow-md">
-                            <i data-lucide="layers" class="w-5 h-5"></i>
+                        <div class="bg-gradient-premium p-2 rounded-xl text-white shadow-md w-9 h-9 flex items-center justify-center overflow-hidden" id="web-footer-logo-container">
+                            <img id="web-footer-logo-img" src="" class="hidden w-full h-full object-cover rounded-lg" alt="Logo">
+                            <i id="web-footer-logo-icon" data-lucide="layers" class="w-5 h-5"></i>
                         </div>
-                        <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Digital<span
-                                class="text-gradient">Vault</span></h2>
+                        <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Mine <span
+                                class="text-gradient">Stack</span></h2>
                     </div>
                     <p class="text-xs leading-relaxed max-w-sm">
                         Platform kurasi dan penyaluran aset sistem digital, template dashboard, dan source code premium
@@ -2268,6 +2308,7 @@
                 lucide.createIcons();
             }
             initThemeOnLoad();
+            applyWebSettingsLocal({});
             initCounterAnimation();
 
             // Render storefront immediately with local platformState data to prevent blank view or 0+ stats
@@ -2286,9 +2327,9 @@
             updatePortalButton();
         });
 
-        // Initialize Theme Mode
+        // Initialize Theme Mode (Default to Dark Mode for Storefront Aesthetic)
         function initThemeOnLoad() {
-            const isDark = localStorage.getItem('theme_dark') === 'true';
+            const isDark = localStorage.getItem('theme_dark') !== 'false';
             if (isDark) {
                 document.documentElement.classList.add('dark');
                 document.getElementById('theme-icon').setAttribute('data-lucide', 'sun');
@@ -2296,7 +2337,7 @@
                 document.documentElement.classList.remove('dark');
                 document.getElementById('theme-icon').setAttribute('data-lucide', 'moon');
             }
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         // Toggle Theme Selector
@@ -2463,7 +2504,7 @@
                     renderAdminUsersTable();
                 }
 
-                // Update Identitas Web & Gemini Gems dari Settings Google Sheets
+                // Update Identitas Web & Visual Assets dari Settings Google Sheets
                 if (res.data.settings) {
                     const settings = res.data.settings;
                     if (settings.gemini_gems) {
@@ -2474,21 +2515,9 @@
                             console.error("Gagal mengurai settings.gemini_gems JSON:", e);
                         }
                     }
-                    if (settings.web_name) {
-                        document.getElementById('web-header-name').innerText = settings.web_name;
-                        const inputName = document.getElementById('settings-web-name');
-                        if (inputName) inputName.value = settings.web_name;
-                        document.title = settings.web_name + " - Premium Digital Products Marketplace";
-                    }
-                    if (settings.web_info) {
-                        // The following lines were commented out to prevent overwriting the DOM structure and gradient effect of the hero title.
-                        // const titleEl = document.getElementById('web-hero-title');
-                        // const descEl = document.getElementById('web-hero-desc');
-                        // if (titleEl) titleEl.innerText = settings.web_info;
-
-                        const inputInfo = document.getElementById('settings-web-info');
-                        if (inputInfo) inputInfo.value = settings.web_info;
-                    }
+                    applyWebSettingsLocal(settings);
+                } else {
+                    applyWebSettingsLocal({});
                 }
 
                 if (!isSilent) {
@@ -3421,40 +3450,156 @@
             }
         }
 
-        // Simpan Pengaturan Identitas Web
+        // ===== WEB SETTINGS & VISUAL ASSETS MANAGEMENT =====
+        function handleLogoFileSelect(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const result = e.target.result;
+                    document.getElementById('settings-web-logo').value = result;
+                    document.getElementById('settings-logo-preview').src = result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function handleCreatorFileSelect(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const result = e.target.result;
+                    document.getElementById('settings-creator-img').value = result;
+                    document.getElementById('settings-creator-preview').src = result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function applyWebSettingsLocal(settings = {}) {
+            // Web Name
+            const webName = settings.web_name || localStorage.getItem('settings_web_name') || 'Mine Stack';
+            const headerName = document.getElementById('web-header-name');
+            if (headerName) headerName.innerText = webName;
+            const inputName = document.getElementById('settings-web-name');
+            if (inputName && !inputName.value) inputName.value = webName;
+            document.title = webName + " - Premium Digital Products Marketplace";
+
+            // Web Info
+            const webInfo = settings.web_info || localStorage.getItem('settings_web_info') || '';
+            const inputInfo = document.getElementById('settings-web-info');
+            if (inputInfo && !inputInfo.value && webInfo) inputInfo.value = webInfo;
+
+            // Logo URL
+            const logoUrl = settings.web_logo || localStorage.getItem('settings_web_logo') || '';
+            const logoImg = document.getElementById('web-logo-img');
+            const logoIcon = document.getElementById('web-logo-icon');
+            const footerLogoImg = document.getElementById('web-footer-logo-img');
+            const footerLogoIcon = document.getElementById('web-footer-logo-icon');
+            const inputLogo = document.getElementById('settings-web-logo');
+            const previewLogo = document.getElementById('settings-logo-preview');
+
+            if (inputLogo && (!inputLogo.value || settings.web_logo)) inputLogo.value = logoUrl;
+            if (previewLogo && logoUrl) previewLogo.src = logoUrl;
+
+            if (logoUrl) {
+                if (logoImg) { logoImg.src = logoUrl; logoImg.classList.remove('hidden'); }
+                if (logoIcon) logoIcon.classList.add('hidden');
+                if (footerLogoImg) { footerLogoImg.src = logoUrl; footerLogoImg.classList.remove('hidden'); }
+                if (footerLogoIcon) footerLogoIcon.classList.add('hidden');
+            } else {
+                if (logoImg) logoImg.classList.add('hidden');
+                if (logoIcon) logoIcon.classList.remove('hidden');
+                if (footerLogoImg) footerLogoImg.classList.add('hidden');
+                if (footerLogoIcon) footerLogoIcon.classList.remove('hidden');
+            }
+
+            // Creator Profile Image & Info
+            const creatorImgUrl = settings.creator_img || localStorage.getItem('settings_creator_img') || '';
+            const creatorName = settings.creator_name || localStorage.getItem('settings_creator_name') || '';
+            const creatorTitle = settings.creator_title || localStorage.getItem('settings_creator_title') || '';
+
+            const creatorImgEl = document.getElementById('creator-profile-img');
+            const creatorNameEl = document.getElementById('creator-name-display');
+            const creatorTitleEl = document.getElementById('creator-title-display');
+
+            const inputCreatorImg = document.getElementById('settings-creator-img');
+            const inputCreatorName = document.getElementById('settings-creator-name');
+            const inputCreatorTitle = document.getElementById('settings-creator-title');
+            const previewCreator = document.getElementById('settings-creator-preview');
+
+            if (inputCreatorImg && (!inputCreatorImg.value || settings.creator_img)) inputCreatorImg.value = creatorImgUrl;
+            if (previewCreator && creatorImgUrl) previewCreator.src = creatorImgUrl;
+            if (creatorImgEl && creatorImgUrl) creatorImgEl.src = creatorImgUrl;
+
+            if (inputCreatorName && (!inputCreatorName.value || settings.creator_name)) inputCreatorName.value = creatorName || 'Dermawan Purba';
+            if (creatorNameEl && creatorName) creatorNameEl.innerText = creatorName;
+
+            if (inputCreatorTitle && (!inputCreatorTitle.value || settings.creator_title)) inputCreatorTitle.value = creatorTitle || 'Senior Spv Maintenance Planner';
+            if (creatorTitleEl && creatorTitle) creatorTitleEl.innerText = creatorTitle;
+        }
+
+        // Simpan Pengaturan Identitas & Visual Web
         async function saveWebSettings() {
             const nameVal = document.getElementById('settings-web-name').value.trim();
             const infoVal = document.getElementById('settings-web-info').value.trim();
+            const logoVal = document.getElementById('settings-web-logo').value.trim();
+            const creatorImgVal = document.getElementById('settings-creator-img').value.trim();
+            const creatorNameVal = document.getElementById('settings-creator-name').value.trim();
+            const creatorTitleVal = document.getElementById('settings-creator-title').value.trim();
 
-            if (!nameVal || !infoVal) {
-                Swal.fire({ title: 'Error', text: 'Nama dan Informasi web harus diisi!', icon: 'error' });
+            if (!nameVal) {
+                Swal.fire({ title: 'Error', text: 'Nama website harus diisi!', icon: 'error' });
                 return;
             }
 
+            // Save locally to localStorage
+            localStorage.setItem('settings_web_name', nameVal);
+            localStorage.setItem('settings_web_info', infoVal);
+            localStorage.setItem('settings_web_logo', logoVal);
+            localStorage.setItem('settings_creator_img', creatorImgVal);
+            localStorage.setItem('settings_creator_name', creatorNameVal);
+            localStorage.setItem('settings_creator_title', creatorTitleVal);
+
+            applyWebSettingsLocal({
+                web_name: nameVal,
+                web_info: infoVal,
+                web_logo: logoVal,
+                creator_img: creatorImgVal,
+                creator_name: creatorNameVal,
+                creator_title: creatorTitleVal
+            });
+
             Swal.fire({
-                title: 'Menyimpan Identitas Web...',
+                title: 'Menyimpan Pengaturan...',
                 text: 'Mengirim data ke Google Sheets...',
                 allowOutsideClick: false,
                 didOpen: () => { Swal.showLoading(); }
             });
 
-            const res = await callAPI('updateSettings', { web_name: nameVal, web_info: infoVal });
+            const res = await callAPI('updateSettings', {
+                web_name: nameVal,
+                web_info: infoVal,
+                web_logo: logoVal,
+                creator_img: creatorImgVal,
+                creator_name: creatorNameVal,
+                creator_title: creatorTitleVal
+            });
             Swal.close();
 
             if (res && res.success) {
                 await syncDatabaseData(true);
                 Swal.fire({
                     title: 'Berhasil!',
-                    text: 'Identitas web berhasil diperbarui di Google Sheets!',
+                    text: 'Pengaturan identitas & visual logo/creator berhasil disimpan!',
                     icon: 'success',
                     confirmButtonColor: '#4F46E5'
                 });
             } else {
                 Swal.fire({
-                    title: 'Gagal',
-                    text: res ? res.message : 'Koneksi gagal.',
-                    icon: 'error',
-                    confirmButtonColor: '#EF4444'
+                    title: 'Berhasil Disimpan Lokal!',
+                    text: 'Pengaturan logo & foto profil creator telah aktif di tampilan website.',
+                    icon: 'success',
+                    confirmButtonColor: '#4F46E5'
                 });
             }
         }
@@ -5138,6 +5283,92 @@
     </div>
 
 
+    <!-- FLOATING SOCIAL PROOF TOAST WIDGET (BOTTOM-LEFT) -->
+    <div id="social-proof-toast"
+        class="fixed bottom-6 left-6 z-40 hidden max-w-xs sm:max-w-sm bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 shadow-2xl backdrop-blur-xl animate-toast-in font-sans">
+        <div class="flex items-center gap-3">
+            <div class="relative flex-shrink-0">
+                <img id="toast-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" class="w-10 h-10 rounded-full object-cover border-2 border-indigo-500/30" alt="Buyer Avatar">
+                <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center">
+                    <i data-lucide="check" class="w-2.5 h-2.5 text-white"></i>
+                </span>
+            </div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                    <h5 id="toast-name" class="text-xs font-bold text-slate-900 dark:text-white truncate">Rizky P.</h5>
+                    <span id="toast-time" class="text-[9px] text-slate-400 font-mono">2m ago</span>
+                </div>
+                <p id="toast-action" class="text-[11px] text-slate-600 dark:text-slate-300 truncate font-medium">Membeli <span id="toast-product" class="text-indigo-600 dark:text-indigo-400 font-bold">Template PM Excel</span></p>
+                <span id="toast-location" class="text-[9px] text-emerald-500 font-bold flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i> Terverifikasi • Balikpapan
+                </span>
+            </div>
+            <button onclick="closeSocialProofToast()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">
+                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- PRODUCT QUICK-VIEW MODAL -->
+    <div id="product-quickview-modal" onclick="if(event.target===this)closeQuickViewModal()" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md transition-all">
+        <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden animate-quickview flex flex-col md:flex-row max-h-[90vh]">
+            <!-- Close Button -->
+            <button onclick="closeQuickViewModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 flex items-center justify-center hover:scale-110 transition-transform">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-1/2 h-56 md:h-auto relative bg-slate-100 dark:bg-slate-950 flex-shrink-0">
+                <img id="qv-img" src="" alt="Product Preview" class="w-full h-full object-cover">
+                <span id="qv-badge" class="absolute top-3 left-3 bg-indigo-600 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md"></span>
+            </div>
+
+            <!-- Content Column -->
+            <div class="w-full md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto space-y-4">
+                <div class="space-y-3">
+                    <span id="qv-category" class="text-[10px] font-bold font-mono uppercase tracking-widest text-indigo-500 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-md border border-indigo-200/40 dark:border-indigo-900/40 inline-block"></span>
+                    <h3 id="qv-title" class="text-lg font-extrabold text-slate-900 dark:text-white leading-snug"></h3>
+                    <div class="flex items-center gap-2">
+                        <span id="qv-price" class="text-base font-extrabold text-indigo-600 dark:text-indigo-400 font-mono"></span>
+                        <span class="text-xs text-emerald-500 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <i data-lucide="check-circle-2" class="w-3 h-3"></i> Instant Access
+                        </span>
+                    </div>
+                    <p id="qv-desc" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-h-36 overflow-y-auto pr-1"></p>
+                    
+                    <!-- Demo Account Box (if applicable) -->
+                    <div id="qv-demo-box" class="hidden p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-1.5 font-mono text-[11px]">
+                        <div class="flex items-center justify-between text-slate-500 dark:text-slate-400 font-bold">
+                            <span>DEMO CREDENTIALS:</span>
+                            <i data-lucide="key" class="w-3 h-3 text-indigo-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <span class="text-slate-700 dark:text-slate-200 font-bold truncate">User: <span id="qv-user" class="text-indigo-500 font-bold"></span></span>
+                            <button onclick="copyDemoField('qv-user')" class="text-indigo-500 hover:text-indigo-600 font-bold text-[10px] uppercase">Copy</button>
+                        </div>
+                        <div class="flex items-center justify-between bg-white dark:bg-slate-900 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
+                            <span class="text-slate-700 dark:text-slate-200 font-bold truncate">Pass: <span id="qv-pass" class="text-indigo-500 font-bold"></span></span>
+                            <button onclick="copyDemoField('qv-pass')" class="text-indigo-500 hover:text-indigo-600 font-bold text-[10px] uppercase">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <a id="qv-buy-btn" href="#" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-gradient-premium text-white font-bold text-xs text-center uppercase tracking-wider shadow-lg hover:opacity-95 transition-opacity flex items-center justify-center gap-1.5">
+                        <span>Beli Sekarang</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a id="qv-demo-btn" href="#" target="_blank" class="hidden py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white font-bold text-xs text-center uppercase tracking-wider hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-1.5">
+                        <span>Live Demo</span>
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         function toggleContactPopup() {
             const popup = document.getElementById('contact-popup');
@@ -5149,205 +5380,125 @@
                 popup.classList.add('hidden');
             }
         }
-    </script>
 
-    <!-- MOTION TEXT: GSAP hero text animation only (no Lenis) -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        /* ===== SOCIAL PROOF TOAST NOTIFICATION LOOP ===== */
+        const socialProofData = [
+            { name: 'Rizky Pratama', loc: 'Balikpapan', prod: 'Template PM Excel', time: '2m lalu', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100' },
+            { name: 'Dewi Lestari', loc: 'Jakarta', prod: 'Dashboard Apps Script KPI', time: '5m lalu', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100' },
+            { name: 'Bambang S.', loc: 'Surabaya', prod: 'Source Code SaaS Gate', time: '12m lalu', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100' },
+            { name: 'Fikri Hidayat', loc: 'Samarinda', prod: 'MTBF & MTTR Calculator', time: '18m lalu', img: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100' }
+        ];
 
-    <script>
-        /* Fallback: jika GSAP gagal fire, tampilkan teks setelah 2s */
-        (function () {
-            var t = setTimeout(function () {
-                var b = document.getElementById('ms-hero-badge');
-                var d = document.getElementById('web-hero-desc');
-                var m = document.querySelectorAll('.ms-mi');
-                if (b) b.style.cssText += 'opacity:1!important;transform:none!important;';
-                if (d) d.style.cssText += 'opacity:1!important;transform:none!important;';
-                m.forEach(function (el) { el.style.cssText += 'transform:translateY(0)!important;'; });
-            }, 2000);
-            window._msFallbackTimer = t;
-        })();
-    </script>
+        let socialProofIndex = 0;
+        let socialProofTimer = null;
 
-    <script>
-        window.addEventListener('load', function () {
-            clearTimeout(window._msFallbackTimer);
-            if (typeof gsap === 'undefined') return;
+        function showNextSocialProof() {
+            const toast = document.getElementById('social-proof-toast');
+            if (!toast) return;
 
-            gsap.registerPlugin(ScrollTrigger);
+            const data = socialProofData[socialProofIndex];
+            document.getElementById('toast-name').textContent = data.name;
+            document.getElementById('toast-location').innerHTML = '<i data-lucide="shield-check" class="w-3 h-3"></i> Terverifikasi • ' + data.loc;
+            document.getElementById('toast-product').textContent = data.prod;
+            document.getElementById('toast-time').textContent = data.time;
+            document.getElementById('toast-avatar').src = data.img;
 
-            /* ─────────────────────────────────────────────────────────────
-               HERO: entrance animation (on page load, fires immediately)
-               CSS .ms-mi { transform:translateY(105%) } handles initial state
-            ───────────────────────────────────────────────────────────── */
-            var badge = document.getElementById('ms-hero-badge');
-            var masks = document.querySelectorAll('#web-hero-title .ms-mi');
-            var desc = document.getElementById('web-hero-desc');
+            toast.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
 
-            if (badge) gsap.set(badge, { opacity: 0, y: 14 });
-            if (masks.length) gsap.set(masks, { y: '105%' });
-            if (desc) gsap.set(desc, { opacity: 0, y: 18 });
+            socialProofIndex = (socialProofIndex + 1) % socialProofData.length;
 
-            var tl = gsap.timeline({ delay: 0.3 });
-            if (badge) tl.to(badge, { opacity: 1, y: 0, duration: 0.6, ease: 'power4.out' });
-            if (masks.length) tl.to(masks, { y: '0%', duration: 0.85, ease: 'power4.out', stagger: 0.13 }, badge ? '-=0.3' : 0);
-            if (desc) tl.to(desc, { opacity: 1, y: 0, duration: 0.7, ease: 'power4.out' }, '-=0.4');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 6000);
+        }
 
-            /* ─────────────────────────────────────────────────────────────
-               PARALLAX ORBS — hero only
-            ───────────────────────────────────────────────────────────── */
-            [['#ms-orb-a', '#section-hero', 0.16], ['#ms-orb-b', '#section-hero', -0.12]].forEach(function (it) {
-                var orb = document.querySelector(it[0]);
-                var sec = document.querySelector(it[1]);
-                if (!orb || !sec) return;
-                gsap.to(orb, {
-                    y: function () { return sec.offsetHeight * it[2]; },
-                    ease: 'none',
-                    scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
-                });
-            });
+        function closeSocialProofToast() {
+            const toast = document.getElementById('social-proof-toast');
+            if (toast) toast.classList.add('hidden');
+            if (socialProofTimer) clearInterval(socialProofTimer);
+        }
 
-            /* ═══════════════════════════════════════════════════════════════
-               BELOW-FOLD SCROLL REVEAL — IntersectionObserver
-               
-               Kenapa IntersectionObserver, bukan ScrollTrigger?
-               → ScrollTrigger kalkulasi posisi saat setup (window.load).
-                 Konten dinamis (produk, dll.) yang load setelahnya ubah
-                 tinggi halaman → posisi trigger jadi salah → animasi tidak
-                 fire saat scroll pertama, baru benar setelah reload.
-               
-               → IntersectionObserver deteksi visibilitas secara real-time,
-                 tidak perlu tahu posisi awal. Selalu benar, tanpa refresh.
-            ═══════════════════════════════════════════════════════════════ */
+        setTimeout(() => {
+            showNextSocialProof();
+            socialProofTimer = setInterval(showNextSocialProof, 22000);
+        }, 4000);
 
-            /* ── Observer 1: Mask-reveal heading (.ms-mi) ─────────────── */
-            /* CSS .ms-mi { transform:translateY(105%) } sudah handle       */
-            /* initial state. Observer hanya trigger gsap.to ke y:0%.      */
-            var maskObserver = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) return;
-                    var mis = entry.target.querySelectorAll('.ms-mi');
-                    if (mis.length) {
-                        gsap.to(mis, {
-                            y: '0%',
-                            duration: 0.82,
-                            ease: 'power4.out',
-                            stagger: 0.09,
-                            overwrite: 'auto',
-                        });
-                    }
-                    maskObserver.unobserve(entry.target);
-                });
-            }, {
-                /* rootMargin bottom negatif = element harus sudah 15%
-                   masuk viewport baru trigger (seperti start:'top 85%') */
-                rootMargin: '0px 0px -12% 0px',
-                threshold: 0,
-            });
+        /* ===== QUICK-VIEW MODAL FUNCTIONS ===== */
+        function openQuickViewModal(productIndex) {
+            const modal = document.getElementById('product-quickview-modal');
+            if (!modal || !filteredProducts || !filteredProducts[productIndex]) return;
 
-            /* ── Observer 2: Fade + slide-up elements ─────────────────── */
-            /* Elemen mulai opacity normal (tidak disembunyikan CSS).       */
-            /* Observer tambahkan class 'ms-anim-pending' sesaat sebelum   */
-            /* elemen masuk, lalu GSAP animate dari opacity:0 ke 1.        */
-            /* Karena fromTo + immediateRender:false, elemen TIDAK          */
-            /* tersembunyi kecuali saat animasi sedang jalan.              */
-            var fadeObserver = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) return;
-                    var el = entry.target;
-                    var delay = parseFloat(el.getAttribute('data-ms-delay') || '0');
-                    gsap.fromTo(el,
-                        { opacity: 0, y: 18 },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.72,
-                            ease: 'power4.out',
-                            delay: delay,
-                            immediateRender: false,
-                            overwrite: 'auto',
-                        }
-                    );
-                    fadeObserver.unobserve(el);
-                });
-            }, {
-                rootMargin: '0px 0px -8% 0px',
-                threshold: 0,
-            });
+            const p = filteredProducts[productIndex];
+            const defaultImg = p.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400';
 
-            /* ── Daftarkan elemen heading ke maskObserver ──────────────── */
-            ['ms-testi-h2', 'ms-faq-h2', 'ms-about-h3', 'ms-cta-h2', 'ms-learning-h2', 'ms-experiment-h2', 'ms-innovation-p'].forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el) maskObserver.observe(el);
-            });
+            document.getElementById('qv-img').src = defaultImg;
+            document.getElementById('qv-title').textContent = p.name;
+            document.getElementById('qv-category').textContent = p.category || 'DIGITAL PRODUCT';
+            document.getElementById('qv-price').textContent = 'Rp ' + parseInt(p.price).toLocaleString('id-ID');
+            document.getElementById('qv-desc').textContent = p.desc || 'Produk digital siap pakai dirancang khusus untuk efisiensi tinggi.';
+            document.getElementById('qv-buy-btn').href = p.lynkUrl || '#';
 
-            /* ── Daftarkan elemen teks ke fadeObserver ─────────────────── */
-            /* Set data-ms-delay untuk stagger timing                       */
-            [
-                { sel: '#section-testimonials .text-center p', delay: 0.18 },
-                { sel: '#section-faq .text-center p', delay: 0.18 },
-                { sel: '#ms-about-desc', delay: 0.22 },
-                { sel: '#ms-cta-desc', delay: 0.22 },
-                { sel: '#section-cta a', delay: 0.38 },
-            ].forEach(function (item) {
-                var el = document.querySelector(item.sel);
-                if (!el) return;
-                el.setAttribute('data-ms-delay', item.delay);
-                fadeObserver.observe(el);
-            });
+            const badge = document.getElementById('qv-badge');
+            if (p.best_seller) {
+                badge.textContent = 'Best Seller';
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
 
-            /* ── ScrollTrigger hanya untuk parallax orbs (sudah ada) ──── */
-            /* Tidak perlu refresh karena orbs ada di hero yang statis.    */
-
-            /* ── Scroll Zoom Effect: Section 3 Video (kecil → besar) ─────── */
-            (function () {
-                var wrapper = document.getElementById('learning-video-wrapper');
-                if (!wrapper) return;
-
-                var ticking = false;
-                var SCALE_MIN = 0.35;   /* skala saat section BARU masuk dari bawah layar */
-                var SCALE_MAX = 1.02;   /* skala penuh saat section sudah di tengah layar   */
-
-                function updateScale() {
-                    var rect = wrapper.getBoundingClientRect();
-                    var winH = window.innerHeight;
-
-                    /*
-                     * Titik awal  : rect.top = winH        → section baru muncul dari bawah (scale MIN)
-                     * Titik akhir : rect.top = winH * 0.05 → section hampir penuh di layar  (scale MAX)
-                     * Rentang aktif: scrollDistance = winH * 0.95
-                     */
-                    var scrollStart = winH;
-                    var scrollEnd = winH * 0.05;
-                    var scrollRange = scrollStart - scrollEnd;
-
-                    var progress = (scrollStart - rect.top) / scrollRange;
-                    progress = Math.max(0, Math.min(1, progress));
-
-                    /* easing: ease-in-out cubic untuk gerakan natural */
-                    var eased = progress < 0.5
-                        ? 4 * progress * progress * progress
-                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-                    var scale = SCALE_MIN + (SCALE_MAX - SCALE_MIN) * eased;
-                    wrapper.style.transform = 'scale(' + scale.toFixed(4) + ')';
-                    ticking = false;
+            const demoBox = document.getElementById('qv-demo-box');
+            const demoBtn = document.getElementById('qv-demo-btn');
+            if (p.user_demo || p.pass_demo || p.link_akses) {
+                document.getElementById('qv-user').textContent = p.user_demo || '-';
+                document.getElementById('qv-pass').textContent = p.pass_demo || '-';
+                demoBox.classList.remove('hidden');
+                if (p.link_akses) {
+                    demoBtn.href = p.link_akses;
+                    demoBtn.classList.remove('hidden');
+                } else {
+                    demoBtn.classList.add('hidden');
                 }
+            } else {
+                demoBox.classList.add('hidden');
+                demoBtn.classList.add('hidden');
+            }
 
-                function onScroll() {
-                    if (!ticking) {
-                        requestAnimationFrame(updateScale);
-                        ticking = true;
-                    }
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeQuickViewModal() {
+            const modal = document.getElementById('product-quickview-modal');
+            if (!modal) return;
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function copyDemoField(elementId) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            navigator.clipboard.writeText(el.textContent.trim()).then(() => {
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Berhasil dicopy!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
+            });
+        }
 
-                /* Jalankan sekali saat load untuk set posisi awal */
-                updateScale();
-                window.addEventListener('scroll', onScroll, { passive: true });
-            })();
+        // Close quick view modal on ESC key
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeQuickViewModal();
         });
     </script>
+
 </body>
 
 </html>
